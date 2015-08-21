@@ -254,17 +254,6 @@ header .header-content .header-content-inner p {
     }
 }
 
-.crop {
-    height: 15%;
-    width: 15%;
-    overflow: hidden;
-}
-
-.crop img {
-    height: auto;
-    width: 95%;
-}
-
 .service-box p {
     margin-bottom: 0;
 }
