@@ -254,6 +254,17 @@ header .header-content .header-content-inner p {
     }
 }
 
+.crop {
+    height: 300px;
+    width: 300px;
+    overflow: hidden;
+}
+
+.crop img {
+    height: auto;
+    width: 300px;
+}
+
 .service-box p {
     margin-bottom: 0;
 }
