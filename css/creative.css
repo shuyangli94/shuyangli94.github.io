@@ -14,6 +14,10 @@ body {
     font-family: 'Open Sans','Helvetica Neue',Arial,sans-serif;
 }
 
+div {
+    line-height: 0px;
+}
+
 hr {
     max-width: 50px;
     border-color: #ff6633;
