@@ -43,6 +43,7 @@ h4,
 h5,
 h6 {
     font-family: 'Open Sans','Helvetica Neue',Arial,sans-serif;
+    -webkit-text-stroke: 1px black;
 }
 
 p {
