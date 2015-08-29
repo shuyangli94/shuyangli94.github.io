@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-66657650-1', 'auto');
+  ga('send', 'pageview');
+</script>
+    <link rel="icon" href="favicons/favicon.ico?v=2" type="image/x-icon" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Incremental-esque Game">
+    <meta name="author" content="Shuyang Li">
+
+    <title>Incremental v0.1 - Shuyang Li</title>
+
+    <!-- Core CSSs -->
+    <link rel="stylesheet" href="game.css" type="text/css">
+    <link rel="stylesheet" href="bootstrap.css" type="text/css">
+
+</head>
+
+<body id="page-top">
+    <section id="PlayerEquips">
+        <div class="container-fluid">
+            <h3>Party Equipment</h3>
+        </div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-3 col-sm-6"> <!-- Party Member 1 -->
+                    <b><h4 id="p1N">Party Member 1</h4></b><br />
+                    <p>
+                        <label id="p1wN"></label><br />
+                        Level <label id="p1wL"></label>, Tier <label id="p1wT"></label> (<label id="p1wM"></label>)<br />
+                        Base Damage <label id="p1wD"></label><br />
+                        <label id="p1wCP"></label>% Critical Hit Chance<br />
+                        x<label id="p1wCM"></label> Critical Hit Multiplier<br />
+                        <label id="p1wPD"></label>% Physical Damage<br />
+                        <label id="p1wMD"></label>% Magical Damage<br /><br />
+                    </p>
+                </div>
+                <div class="col-lg-3 col-sm-6"> <!-- Party Member 2 -->
+                    <b><h4 id="p2N">Party Member 2</h4></b><br />
+                    <p>
+                        <label id="p2wN"></label><br />
+                        Level <label id="p2wL"></label>, Tier <label id="p2wT"></label> (<label id="p2wM"></label>)<br />
+                        Base Damage <label id="p2wD"></label><br />
+                        <label id="p2wCP"></label>% Critical Hit Chance<br />
+                        x<label id="p2wCM"></label> Critical Hit Multiplier<br />
+                        <label id="p2wPD"></label>% Physical Damage<br />
+                        <label id="p2wMD"></label>% Magical Damage<br /><br />
+                    </p>
+                </div>
+                <div class="col-lg-3 col-sm-6"> <!-- Party Member 3 -->
+                    <b><h4 id="p3N">Party Member 3</h4></b><br />
+                    <p>
+                        <label id="p3wN"></label><br />
+                        Level <label id="p3wL"></label>, Tier <label id="p3wT"></label> (<label id="p3wM"></label>)<br />
+                        Base Damage <label id="p3wD"></label><br />
+                        <label id="p3wCP"></label>% Critical Hit Chance<br />
+                        x<label id="p3wCM"></label> Critical Hit Multiplier<br />
+                        <label id="p3wPD"></label>% Physical Damage<br />
+                        <label id="p3wMD"></label>% Magical Damage<br /><br />
+                    </p>
+                </div>
+                <div class="col-lg-3 col-sm-6"> <!-- Party Member 4 -->
+                    <b><h4 id="p4N">Party Member 4</h4></b><br />
+                    <p>
+                        <label id="p4wN"></label><br />
+                        Level <label id="p4wL"></label>, Tier <label id="p4wT"></label> (<label id="p4wM"></label>)<br />
+                        Base Damage <label id="p4wD"></label><br />
+                        <label id="p4wCP"></label>% Critical Hit Chance<br />
+                        x<label id="p4wCM"></label> Critical Hit Multiplier<br />
+                        <label id="p4wPD"></label>% Physical Damage<br />
+                        <label id="p4wMD"></label>% Magical Damage<br /><br />
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-3 col-sm-6"> <!-- Party Member 1 -->
+                    <p>
+                        <label id="p1aN"></label><br />
+                        Level <label id="p1aL"></label>, Tier <label id="p1aT"></label> (<label id="p1aM"></label>)<br />
+                        <label id="p1aPR"></label>% Physical Resistance<br />
+                        <label id="p1aMR"></label>% Magical Resistance<br />
+                    </p>
+                </div>
+                <div class="col-lg-3 col-sm-6"> <!-- Party Member 2 -->
+                    <p>
+                        <label id="p2aN"></label><br />
+                        Level <label id="p2aL"></label>, Tier <label id="p2aT"></label> (<label id="p2aM"></label>)<br />
+                        <label id="p2aPR"></label>% Physical Resistance<br />
+                        <label id="p2aMR"></label>% Magical Resistance<br />
+                    </p>
+                </div>
+                <div class="col-lg-3 col-sm-6"> <!-- Party Member 3 -->
+                    <p>
+                        <label id="p3aN"></label><br />
+                        Level <label id="p3aL"></label>, Tier <label id="p3aT"></label> (<label id="p3aM"></label>)<br />
+                        <label id="p3aPR"></label>% Physical Resistance<br />
+                        <label id="p3aMR"></label>% Magical Resistance<br />
+                    </p>
+                </div>
+                <div class="col-lg-3 col-sm-6"> <!-- Party Member 4 -->
+                    <p>
+                        <label id="p4aN"></label><br />
+                        Level <label id="p4aL"></label>, Tier <label id="p4aT"></label> (<label id="p4aM"></label>)<br />
+                        <label id="p4aPR"></label>% Physical Resistance<br />
+                        <label id="p4aMR"></label>% Magical Resistance<br />
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <br>
+    <br>
+    <h6>© SHUYANG LI 2015</h6>
+
+<!-- Custom Game JavaScript -->
+<script src="gameClean.js"></script>
+</body>
+
+</html>
