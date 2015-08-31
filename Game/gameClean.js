@@ -34,7 +34,7 @@ var Weapon = function(iLvl, iMat, iTier, iForm, iName, iRarity, iEnchanted) {
   }
   var dE = type[iMat][(wtier-1)][0];
   var bM = 1.03;
-  var base = 1+Math.floor(((lvl+3)*lvl - (lvl+3)*Math.cos(lvl+3)) * Math.pow(bM, dE));
+  var base = 25*lvl+Math.floor(((lvl+3)*lvl - (lvl+3)*Math.cos(lvl+3)) * Math.pow(bM, dE));
   var prefix = Math.floor(Math.random()*prefixes.length);
   var suffix = Math.floor(Math.random()*suffixes.length);
   if (lvl < 10) { // Prefixes appear after level 10
@@ -64,7 +64,7 @@ var Weapon = function(iLvl, iMat, iTier, iForm, iName, iRarity, iEnchanted) {
 }
 
 // Heavy, Light, Magic - [phys resistance, mag resistance] (For Armor)
-var formA = [[1.25, 0.10], [0.75, 0.75], [0.25, 1.5]]
+var formA = [[1.25, 0.10], [0.75, 0.75], [0.25, 1.5]];
 
 // Random names for weapons
 var nameA = new Array(3);
@@ -86,7 +86,7 @@ var Armor = function(iLvl, iMat, iTier, iForm, iName, iRarity, iEnchanted) {
   }
   var dE = type[iMat][(atier-1)][0];
   var bM = 1.03;
-  var base = ((0.01 + 0.39/(1 + Math.exp(-0.08*(lvl-50)))) * Math.pow(bM, dE));
+  var base = ((0.05 + 0.39/(1 + Math.exp(-0.08*(lvl-50)))) * Math.pow(bM, dE));
   var prefix = Math.floor(Math.random()*prefixes.length);
   var suffix = Math.floor(Math.random()*suffixes.length);
   if (lvl < 10) { // Prefixes appear after level 10
@@ -192,6 +192,7 @@ function updateMembers() {
   document.getElementById('pmaxHP').innerHTML = HP;
   document.getElementById('pHPbar').max = HP;
   pR = 0;
+  mR = 0;
   var totalLevels = 0;
   if (Number(members[0].active) == 1) {
     pR += members[0].level * members[0].armor.pResist;
@@ -220,7 +221,7 @@ function updateMembers() {
 }
 
 var act = 0;
-var levelLimit = 5;
+var levelLimit = -5;
 function addMember() {
   members[act].active = 1;
   act++;
@@ -344,10 +345,18 @@ function createMob() {
   updateMob();
 }
 
+// Creates a monster (tier 5, challenge)
+function createBoss() {
+  enemy = new Monster(LEVEL, 5);
+  updateMob();
+}
+
 // Update displays for mob
 function updateMob() {
   if (enemy.tier == 5) {
     document.getElementById("eName").style.color = "#aa01da";
+  } else {
+    document.getElementById("eName").style.color = "#000000";
   }
   document.getElementById("eName").innerHTML = enemy.mName;
   document.getElementById("eBase").innerHTML = enemy.damage;
@@ -373,9 +382,6 @@ function fight() {
   if (enemy.HP == 0) { // If you've defeated the mob, you fight a new one
     createMob();
   }
-  // } else { // If you haven't defeated the mob, it heals back to full
-  //   enemy.HP = enemy.maxHP;
-  // }
 
   document.getElementById("fight").disabled = true;
   if (EXPERIENCE > 0) {
@@ -384,7 +390,7 @@ function fight() {
   document.getElementById("challenge").disabled = true;
   document.getElementById("recruit").disabled = true;
 
-  fightID = setInterval(resolveRound, 1000)
+  fightID = setInterval(resolveRound, 500)
 }
 
 // Flee a fight
@@ -423,12 +429,17 @@ function resolveRound() {
       document.getElementById("recruit").disabled = false;
     }
     document.getElementById("fight").disabled = false;
-    if (EXPERIENCE == 100) {
+    if (EXPERIENCE == EXPREQ) {
       document.getElementById("challenge").disabled = false;
     }
     document.getElementById("flee").disabled = true;
     clearInterval(fightID);
     logCombat("You dealt " + (partyP + partyM) + " damage to and defeated " + enemy.mName + ". You gained 1 XP and " + enemy.gold + " gold!");
+    if (Math.random() < 0.999999) { // FIXME TOO MUCH LOOT AAAAAAHHHHHH
+      if (enemy.tier > 2) {
+        loot();
+      }
+    }
     return; // Return something?
   } else { // Reduce monster HP and move on to mosnter turn
     enemy.HP -= (partyP + partyM);
@@ -453,7 +464,7 @@ function resolveRound() {
       document.getElementById("recruit").disabled = false;
     }
     document.getElementById("fight").disabled = false;
-    if (EXPERIENCE == 100) {
+    if (EXPERIENCE == EXPREQ) {
       document.getElementById("challenge").disabled = false;
     }
     combatMsg += " You were defeated by " + enemy.mName + ". How embarrassing! You've lost 1 XP."
@@ -509,6 +520,8 @@ function mDamage(physical) {
 
 // Levelup!
 function levelup() {
+  LEVEL++;
+  document.getElementById("pLvl").innerHTML = LEVEL;
   if (members[0].active == 1) {
     members[0].level++;
     var plvl = members[0].level;
@@ -534,6 +547,248 @@ function levelup() {
   } else {
     document.getElementById("recruit").disabled = true;
   }
+  updateMembers();
   EXPERIENCE = 0;
-  EXPREQ = Math.floor(EXPREQ * 1.5)
+  EXPREQ = Math.floor((EXPREQ + 5)*Math.pow(1.1, Math.floor(LEVEL/3)));
+  document.getElementById("pExp").innerHTML = EXPERIENCE;
+  document.getElementById("expR").innerHTML = EXPREQ;
+  document.getElementById("flee").disabled = true;
+  document.getElementById("challenge").disabled = true;
+}
+
+// Challenge boss to levelup
+function challenge() {
+  currHP = HP;
+  document.getElementById('pcurrHP').innerHTML = currHP;
+  document.getElementById('pHPbar').value = currHP;
+
+  createBoss();
+
+  document.getElementById("fight").disabled = true;
+  document.getElementById("flee").disabled = true;
+  document.getElementById("challenge").disabled = true;
+  document.getElementById("recruit").disabled = true;
+
+  fightID = setInterval(resolveBossRound, 500)
+}
+
+// Single round of fighting Boss
+function resolveBossRound() {
+  var combatMsg = "";
+
+  // PARTY GOES FIRST
+  // Calculate party damage
+  var partyP = Math.floor((pDamage(members[0], true) + pDamage(members[1], true) + pDamage(members[2], true) + pDamage(members[3], true)) * (1 - enemy.PR));
+  var partyM = Math.floor((pDamage(members[0], false) + pDamage(members[1], false) + pDamage(members[2], false) + pDamage(members[3], false)) * (1 - enemy.MR));
+  if (enemy.HP <= (partyP + partyM)) { // If the hit killed the monster
+    enemy.HP = 0;
+    updateMob();
+    levelup();
+    document.getElementById("fight").disabled = false;
+    clearInterval(fightID);
+    logCombat("You dealt " + (partyP + partyM) + " damage to and defeated " + enemy.mName + ". You gained a level and " + enemy.gold + " gold!");
+    loot();
+    return; // Return something?
+  } else { // Reduce monster HP and move on to mosnter turn
+    enemy.HP -= (partyP + partyM);
+    updateMob();
+    combatMsg += "You dealt " + (partyP + partyM) + " damage to " + enemy.mName + ".";
+  }
+
+  // ENEMY'S TURN
+  var enemyP = Math.floor(mDamage(true) * (1 - pR));
+  var enemyM = Math.floor(mDamage(false) * (1 - mR));
+  if (currHP <= (enemyP + enemyM)) {
+    currHP = 0;
+    clearInterval(fightID);
+    document.getElementById('pcurrHP').innerHTML = currHP;
+    document.getElementById('pHPbar').value = currHP;
+    EXPERIENCE--;
+    if (EXPERIENCE < 0) {
+      EXPERIENCE = 0;
+    }
+    document.getElementById("pExp").innerHTML = EXPERIENCE;
+    if (LEVEL > levelLimit) {
+      document.getElementById("recruit").disabled = false;
+    }
+    document.getElementById("fight").disabled = false;
+    combatMsg += " You were defeated by " + enemy.mName + ". How embarrassing! You've lost 1 XP."
+    logCombat(combatMsg)
+    document.getElementById("flee").disabled = true;
+    createMob();
+    return;
+  } else {
+    currHP -= (enemyP + enemyM);
+    document.getElementById('pcurrHP').innerHTML = currHP;
+    document.getElementById('pHPbar').value = currHP;
+    combatMsg += " You took " + (enemyP + enemyM) + " damage."
+    logCombat(combatMsg);
+  }
+}
+
+// LOOTS!
+var levelupWeapon = 0;
+var levelupAllWeapon = 0;
+var levelupArmor = 0;
+var levelupAllArmor = 0;
+document.getElementById("LW1").innerHTML = levelupWeapon;
+if (levelupWeapon > 0) {
+  document.getElementById("levelweapon1").disabled = false;
+}
+document.getElementById("LWa").innerHTML = levelupAllWeapon;
+if (levelupAllWeapon > 0) {
+  document.getElementById("levelweaponall").disabled = false;
+}
+document.getElementById("LA1").innerHTML = levelupArmor;
+if (levelupArmor > 0) {
+  document.getElementById("levelarmor1").disabled = false;
+}
+document.getElementById("LAa").innerHTML = levelupAllArmor;
+if (levelupAllArmor > 0) {
+  document.getElementById("levelarmorall").disabled = false;
+}
+
+function loot() {
+  if (enemy.tier == 5) {
+    var rr = Math.random()
+    if (rr < 0.1) {
+      levelupAllWeapon++;
+      logCombat("You found a sword pendant carved from fine silver!")
+    } else if (rr < 0.2) {
+      levelupAllArmor++;
+      logCombat("You found a shard of something hard, sharp, and still quite warm.")
+    } else if (rr < 0.6) {
+      levelupWeapon++;
+      logCombat("You found a small soapstone statuette of a sword on the ground.")
+    } else {
+      levelupArmor++;
+      logCombat("A half-buried small glowing crystal caught your eye.");
+    }
+  } else {
+    var rr = Math.random()
+    if (rr < 0.5) {
+      levelupWeapon++;
+      logCombat("You found a small soapstone statuette of a sword!");
+    } else {
+      levelupArmor++;
+      logCombat("You found a small glowing crystal!");
+    }
+  }
+  document.getElementById("LW1").innerHTML = levelupWeapon;
+  if (levelupWeapon > 0) {
+    document.getElementById("levelweapon1").disabled = false;
+  }
+  document.getElementById("LWa").innerHTML = levelupAllWeapon;
+  if (levelupAllWeapon > 0) {
+    document.getElementById("levelweaponall").disabled = false;
+  }
+  document.getElementById("LA1").innerHTML = levelupArmor;
+  if (levelupArmor > 0) {
+    document.getElementById("levelarmor1").disabled = false;
+  }
+  document.getElementById("LAa").innerHTML = levelupAllArmor;
+  if (levelupAllArmor > 0) {
+    document.getElementById("levelarmorall").disabled = false;
+  }
+}
+
+// LEVEL UP AN ITEM (weapon is binary)
+function levelitem(weapon, index) {
+  var oldLevel = 0;
+  if (weapon) {
+    oldLevel = members[index].weapon.level;
+  } else {
+    oldLevel = members[index].armor.level;
+  }
+  var rr = Math.random();
+  var tr = 0;
+  // Tier
+  if (rr < 0.05) {
+    tr = 5;
+  } else if (rr < 0.15) {
+    tr = 4;
+  } else if (rr < 0.35) {
+    tr = 3;
+  } else if (rr < 0.6) {
+    tr = 2;
+  } else {
+    tr = 1;
+  }
+
+  var formR = Math.floor(Math.random()*3);
+  var rarR = Math.floor(Math.random()*3);
+  var matR = Math.floor(Math.random()*3);
+  var namR = Math.floor(Math.random()*3);
+  var eR = Math.floor(Math.random()*2);
+
+  if (weapon) {
+    members[index].weapon = new Weapon(oldLevel+1, matR, tr, formR, namR, rarR, eR);
+  } else {
+    members[index].armor = new Armor(oldLevel+1, matR, tr, formR, namR, rarR, eR);
+  }
+  updateMembers();
+}
+
+// RANDOMLY LEVEL UP A WEAPON
+function levelweapon1() {
+  levelupWeapon--;
+  document.getElementById("LW1").innerHTML = levelupWeapon;
+  if (levelupWeapon > 0) {
+    document.getElementById("levelweapon1").disabled = false;
+  }
+  var randmember = Math.floor(Math.random()*act);
+  levelitem(true, randmember);
+}
+
+// RANDOMLY LEVEL UP AN ARMOR
+function levelarmor1() {
+  levelupArmor--;
+  document.getElementById("LA1").innerHTML = levelupArmor;
+  if (levelupArmor > 0) {
+    document.getElementById("levelarmor1").disabled = false;
+  }
+  var randmember = Math.floor(Math.random()*act);
+  levelitem(false, randmember);
+}
+
+// LEVEL UP ALL WEAPONS
+function levelweaponall() {
+  levelupAllWeapon--;
+  document.getElementById("LWa").innerHTML = levelupAllWeapon;
+  if (levelupAllWeapon > 0) {
+    document.getElementById("levelweaponall").disabled = false;
+  }
+  if (members[0].active == 1) {
+    levelitem(true, 0);
+  }
+  if (members[1].active == 1) {
+    levelitem(true, 1);
+  }
+  if (members[2].active == 1) {
+    levelitem(true, 2);
+  }
+  if (members[3].active == 1) {
+    levelitem(true, 3);
+  }
+}
+
+// LEVEL UP ALL ARMORS
+function levelarmorall() {
+  levelupAllArmor--;
+  document.getElementById("LAa").innerHTML = levelupAllArmor;
+  if (levelupAllArmor > 0) {
+    document.getElementById("levelarmorall").disabled = false;
+  }
+  if (members[0].active == 1) {
+    levelitem(false, 0);
+  }
+  if (members[1].active == 1) {
+    levelitem(false, 1);
+  }
+  if (members[2].active == 1) {
+    levelitem(false, 2);
+  }
+  if (members[3].active == 1) {
+    levelitem(false, 3);
+  }
 }

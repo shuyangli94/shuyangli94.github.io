@@ -86,9 +86,9 @@
         </div>
     </section>
     <section id="PlayerEquips">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-7">
+        <div class="row">
+            <div class="container-fluid col-lg-8">
+                <div class="col-lg-12">
                     <div class="col-lg-3 col-sm-6">
                         <h4 id="p1N"></h4>
                     </div>
@@ -102,7 +102,7 @@
                         <h4 id="p4N"></h4>
                     </div>
                 </div>
-                <div class="col-lg-7">
+                <div class="col-lg-12">
                     <div class="col-lg-3 col-sm-6"> <!-- Party Member 1 -->
                         <p class="bord" id="p1w">
                             <label id="p1wN"></label><br />
@@ -149,7 +149,7 @@
                     </div>
                 </div>
                 <br />
-                <div class="col-lg-7">
+                <div class="col-lg-12">
                     <div class="col-lg-3 col-sm-6"> <!-- Party Member 1 -->
                         <p class="bord" id="p1a">
                             <label id="p1aN"></label><br />
@@ -184,12 +184,59 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <section id="Inventory">
-        <div class="container-fluid">
-            <h3>Inventory</h3>
+            <div class="col-lg-4">
+                <div class="row pad1">
+                    <h4><b>Item Inventory</b></h4>
+                </div>
+                <div class="row pad1">
+                    <div class="col-lg-5 bord-active">
+                        <div class="col-lg-9">
+                            <p>
+                                <b>Statuette (<label id="LW1">0</label>)</b><br />
+                                Levels up <b>random</b> weapon
+                            </p>
+                        </div>
+                        <div class="col-lg-3">
+                            <button id="levelweapon1" onclick="levelweapon1()" disabled>Use</button>
+                        </div>
+                    </div>
+                    <div class="col-lg-5 col-lg-offset-1 bord-active" style="border-color:#aa01da">
+                        <div class="col-lg-9">
+                            <p>
+                                <b>Pendant (<label id="LWa">0</label>)</b><br />
+                                Levels up <b style="color:#aa01da">all</b> weapons
+                            </p>
+                        </div>
+                        <div class="col-lg-3">
+                            <button id="levelweaponall" onclick="levelweaponall()" disabled>Use</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="row pad1">
+                    <div class="col-lg-5 bord-active">
+                        <div class="col-lg-9">
+                            <p>
+                                <b>Crystal (<label id="LA1">0</label>)</b><br />
+                                Levels up <b>random</b> armor
+                            </p>
+                        </div>
+                        <div class="col-lg-3">
+                            <button id="levelarmor1" onclick="levelarmor1()" disabled>Use</button>
+                        </div>
+                    </div>
+                    <div class="col-lg-5 col-lg-offset-1 bord-active" style="border-color:#aa01da">
+                        <div class="col-lg-9">
+                            <p>
+                                <b>Meteor Shard (<label id="LAa">0</label>)</b><br />
+                                Levels up <b style="color:#aa01da">all</b> armor
+                            </p>
+                        </div>
+                        <div class="col-lg-3">
+                            <button id="levelarmorall" onclick="levelarmorall()" disabled>Use</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
     <br>
