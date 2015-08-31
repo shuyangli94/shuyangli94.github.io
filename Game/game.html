@@ -22,105 +22,176 @@
 
     <!-- Core CSSs -->
     <link rel="stylesheet" href="game.css" type="text/css">
-    <link rel="stylesheet" href="bootstrap.css" type="text/css">
+    <link rel="stylesheet" href="gbootstrap.css" type="text/css">
 
 </head>
 
 <body id="page-top">
-    <section id="PlayerEquips">
-        <div class="container-fluid">
-            <h3>Party Equipment</h3>
-        </div>
+    <section id="BattleUI">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-lg-3 col-sm-6"> <!-- Party Member 1 -->
-                    <b><h4 id="p1N">Party Member 1</h4></b><br />
-                    <p>
-                        <label id="p1wN"></label><br />
-                        Level <label id="p1wL"></label>, Tier <label id="p1wT"></label> (<label id="p1wM"></label>)<br />
-                        Base Damage <label id="p1wD"></label><br />
-                        <label id="p1wCP"></label>% Critical Hit Chance<br />
-                        x<label id="p1wCM"></label> Critical Hit Multiplier<br />
-                        <label id="p1wPD"></label>% Physical Damage<br />
-                        <label id="p1wMD"></label>% Magical Damage<br /><br />
-                    </p>
-                </div>
-                <div class="col-lg-3 col-sm-6"> <!-- Party Member 2 -->
-                    <b><h4 id="p2N">Party Member 2</h4></b><br />
-                    <p>
-                        <label id="p2wN"></label><br />
-                        Level <label id="p2wL"></label>, Tier <label id="p2wT"></label> (<label id="p2wM"></label>)<br />
-                        Base Damage <label id="p2wD"></label><br />
-                        <label id="p2wCP"></label>% Critical Hit Chance<br />
-                        x<label id="p2wCM"></label> Critical Hit Multiplier<br />
-                        <label id="p2wPD"></label>% Physical Damage<br />
-                        <label id="p2wMD"></label>% Magical Damage<br /><br />
-                    </p>
-                </div>
-                <div class="col-lg-3 col-sm-6"> <!-- Party Member 3 -->
-                    <b><h4 id="p3N">Party Member 3</h4></b><br />
-                    <p>
-                        <label id="p3wN"></label><br />
-                        Level <label id="p3wL"></label>, Tier <label id="p3wT"></label> (<label id="p3wM"></label>)<br />
-                        Base Damage <label id="p3wD"></label><br />
-                        <label id="p3wCP"></label>% Critical Hit Chance<br />
-                        x<label id="p3wCM"></label> Critical Hit Multiplier<br />
-                        <label id="p3wPD"></label>% Physical Damage<br />
-                        <label id="p3wMD"></label>% Magical Damage<br /><br />
-                    </p>
-                </div>
-                <div class="col-lg-3 col-sm-6"> <!-- Party Member 4 -->
-                    <b><h4 id="p4N">Party Member 4</h4></b><br />
-                    <p>
-                        <label id="p4wN"></label><br />
-                        Level <label id="p4wL"></label>, Tier <label id="p4wT"></label> (<label id="p4wM"></label>)<br />
-                        Base Damage <label id="p4wD"></label><br />
-                        <label id="p4wCP"></label>% Critical Hit Chance<br />
-                        x<label id="p4wCM"></label> Critical Hit Multiplier<br />
-                        <label id="p4wPD"></label>% Physical Damage<br />
-                        <label id="p4wMD"></label>% Magical Damage<br /><br />
-                    </p>
+                <div class="col-lg-12" id="combatUIwrapper">
+                    <div class="col-lg-7" id="HUDwrapper">
+                        <div class="col-lg-12 bord-active">
+                            <div class="col-lg-6" id="partyUI">
+                                <h4><b>Level <label id="pLvl"></label> Adventurers</b> (<label id="pExp"></label>/<label id="expR" style="font-weight:normal"></label> XP)</h4>
+                                <p id="stats">
+                                    <progress id="pHPbar" value="0" max="0"></progress><br />
+                                    <h4>HP: <label id="pcurrHP"></label>/<label id="pmaxHP"></label></h4>
+                                    <label id="pPR"></label>% Physical Resistance<br />
+                                    <label id="pMR"></label>% Magical Resistance<br />
+                                </p>
+                            </div>
+                            <div class="col-lg-6 rightflush" id="enemyUI">
+                                <h4><label id="eName">Enemy</label> (<label id="eBase">0</label> Damage)</h4>
+                                <p id="Estats">
+                                    <progress id="eHPbar" value="0" max="0"></progress><br />
+                                    <h4>HP: <label id="ecurrHP"></label>/<label id="emaxHP"></label></h4>
+                                    <label id="ePR"></label>% Physical Resistance<br />
+                                    <label id="eMR"></label>% Magical Resistance<br />
+                                </p>
+                            </div>
+                            <div class="col-lg-12" id="buttonsUI">
+                                <div class="col-lg-6" id="buttonsUI">
+                                    <div class="centrd">
+                                        <button id="fight" class="fightbtn" onclick="fight()"><b>Fight</b></button><br /><br />
+                                        <button id="flee" class="fightbtn" onclick="flee()"><b>Flee (-1 Exp)</b></button><br /><br />
+                                    </div>
+                                </div>
+                                <div class="col-lg-6" id="buttonsUI">
+                                    <div class="centrd">
+                                        <button id="challenge" class="fightbtn" onclick="challenge()"><b>Challenge</b></button><br /><br />
+                                        <button id="recruit" class="fightbtn" onclick="recruitMember()"><b>Recruit</b></button><br /><br />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-5 bord-active" id="CombatInterface">
+                        <div class="col-lg-12" id="heightequalizer">
+                            <p>
+                                <label id="combat7" style="font-weight:normal;color:#cccccc"> </label><br />
+                                <label id="combat6" style="font-weight:normal;color:#b2b2b2"> </label><br />
+                                <label id="combat5" style="font-weight:normal;color:#a4a4a4"> </label><br />
+                                <label id="combat4" style="font-weight:normal;color:#9a9a9a"> </label><br />
+                                <label id="combat3" style="font-weight:normal;color:#898989"> </label><br />
+                                <label id="combat2" style="font-weight:normal;color:#555555"> </label><br />
+                                <label id="combat1" style="font-weight:normal;color:#000000"> </label><br />
+                                <label id="combat0" style="color:#000000"> </label>
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
+    </section>
+    <section id="PlayerEquips">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-lg-3 col-sm-6"> <!-- Party Member 1 -->
-                    <p>
-                        <label id="p1aN"></label><br />
-                        Level <label id="p1aL"></label>, Tier <label id="p1aT"></label> (<label id="p1aM"></label>)<br />
-                        <label id="p1aPR"></label>% Physical Resistance<br />
-                        <label id="p1aMR"></label>% Magical Resistance<br />
-                    </p>
+                <div class="col-lg-7">
+                    <div class="col-lg-3 col-sm-6">
+                        <h4 id="p1N"></h4>
+                    </div>
+                    <div class="col-lg-3 col-sm-6">
+                        <h4 id="p2N"></h4>
+                    </div>
+                    <div class="col-lg-3 col-sm-6">
+                        <h4 id="p3N"></h4>
+                    </div>
+                    <div class="col-lg-3 col-sm-6">
+                        <h4 id="p4N"></h4>
+                    </div>
                 </div>
-                <div class="col-lg-3 col-sm-6"> <!-- Party Member 2 -->
-                    <p>
-                        <label id="p2aN"></label><br />
-                        Level <label id="p2aL"></label>, Tier <label id="p2aT"></label> (<label id="p2aM"></label>)<br />
-                        <label id="p2aPR"></label>% Physical Resistance<br />
-                        <label id="p2aMR"></label>% Magical Resistance<br />
-                    </p>
+                <div class="col-lg-7">
+                    <div class="col-lg-3 col-sm-6"> <!-- Party Member 1 -->
+                        <p class="bord" id="p1w">
+                            <label id="p1wN"></label><br />
+                            Level <label id="p1wL"></label>, Tier <label id="p1wT"></label> (<label id="p1wM"></label>)<br />
+                            Base Damage <label id="p1wD"></label><br />
+                            <label id="p1wCP"></label>% Critical Hit Chance<br />
+                            x<label id="p1wCM"></label> Critical Hit Multiplier<br />
+                            <label id="p1wPD"></label>% Physical Damage<br />
+                            <label id="p1wMD"></label>% Magical Damage<br />
+                        </p>
+                    </div>
+                    <div class="col-lg-3 col-sm-6"> <!-- Party Member 2 -->
+                        <p class="bord" id="p2w">
+                            <label id="p2wN"></label><br />
+                            Level <label id="p2wL"></label>, Tier <label id="p2wT"></label> (<label id="p2wM"></label>)<br />
+                            Base Damage <label id="p2wD"></label><br />
+                            <label id="p2wCP"></label>% Critical Hit Chance<br />
+                            x<label id="p2wCM"></label> Critical Hit Multiplier<br />
+                            <label id="p2wPD"></label>% Physical Damage<br />
+                            <label id="p2wMD"></label>% Magical Damage<br />
+                        </p>
+                    </div>
+                    <div class="col-lg-3 col-sm-6"> <!-- Party Member 3 -->
+                        <p class="bord" id="p3w">
+                            <label id="p3wN"></label><br />
+                            Level <label id="p3wL"></label>, Tier <label id="p3wT"></label> (<label id="p3wM"></label>)<br />
+                            Base Damage <label id="p3wD"></label><br />
+                            <label id="p3wCP"></label>% Critical Hit Chance<br />
+                            x<label id="p3wCM"></label> Critical Hit Multiplier<br />
+                            <label id="p3wPD"></label>% Physical Damage<br />
+                            <label id="p3wMD"></label>% Magical Damage<br />
+                        </p>
+                    </div>
+                    <div class="col-lg-3 col-sm-6"> <!-- Party Member 4 -->
+                        <p class="bord" id="p4w">
+                            <label id="p4wN"></label><br />
+                            Level <label id="p4wL"></label>, Tier <label id="p4wT"></label> (<label id="p4wM"></label>)<br />
+                            Base Damage <label id="p4wD"></label><br />
+                            <label id="p4wCP"></label>% Critical Hit Chance<br />
+                            x<label id="p4wCM"></label> Critical Hit Multiplier<br />
+                            <label id="p4wPD"></label>% Physical Damage<br />
+                            <label id="p4wMD"></label>% Magical Damage<br />
+                        </p>
+                    </div>
                 </div>
-                <div class="col-lg-3 col-sm-6"> <!-- Party Member 3 -->
-                    <p>
-                        <label id="p3aN"></label><br />
-                        Level <label id="p3aL"></label>, Tier <label id="p3aT"></label> (<label id="p3aM"></label>)<br />
-                        <label id="p3aPR"></label>% Physical Resistance<br />
-                        <label id="p3aMR"></label>% Magical Resistance<br />
-                    </p>
-                </div>
-                <div class="col-lg-3 col-sm-6"> <!-- Party Member 4 -->
-                    <p>
-                        <label id="p4aN"></label><br />
-                        Level <label id="p4aL"></label>, Tier <label id="p4aT"></label> (<label id="p4aM"></label>)<br />
-                        <label id="p4aPR"></label>% Physical Resistance<br />
-                        <label id="p4aMR"></label>% Magical Resistance<br />
-                    </p>
+                <br />
+                <div class="col-lg-7">
+                    <div class="col-lg-3 col-sm-6"> <!-- Party Member 1 -->
+                        <p class="bord" id="p1a">
+                            <label id="p1aN"></label><br />
+                            Level <label id="p1aL"></label>, Tier <label id="p1aT"></label> (<label id="p1aM"></label>)<br />
+                            <label id="p1aPR"></label>% Physical Resistance<br />
+                            <label id="p1aMR"></label>% Magical Resistance<br />
+                        </p>
+                    </div>
+                    <div class="col-lg-3 col-sm-6"> <!-- Party Member 2 -->
+                        <p class="bord" id="p2a">
+                            <label id="p2aN"></label><br />
+                            Level <label id="p2aL"></label>, Tier <label id="p2aT"></label> (<label id="p2aM"></label>)<br />
+                            <label id="p2aPR"></label>% Physical Resistance<br />
+                            <label id="p2aMR"></label>% Magical Resistance<br />
+                        </p>
+                    </div>
+                    <div class="col-lg-3 col-sm-6"> <!-- Party Member 3 -->
+                        <p class="bord" id="p3a">
+                            <label id="p3aN"></label><br />
+                            Level <label id="p3aL"></label>, Tier <label id="p3aT"></label> (<label id="p3aM"></label>)<br />
+                            <label id="p3aPR"></label>% Physical Resistance<br />
+                            <label id="p3aMR"></label>% Magical Resistance<br />
+                        </p>
+                    </div>
+                    <div class="col-lg-3 col-sm-6"> <!-- Party Member 4 -->
+                        <p class="bord" id="p4a">
+                            <label id="p4aN"></label><br />
+                            Level <label id="p4aL"></label>, Tier <label id="p4aT"></label> (<label id="p4aM"></label>)<br />
+                            <label id="p4aPR"></label>% Physical Resistance<br />
+                            <label id="p4aMR"></label>% Magical Resistance<br />
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
+    <section id="Inventory">
+        <div class="container-fluid">
+            <h3>Inventory</h3>
+        </div>
+    </section>
     <br>
     <br>
     <h6>© SHUYANG LI 2015</h6>
