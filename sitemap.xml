@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+<url>
+  <loc>http://shuyangli.me/</loc>
+  <lastmod>2015-08-31T04:24:06+00:00</lastmod>
+  <changefreq>always</changefreq>
+</url>
+<url>
+  <loc>http://shuyangli.me/Game/game.html</loc>
+  <lastmod>2015-08-31T04:24:06+00:00</lastmod>
+  <changefreq>always</changefreq>
+</url>
+<url>
+  <loc>http://shuyangli.me/projects.html</loc>
+  <lastmod>2015-08-31T04:24:06+00:00</lastmod>
+  <changefreq>always</changefreq>
+</url>
+<url>
+  <loc>http://shuyangli.me/projects/parsnip/internals.pdf</loc>
+  <lastmod>2015-08-31T04:24:06+00:00</lastmod>
+  <changefreq>always</changefreq>
+</url>
+<url>
+  <loc>http://shuyangli.me/projects/parsnip/report.pdf</loc>
+  <lastmod>2015-08-31T04:24:06+00:00</lastmod>
+  <changefreq>always</changefreq>
+</url>
+<url>
+  <loc>http://shuyangli.me/projects/parsnip/demo.pdf</loc>
+  <lastmod>2015-08-31T04:24:06+00:00</lastmod>
+  <changefreq>always</changefreq>
+</url>
+<url>
+  <loc>http://shuyangli.me/projects/castle/model.pdf</loc>
+  <lastmod>2015-08-31T04:24:06+00:00</lastmod>
+  <changefreq>always</changefreq>
+</url>
+<url>
+  <loc>http://shuyangli.me/projects/castle/shuyangli_summerpresentation08082014.pdf</loc>
+  <lastmod>2015-08-31T04:24:06+00:00</lastmod>
+  <changefreq>always</changefreq>
+</url>
+<url>
+  <loc>http://shuyangli.me/projects/418/FinalReport_Shuyang_Li.pdf</loc>
+  <lastmod>2015-08-31T04:24:06+00:00</lastmod>
+  <changefreq>always</changefreq>
+</url>
+<url>
+  <loc>http://shuyangli.me/projects/418/shuyangli_maxkaplan_demo.pdf</loc>
+  <lastmod>2015-08-31T04:24:06+00:00</lastmod>
+  <changefreq>always</changefreq>
+</url>
+</urlset>
