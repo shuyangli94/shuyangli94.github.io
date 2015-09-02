@@ -51,7 +51,8 @@ var Weapon = function(iLvl, iMat, iTier, iForm, iName, iRarity, iEnchanted) {
   this.phys = 1.00;
   this.mag = 0.00;
   this.level = Number(iLvl);
-  this.tier = wtier;
+  this.tier = wtier
+  this.iform = iForm;
   this.material = type[iMat][(wtier-1)][1];
   this.rarity = iRarity;
   this.iName = "";
@@ -100,6 +101,7 @@ var Armor = function(iLvl, iMat, iTier, iForm, iName, iRarity, iEnchanted) {
   this.pResist = base * formA[iForm][0] * (1 + prefixes[prefix][0]);
   this.mResist = base * formA[iForm][1] * (1 + suffixes[suffix][0]);
   this.iName = "";
+  this.iform = iForm;
   this.level = Number(iLvl);
   this.tier = atier;
   this.material = type[iMat][(atier-1)][1];
@@ -700,6 +702,12 @@ function levelitem(weapon, index) {
   } else {
     oldLevel = members[index].armor.level;
   }
+  var oldForm = 0;
+  if (weapon) {
+    oldForm = members[index].weapon.iform;
+  } else {
+    oldForm = members[index].armor.iform;
+  }
   var rr = Math.random();
   var tr = 0;
   // Tier
@@ -715,7 +723,6 @@ function levelitem(weapon, index) {
     tr = 1;
   }
 
-  var formR = Math.floor(Math.random()*3);
   var rarR = Math.floor(Math.random()*3);
   var matR = Math.floor(Math.random()*3);
   var namR = Math.floor(Math.random()*3);
@@ -735,6 +742,8 @@ function levelweapon1() {
   document.getElementById("LW1").innerHTML = levelupWeapon;
   if (levelupWeapon > 0) {
     document.getElementById("levelweapon1").disabled = false;
+  } else {
+    document.getElementById("levelweapon1").disabled = true;
   }
   var randmember = Math.floor(Math.random()*act);
   levelitem(true, randmember);
@@ -746,6 +755,8 @@ function levelarmor1() {
   document.getElementById("LA1").innerHTML = levelupArmor;
   if (levelupArmor > 0) {
     document.getElementById("levelarmor1").disabled = false;
+  } else {
+    document.getElementById("levelarmor1").disabled = true;
   }
   var randmember = Math.floor(Math.random()*act);
   levelitem(false, randmember);
@@ -757,6 +768,8 @@ function levelweaponall() {
   document.getElementById("LWa").innerHTML = levelupAllWeapon;
   if (levelupAllWeapon > 0) {
     document.getElementById("levelweaponall").disabled = false;
+  } else {
+    document.getElementById("levelweaponall").disabled = true;
   }
   if (members[0].active == 1) {
     levelitem(true, 0);
@@ -778,6 +791,8 @@ function levelarmorall() {
   document.getElementById("LAa").innerHTML = levelupAllArmor;
   if (levelupAllArmor > 0) {
     document.getElementById("levelarmorall").disabled = false;
+  } else {
+    document.getElementById("levelarmorall").disabled = true;
   }
   if (members[0].active == 1) {
     levelitem(false, 0);
