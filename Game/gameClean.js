@@ -729,9 +729,9 @@ function levelitem(weapon, index) {
   var eR = Math.floor(Math.random()*2);
 
   if (weapon) {
-    members[index].weapon = new Weapon(oldLevel+1, matR, tr, formR, namR, rarR, eR);
+    members[index].weapon = new Weapon(oldLevel+1, matR, tr, oldForm, namR, rarR, eR);
   } else {
-    members[index].armor = new Armor(oldLevel+1, matR, tr, formR, namR, rarR, eR);
+    members[index].armor = new Armor(oldLevel+1, matR, tr, oldForm, namR, rarR, eR);
   }
   updateMembers();
 }
