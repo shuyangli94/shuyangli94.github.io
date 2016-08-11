@@ -73,9 +73,11 @@ function initializeCookie(context) {
         }
     }
 
-    document.getElementById("area_left").innerHTML = area_left + " pixels remaining";
-    document.getElementById("crumbles").innerHTML = crumble_count + " crumbles";
-    document.getElementById("area_stats").innerHTML = "<font color='white'>.</font>";
+    document.getElementById("area_left").innerHTML = area_left;
+    document.getElementById("crumbles").innerHTML = crumble_count;
+    document.getElementById("avg_crumble").innerHTML = "<font color='#fff'>0</font>";
+    document.getElementById("max_crumble").innerHTML = "<font color='#fff'>0</font>";
+    document.getElementById("min_crumble").innerHTML = "<font color='#fff'>0</font>";
     document.getElementById("score").innerHTML = "SCORE: " + score;
 }
 
@@ -216,10 +218,12 @@ var clickToCrumble = function(evt) {
 
         var score_change = Math.floor(0.001*crumble_count*crumble_count*(crumble_area + Math.floor((area_left * crumble_area)/(max_crumble-min_crumble+1))));
         score += score_change;
-        document.getElementById("score").innerHTML = "SCORE: " + score + " (+" + score_change + ")";
-        document.getElementById("crumbles").innerHTML = "<b>" + crumble_count + "</b> crumbles";
-        document.getElementById("area_stats").innerHTML = "<font color='red'>" + avg_crumble + "</font> average area crumbled; <font color='blue'>" + max_crumble + "</font> max area crumbled; <font color='green'>" + min_crumble + "</font> min area crumbled";
-        document.getElementById("area_left").innerHTML = "<b>" + area_left + "</b> pixels remaining";
+        document.getElementById("score").innerHTML = "SCORE: " + score + " (<font color='red'>+" + score_change + "</font>)";
+        document.getElementById("crumbles").innerHTML = crumble_count;
+        document.getElementById("avg_crumble").innerHTML = avg_crumble.toFixed(0);
+        document.getElementById("max_crumble").innerHTML = max_crumble;
+        document.getElementById("min_crumble").innerHTML = min_crumble;
+        document.getElementById("area_left").innerHTML = area_left;
     } else {
         console.log("You need to click on the cookie itself to crumble!");
         return;

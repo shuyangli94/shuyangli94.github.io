@@ -1,18 +1,51 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <!-- <style>
-    body {
-        width: 500px;
-        height: 500px;
-        margin: 0px;
+    <style>
+    p {
+        margin-top: 5px;
+        margin-bottom: 5px;
+        margin-left: 10px;
     }
-    </style> -->
+    h3 {
+        margin-top: 0px;
+        margin-bottom: 5px;
+        margin-left: 10px;
+    }
+    td {
+        border: 1px solid;
+    }
+    </style>
 </head>
 <body>
-    <h3 id="area_left"></h3>
-    <h3 id="crumbles"></h3>
-    <h3 id="area_stats"> </h3>
+    <table width="500">
+        <tr>
+            <td width="500/2">
+                <p><font size="4">Units Remaining</font></p>
+                <h3 id="area_left"></h3>
+            </td>
+            <td width="500/2">
+                <p><font size="4">Pieces Crumbled</font></p>
+                <h3 id="crumbles"></h3>
+            </td>
+        </tr>
+    </table>
+    <table width="500">
+        <tr>
+            <td width="500/3">
+                <p><font size="4">Avg. Piece Size</font></p>
+                <h3 id="avg_crumble"></h3>
+            </td>
+            <td width="500/3">
+                <p><font size="4">Largest Piece</font></p>
+                <h3 id="max_crumble"></h3>
+            </td>
+            <td width="500/3">
+                <p><font size="4">Smallest Piece</font></p>
+                <h3 id="min_crumble"></h3>
+            </td>
+        </tr>
+    </table>
     <h2 id="score"></h2>
     <canvas id="myCanvas" width="500" height="500" style="border:1px solid #000"></canvas>
 </body>
