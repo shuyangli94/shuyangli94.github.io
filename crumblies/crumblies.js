@@ -220,6 +220,7 @@ var clickToCrumble = function(evt) {
         area_left_p = area_left*100/max_area;
 
         var score_change = Math.floor(0.001*crumble_count*crumble_count*(crumble_area + Math.floor((area_left * crumble_area)/(max_crumble-min_crumble+1))));
+        
         score += score_change;
         document.getElementById("score").innerHTML = "SCORE: " + score + " (<font color='red'>+" + score_change + "</font>)";
         document.getElementById("crumbles").innerHTML = crumble_count;
