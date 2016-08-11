@@ -1,9 +1,13 @@
-.grid { margin:1em auto; border-collapse:collapse }
-.grid td {
-    cursor:pointer;
-    width:10px; height:10px;
-    border:1px solid #ccc;
+p {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 10px;
 }
-.grid td.clicked {
-    background-color:gray;
+h3 {
+    margin-top: 0px;
+    margin-bottom: 5px;
+    margin-left: 10px;
+}
+td {
+    border: 1px solid;
 }

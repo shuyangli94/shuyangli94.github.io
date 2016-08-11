@@ -11,6 +11,7 @@ var enum_CHOC = -1;
 var enum_CRACK = 1;
 var grid = [];
 var area_left = COOKIE_WIDTH * COOKIE_WIDTH;
+var area_left_p = 100;
 var max_area = COOKIE_WIDTH * COOKIE_WIDTH;
 var crumble_count = 0;
 var avg_crumble = 0;
@@ -56,6 +57,7 @@ function initializeCookie(context) {
     context.fillRect(0,0,COOKIE_WIDTH,COOKIE_WIDTH);
     crumble_count = 0;
     area_left = COOKIE_WIDTH * COOKIE_WIDTH;
+    area_left_p = area_left*100/max_area;
     score = 0;
 
     context.fillStyle = CHOC_COLOR;
@@ -73,7 +75,7 @@ function initializeCookie(context) {
         }
     }
 
-    document.getElementById("area_left").innerHTML = area_left;
+    document.getElementById("area_left").innerHTML = area_left + " <span style='font-weight:normal;'>(" + (area_left_p).toFixed(2) + "%)</style>";
     document.getElementById("crumbles").innerHTML = crumble_count;
     document.getElementById("avg_crumble").innerHTML = "<font color='#fff'>0</font>";
     document.getElementById("max_crumble").innerHTML = "<font color='#fff'>0</font>";
@@ -215,6 +217,7 @@ var clickToCrumble = function(evt) {
         if (crumble_area < min_crumble) {
             min_crumble = crumble_area;
         }
+        area_left_p = area_left*100/max_area;
 
         var score_change = Math.floor(0.001*crumble_count*crumble_count*(crumble_area + Math.floor((area_left * crumble_area)/(max_crumble-min_crumble+1))));
         score += score_change;
@@ -223,7 +226,7 @@ var clickToCrumble = function(evt) {
         document.getElementById("avg_crumble").innerHTML = avg_crumble.toFixed(0);
         document.getElementById("max_crumble").innerHTML = max_crumble;
         document.getElementById("min_crumble").innerHTML = min_crumble;
-        document.getElementById("area_left").innerHTML = area_left;
+        document.getElementById("area_left").innerHTML = area_left + " <span style='font-weight:normal;'>(" + (area_left_p).toFixed(2) + "%)</style>";
     } else {
         console.log("You need to click on the cookie itself to crumble!");
         return;
