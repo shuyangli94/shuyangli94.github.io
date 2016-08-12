@@ -19,6 +19,8 @@ var avg_crumble = 0;
 var max_crumble = 0;
 var min_crumble = max_area;
 var score = 0;
+var score_bonus = 0;
+var chips = [];
 // var crumble_sound = new Audio('crumble_sound.mp3');
 
 function logCrumble(message) {
@@ -26,12 +28,6 @@ function logCrumble(message) {
         document.getElementById("log" + i).innerHTML = document.getElementById("log"+(i-1)).innerHTML;
     }
     document.getElementById("log0").innerHTML = message;
-      // document.getElementById("log5").innerHTML = document.getElementById("log4").innerHTML;
-      // document.getElementById("log4").innerHTML = document.getElementById("log3").innerHTML;
-      // document.getElementById("log3").innerHTML = document.getElementById("log2").innerHTML;
-      // document.getElementById("log2").innerHTML = document.getElementById("log1").innerHTML;
-      // document.getElementById("log1").innerHTML = document.getElementById("log0").innerHTML;
-      // document.getElementById("log0").innerHTML = message;
 }
 
 function getSquare(canvas, evt) {
@@ -77,10 +73,12 @@ function initialize(context) {
     for (var i=5; i>-1; i--) {
         document.getElementById("log" + i).innerHTML = "";
     }
-
+    canvas.addEventListener('click', clickToCrack, false);
 }
 
 function initializeCookie(context) {
+    score_bonus = 0;
+    chips = [];
     //drawGrid(context);
     grid = createGrid();
     context.fillStyle = COOKIE_COLOR;
@@ -101,7 +99,12 @@ function initializeCookie(context) {
                     grid[gx][gy] = enum_CHOC;
                 }
             }
+            var newchip = {centerX: Math.floor(ulx + chipsize / 2), centerY: Math.floor(uly + chipsize / 2), crumbled:false};
+            chips.push(newchip);
         }
+    }
+    for (var i=9; i>0; i--) {
+        document.getElementById("chip" + i).innerHTML = "Chip " + i;
     }
 
     document.getElementById("area_left").innerHTML = area_left + " <span style='font-weight:normal;'>(" + (area_left_p).toFixed(2) + "%)</style>";
@@ -199,10 +202,19 @@ function crumbleDirections(context, mouseX, mouseY) {
     }
 }
 
-initialize(context);
-
-function clickToCrackWrap() {
-    canvas.addEventListener('click', clickToCrack, false);
+function checkChips() {
+    var chcount = 0;
+    for (i=0; i<9; i++) {
+        if (!chips[i].crumbled) {
+            if (grid[chips[i].centerX][chips[i].centerY] == enum_CRACK) {
+                chips[i].crumbled = true;
+                document.getElementById("chip" + (i+1)).innerHTML = "<s>Chip " + (i+1) + "</s> (Score +50%)";
+                score_bonus += 0.5;
+                chcount += 1;
+            }
+        }
+    }
+    return chcount;
 }
 
 var clickToCrack = function(evt) {
@@ -241,6 +253,8 @@ var clickToCrumble = function(evt) {
         }
         area_left_p = area_left*100/max_area;
 
+        var chcount = checkChips();
+
         // var score_change = crumble_count/(max_crumble-min_crumble+1);
         var score_change = 0;
         var color_mod = " (<font color='";
@@ -276,6 +290,8 @@ var clickToCrumble = function(evt) {
             color_mod += "red'>"
         }
 
+        score_change *= (1 + score_bonus);
+
         score += score_change;
         if (score_change < 0) {
             document.getElementById("score").innerHTML = "SCORE: " + score + color_mod + score_change + "</font>)";
@@ -289,12 +305,18 @@ var clickToCrumble = function(evt) {
         document.getElementById("min_crumble").innerHTML = min_crumble;
         document.getElementById("area_left").innerHTML = area_left + " <span style='font-weight:normal;'>(" + (area_left_p).toFixed(2) + "%)</style>";
 
+        if (chcount == 1) {
+            logCrumble(">The ants find a chocolate chip!");
+        } else if (chcount > 1) {
+            logCrumble(">The ants find <b>" + chcount + "</b> chocolate chips!");
+        }
+
 
         if (area_left < max_area * 0.05) {
             console.log("New cookie!");
             crumble_count_total += 1;
             initializeCookie(context);
-            logCrumble("You finished that cookie! Time for another.");
+            logCrumble("<b>You finished that cookie! Time for another.</b>");
         }
     } else {
         console.log("You need to click on the cookie itself to crumble!");
@@ -305,7 +327,7 @@ var clickToCrumble = function(evt) {
     canvas.removeEventListener('click', clickToCrumble, false);
 }
 
-clickToCrackWrap();
+initialize(context);
 
 // DEPRECATED FUNCTIONS
 
