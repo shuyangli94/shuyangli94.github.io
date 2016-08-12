@@ -208,9 +208,14 @@ function checkChips() {
         if (!chips[i].crumbled) {
             if (grid[chips[i].centerX][chips[i].centerY] == enum_CRACK) {
                 chips[i].crumbled = true;
-                document.getElementById("chip" + (i+1)).innerHTML = "<s>Chip " + (i+1) + "</s> (Score +50%)";
-                score_bonus += 0.5;
                 chcount += 1;
+                if (score_bonus > 2.5) {
+                    document.getElementById("chip" + (i+1)).innerHTML = "<s>Chip " + (i+1) + "</s> (Score +100%)";
+                    score_bonus += 1.0;
+                } else {
+                    document.getElementById("chip" + (i+1)).innerHTML = "<s>Chip " + (i+1) + "</s> (Score +50%)";
+                    score_bonus += 0.5;
+                }
             }
         }
     }
