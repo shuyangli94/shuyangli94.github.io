@@ -21,6 +21,19 @@ var min_crumble = max_area;
 var score = 0;
 // var crumble_sound = new Audio('crumble_sound.mp3');
 
+function logCrumble(message) {
+    for (var i=5; i>0; i--) {
+        document.getElementById("log" + i).innerHTML = document.getElementById("log"+(i-1)).innerHTML;
+    }
+    document.getElementById("log0").innerHTML = message;
+      // document.getElementById("log5").innerHTML = document.getElementById("log4").innerHTML;
+      // document.getElementById("log4").innerHTML = document.getElementById("log3").innerHTML;
+      // document.getElementById("log3").innerHTML = document.getElementById("log2").innerHTML;
+      // document.getElementById("log2").innerHTML = document.getElementById("log1").innerHTML;
+      // document.getElementById("log1").innerHTML = document.getElementById("log0").innerHTML;
+      // document.getElementById("log0").innerHTML = message;
+}
+
 function getSquare(canvas, evt) {
     var rect = canvas.getBoundingClientRect();
     return {
@@ -61,6 +74,9 @@ function initialize(context) {
     document.getElementById("max_crumble").innerHTML = "<font color='#fff'>0</font>";
     document.getElementById("min_crumble").innerHTML = "<font color='#fff'>0</font>";
     initializeCookie(context);
+    for (var i=5; i>-1; i--) {
+        document.getElementById("log" + i).innerHTML = "";
+    }
 
 }
 
@@ -225,20 +241,60 @@ var clickToCrumble = function(evt) {
         }
         area_left_p = area_left*100/max_area;
 
-        var score_change = crumble_count/(max_crumble-min_crumble+1);
+        // var score_change = crumble_count/(max_crumble-min_crumble+1);
+        var score_change = 0;
+        var color_mod = " (<font color='";
+
+        // logCrumble("You fed the ants a piece of size " + crumble_area);
+        if (crumble_area < max_area * 0.005) {
+            logCrumble("You drop a few laughable motes of cookie.");
+            logCrumble("You can hear their tiny grumbles.");
+            score_change = 20;
+            color_mod += "#998100'>"
+        } else if (crumble_area < max_area * 0.02) {
+            logCrumble("A few crumbs of the cookie fall by the ants.");
+            logCrumble("Their happy chatter fills you with joy.");
+            score_change = 200;
+            color_mod += "green'>"
+        } else if (crumble_area < max_area * 0.05) {
+            logCrumble("You watch the ants mill about industriously.");
+            score_change = 100;
+            color_mod += "green'>"
+        } else if (crumble_area < max_area * 0.15) {
+            logCrumble("The ants cautiously examine the cookie.");
+            score_change = 20;
+            color_mod += "#998100'>"
+        } else if (crumble_area < max_area * 0.25) {
+            logCrumble("The ants go marching one by one--");
+            logCrumble("around the large hunk of cookie you dropped.");
+            score_change = 0;
+            color_mod += "red'>"
+        } else {
+            logCrumble("You toss a huge chunk of cookie on the ants.");
+            logCrumble("You hear a tiny, furious <i><b>'What the hell, man!'</b></i>");
+            score_change = -1000;
+            color_mod += "red'>"
+        }
 
         score += score_change;
-        document.getElementById("score").innerHTML = "SCORE: " + score + " (<font color='red'>+" + score_change + "</font>)";
+        if (score_change < 0) {
+            document.getElementById("score").innerHTML = "SCORE: " + score + color_mod + score_change + "</font>)";
+        } else {
+            document.getElementById("score").innerHTML = "SCORE: " + score + color_mod + "+" + score_change + "</font>)";
+        }
+        
         document.getElementById("crumbles").innerHTML = crumble_count + " <span style='font-weight:normal;'>(" + crumble_count_total + " Total)</style>";
         document.getElementById("avg_crumble").innerHTML = avg_crumble.toFixed(0);
         document.getElementById("max_crumble").innerHTML = max_crumble;
         document.getElementById("min_crumble").innerHTML = min_crumble;
         document.getElementById("area_left").innerHTML = area_left + " <span style='font-weight:normal;'>(" + (area_left_p).toFixed(2) + "%)</style>";
 
+
         if (area_left < max_area * 0.05) {
             console.log("New cookie!");
             crumble_count_total += 1;
             initializeCookie(context);
+            logCrumble("You finished that cookie! Time for another.");
         }
     } else {
         console.log("You need to click on the cookie itself to crumble!");

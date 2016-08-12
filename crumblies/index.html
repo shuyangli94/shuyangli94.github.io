@@ -11,35 +11,49 @@
     <link rel="stylesheet" type="text/css" href="crumblies.css" media="screen" />
 </head>
 <body>
-    <table width="500">
-        <tr>
-            <td width="500/2">
-                <p><font size="4">Units Remaining</font></p>
-                <h3 id="area_left"></h3>
-            </td>
-            <td width="500/2">
-                <p><font size="4">Pieces Crumbled</font></p>
-                <h3 id="crumbles"></h3>
-            </td>
-        </tr>
+    <table width="80%" align="center">
+        <td width="50%" style="border: 0px">
+            <table width="100%">
+                <tr>
+                    <td width="40%">
+                        <p><font size="4">Units Remaining</font></p>
+                        <h3 id="area_left"></h3>
+                    </td>
+                    <td width="40%">
+                        <p><font size="4">Pieces Crumbled</font></p>
+                        <h3 id="crumbles"></h3>
+                    </td>
+                </tr>
+            </table>
+            <table width="100%">
+                <tr>
+                   <td width="100/3%">
+                        <p><font size="4">Avg. Piece Size</font></p>
+                        <h3 id="avg_crumble"></h3>
+                    </td>
+                    <td width="100/3%">
+                        <p><font size="4">Largest Piece</font></p>
+                        <h3 id="max_crumble"></h3>
+                    </td>
+                    <td width="100/3%">
+                        <p><font size="4">Smallest Piece</font></p>
+                        <h3 id="min_crumble"></h3>
+                    </td>
+                </tr>
+            </table>
+        </td>
+        <td width="50%" style="border: 0px">
+            <p>
+                <label id="log5" style="font-weight:normal;color:#f2f2f2">aaa</label><br />
+                <label id="log4" style="font-weight:normal;color:#c1c1c1">aaa</label><br />
+                <label id="log3" style="font-weight:normal;color:#919191">aaa</label><br />
+                <label id="log2" style="font-weight:normal;color:#616161">aaa</label><br />
+                <label id="log1" style="font-weight:normal;color:#303030">aaa</label><br />
+                <label id="log0" style="font-weight:normal;color:#000000">aaa</label><br />
+            </p>
+        </td>
     </table>
-    <table width="500">
-        <tr>
-            <td width="500/3">
-                <p><font size="4">Avg. Piece Size</font></p>
-                <h3 id="avg_crumble"></h3>
-            </td>
-            <td width="500/3">
-                <p><font size="4">Largest Piece</font></p>
-                <h3 id="max_crumble"></h3>
-            </td>
-            <td width="500/3">
-                <p><font size="4">Smallest Piece</font></p>
-                <h3 id="min_crumble"></h3>
-            </td>
-        </tr>
-    </table>
-    <h2 id="score"></h2>
+    <h2 id="score" align="center" ></h2>
     <canvas id="myCanvas" width="500" height="500" style="border:1px solid #000"></canvas>
 </body>
 <br>
