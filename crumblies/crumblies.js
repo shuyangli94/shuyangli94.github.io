@@ -14,6 +14,7 @@ var area_left = COOKIE_WIDTH * COOKIE_WIDTH;
 var area_left_p = 100;
 var max_area = COOKIE_WIDTH * COOKIE_WIDTH;
 var crumble_count = 0;
+var crumble_count_total = 0;
 var avg_crumble = 0;
 var max_crumble = 0;
 var min_crumble = max_area;
@@ -50,6 +51,19 @@ function createGrid() {
     return arr;
 }
 
+function initialize(context) {
+    crumble_count_total = 0;
+    score = 0;
+    avg_crumble = 0;
+    max_crumble = 0;
+    min_crumble = max_area;
+    document.getElementById("avg_crumble").innerHTML = "<font color='#fff'>0</font>";
+    document.getElementById("max_crumble").innerHTML = "<font color='#fff'>0</font>";
+    document.getElementById("min_crumble").innerHTML = "<font color='#fff'>0</font>";
+    initializeCookie(context);
+
+}
+
 function initializeCookie(context) {
     //drawGrid(context);
     grid = createGrid();
@@ -58,7 +72,6 @@ function initializeCookie(context) {
     crumble_count = 0;
     area_left = COOKIE_WIDTH * COOKIE_WIDTH;
     area_left_p = area_left*100/max_area;
-    score = 0;
 
     context.fillStyle = CHOC_COLOR;
     for (var i=1; i < 7; i+= 2) {
@@ -76,10 +89,7 @@ function initializeCookie(context) {
     }
 
     document.getElementById("area_left").innerHTML = area_left + " <span style='font-weight:normal;'>(" + (area_left_p).toFixed(2) + "%)</style>";
-    document.getElementById("crumbles").innerHTML = crumble_count;
-    document.getElementById("avg_crumble").innerHTML = "<font color='#fff'>0</font>";
-    document.getElementById("max_crumble").innerHTML = "<font color='#fff'>0</font>";
-    document.getElementById("min_crumble").innerHTML = "<font color='#fff'>0</font>";
+    document.getElementById("crumbles").innerHTML = crumble_count + " <span style='font-weight:normal;'>(" + crumble_count_total + " Total)</style>";
     document.getElementById("score").innerHTML = "SCORE: " + score;
 }
 
@@ -89,11 +99,6 @@ function crumble(context, xdir, ydir, xstart, ystart) {
     var bias = Math.floor(Math.random() * 60) + 10;
     var counter = 0;
     while (true) {
-        // if (counter == 0) {
-        //     fillSquare(context, currx, curry, "#f00");
-        // } else {
-        //     fillSquare(context, currx, curry);
-        // }
         fillSquare(context, currx, curry);
         for (var gi=currx; gi < currx + PIXEL_HEIGHT; gi++) {
             for (var gj=curry; gj < curry + PIXEL_HEIGHT; gj++) {
@@ -178,7 +183,7 @@ function crumbleDirections(context, mouseX, mouseY) {
     }
 }
 
-initializeCookie(context);
+initialize(context);
 
 function clickToCrackWrap() {
     canvas.addEventListener('click', clickToCrack, false);
@@ -206,11 +211,12 @@ var clickToCrumble = function(evt) {
     console.log("Crumble at " + mousePos.x + " " + mousePos.y);
     if (grid[mousePos.x][mousePos.y] == enum_COOKIE) {
         crumble_count += 1;
+        crumble_count_total += 1;
         var old_arealeft = area_left;
         //crumble_sound.play()
         floodFill(mousePos.x, mousePos.y, enum_CRACK);
         var crumble_area = old_arealeft - area_left;
-        avg_crumble = (max_area - area_left) / crumble_count;
+        avg_crumble = (max_area - area_left) / crumble_count_total;
         if (crumble_area > max_crumble) {
             max_crumble = crumble_area;
         }
@@ -219,15 +225,21 @@ var clickToCrumble = function(evt) {
         }
         area_left_p = area_left*100/max_area;
 
-        var score_change = Math.floor(0.001*crumble_count*crumble_count*(crumble_area + Math.floor((area_left * crumble_area)/(max_crumble-min_crumble+1))));
-        
+        var score_change = crumble_count/(max_crumble-min_crumble+1);
+
         score += score_change;
         document.getElementById("score").innerHTML = "SCORE: " + score + " (<font color='red'>+" + score_change + "</font>)";
-        document.getElementById("crumbles").innerHTML = crumble_count;
+        document.getElementById("crumbles").innerHTML = crumble_count + " <span style='font-weight:normal;'>(" + crumble_count_total + " Total)</style>";
         document.getElementById("avg_crumble").innerHTML = avg_crumble.toFixed(0);
         document.getElementById("max_crumble").innerHTML = max_crumble;
         document.getElementById("min_crumble").innerHTML = min_crumble;
         document.getElementById("area_left").innerHTML = area_left + " <span style='font-weight:normal;'>(" + (area_left_p).toFixed(2) + "%)</style>";
+
+        if (area_left < max_area * 0.05) {
+            console.log("New cookie!");
+            crumble_count_total += 1;
+            initializeCookie(context);
+        }
     } else {
         console.log("You need to click on the cookie itself to crumble!");
         return;
