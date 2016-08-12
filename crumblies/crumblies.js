@@ -247,30 +247,30 @@ var clickToCrumble = function(evt) {
 
         // logCrumble("You fed the ants a piece of size " + crumble_area);
         if (crumble_area < max_area * 0.005) {
-            logCrumble("You drop a few laughable motes of cookie.");
+            logCrumble(">You drop a few laughable motes of cookie.");
             logCrumble("You can hear their tiny grumbles.");
             score_change = 20;
             color_mod += "#998100'>"
         } else if (crumble_area < max_area * 0.02) {
-            logCrumble("A few crumbs of the cookie fall by the ants.");
+            logCrumble(">Some crumbs fall by the ants.");
             logCrumble("Their happy chatter fills you with joy.");
             score_change = 200;
             color_mod += "green'>"
         } else if (crumble_area < max_area * 0.05) {
-            logCrumble("You watch the ants mill about industriously.");
+            logCrumble(">You watch the ants mill about industriously.");
             score_change = 100;
             color_mod += "green'>"
         } else if (crumble_area < max_area * 0.15) {
-            logCrumble("The ants cautiously examine the cookie.");
+            logCrumble(">The ants cautiously examine the cookie.");
             score_change = 20;
             color_mod += "#998100'>"
         } else if (crumble_area < max_area * 0.25) {
-            logCrumble("The ants go marching one by one--");
-            logCrumble("around the large hunk of cookie you dropped.");
+            logCrumble(">The ants go marching one by one--");
+            logCrumble("around the hunk of cookie you dropped.");
             score_change = 0;
             color_mod += "red'>"
         } else {
-            logCrumble("You toss a huge chunk of cookie on the ants.");
+            logCrumble(">You toss out a huge chunk of cookie.");
             logCrumble("You hear a tiny, furious <i><b>'What the hell, man!'</b></i>");
             score_change = -1000;
             color_mod += "red'>"
