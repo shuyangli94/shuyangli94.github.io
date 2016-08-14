@@ -6,9 +6,11 @@ var CHOC_WIDTH = Math.floor(COOKIE_WIDTH * 0.05);
 var CHOC_BOX = Math.floor(COOKIE_WIDTH / 7); // Boxes for randomly choosing chocolate chip UL point
 var COOKIE_COLOR = "#BA8C50";
 var CHOC_COLOR = "#4E2E28";
+var CRACK_COLOR = "#FFFFFF";
 var enum_COOKIE = 0;
 var enum_CHOC = -1;
 var enum_CRACK = 1;
+
 var grid = [];
 var area_left = COOKIE_WIDTH * COOKIE_WIDTH;
 var area_left_p = 100;
@@ -60,20 +62,104 @@ function createGrid() {
     return arr;
 }
 
-function initialize(context) {
-    crumble_count_total = 0;
-    score = 0;
-    avg_crumble = 0;
-    max_crumble = 0;
-    min_crumble = max_area;
-    document.getElementById("avg_crumble").innerHTML = "<font color='#fff'>0</font>";
-    document.getElementById("max_crumble").innerHTML = "<font color='#fff'>0</font>";
-    document.getElementById("min_crumble").innerHTML = "<font color='#fff'>0</font>";
-    initializeCookie(context);
-    for (var i=5; i>-1; i--) {
-        document.getElementById("log" + i).innerHTML = "";
+function loadCookie(existingGrid) {
+    for (var i=0; i <= COOKIE_WIDTH; i++) {
+        for (var j=0; j <= COOKIE_WIDTH; j++) {
+            if (existingGrid[i][j] == enum_COOKIE) {
+                context.fillStyle = COOKIE_COLOR;
+                context.fillRect(i, j, PIXEL_HEIGHT, PIXEL_HEIGHT);
+            } else if (existingGrid[i][j] == enum_CRACK) {
+                context.fillStyle = CRACK_COLOR;
+                context.fillRect(i, j, PIXEL_HEIGHT, PIXEL_HEIGHT);
+            } else {
+                context.fillStyle = CHOC_COLOR;
+                context.fillRect(i, j, PIXEL_HEIGHT, PIXEL_HEIGHT);
+            }
+        }
     }
-    canvas.addEventListener('click', clickToCrack, false);
+}
+
+function loadState() {
+    grid = JSON.parse(localStorage.getItem('crumbleGrid'));
+    chips = JSON.parse(localStorage.getItem('crumbleChips'));
+    area_left = parseInt(localStorage.getItem('area_left'));
+    area_left_p = parseInt(localStorage.getItem('area_left_p'));
+    score = parseInt(localStorage.getItem('score'));
+    score_bonus = parseInt(localStorage.getItem('score_bonus'));
+    crumble_count = parseInt(localStorage.getItem('crumble_count'));
+    crumble_count_total = parseInt(localStorage.getItem('crumble_count_total'));
+    avg_crumble = parseInt(localStorage.getItem('avg_crumble'));
+    max_crumble = parseInt(localStorage.getItem('max_crumble'));
+    min_crumble = parseInt(localStorage.getItem('min_crumble'));
+    document.getElementById("avg_crumble").innerHTML = avg_crumble;
+    document.getElementById("max_crumble").innerHTML = max_crumble;
+    document.getElementById("min_crumble").innerHTML = min_crumble;
+    for (var i=9; i>0; i--) {
+        document.getElementById("chip" + i).innerHTML = localStorage.getItem('chip' + i);
+    }
+    document.getElementById("area_left").innerHTML = area_left + " <span style='font-weight:normal;'>(" + (area_left_p).toFixed(2) + "%)</style>";
+    document.getElementById("crumbles").innerHTML = crumble_count + " <span style='font-weight:normal;'>(" + crumble_count_total + " Total)</style>";
+    document.getElementById("score").innerHTML = "SCORE: " + score;
+    loadCookie(grid);
+}
+
+function saveState() {
+    localStorage.setItem('crumbleGrid', JSON.stringify(grid));
+    localStorage.setItem('crumbleChips', JSON.stringify(chips));
+    localStorage.setItem('area_left', area_left);
+    localStorage.setItem('area_left_p', area_left_p);
+    localStorage.setItem('score', score);
+    localStorage.setItem('score_bonus', score_bonus);
+    localStorage.setItem('crumble_count', crumble_count);
+    localStorage.setItem('crumble_count_total', crumble_count_total);
+    localStorage.setItem('avg_crumble', avg_crumble);
+    localStorage.setItem('max_crumble', max_crumble);
+    localStorage.setItem('min_crumble', min_crumble);
+    for (var i=9; i>0; i--) {
+        localStorage.setItem('chip' + i, document.getElementById("chip" + i).innerHTML);
+    }
+}
+
+function resetState() {
+    var confirmReset = confirm("Resetting will clear the current cookie and all statistics. Are you sure?")
+    if (confirmReset == true) {
+        localStorage.removeItem('crumbleGrid');
+        localStorage.removeItem('crumbleChips');
+        localStorage.removeItem('area_left');
+        localStorage.removeItem('area_left_p');
+        localStorage.removeItem('score');
+        localStorage.removeItem('score_bonus');
+        localStorage.removeItem('crumble_count');
+        localStorage.removeItem('crumble_count_total');
+        localStorage.removeItem('avg_crumble');
+        localStorage.removeItem('max_crumble');
+        localStorage.removeItem('min_crumble');
+        for (var i=9; i>0; i--) {
+            localStorage.removeItem('chip' + i);
+        }
+        initialize(context);
+    }
+}
+
+function initialize(context) {
+    if (localStorage.getItem('crumbleGrid') === null) {
+        crumble_count_total = 0;
+        score = 0;
+        avg_crumble = 0;
+        max_crumble = 0;
+        min_crumble = max_area;
+        document.getElementById("avg_crumble").innerHTML = "<font color='#fff'>0</font>";
+        document.getElementById("max_crumble").innerHTML = "<font color='#fff'>0</font>";
+        document.getElementById("min_crumble").innerHTML = "<font color='#fff'>0</font>";
+        initializeCookie(context);
+        for (var i=5; i>-1; i--) {
+            document.getElementById("log" + i).innerHTML = "";
+        }
+        canvas.addEventListener('click', clickToCrack, false);
+    } else {
+        loadState();
+        canvas.addEventListener('click', clickToCrack, false);
+    }
 }
 
 function initializeCookie(context) {
@@ -231,6 +317,7 @@ var clickToCrack = function(evt) {
         console.log("You clicked on an already-broken piece!");
     } else {
         var crumbleAgain = crumbleDirections(context, mousePos.x, mousePos.y);
+        saveState();
 
         if (!crumbleAgain) {
             canvas.addEventListener('click', clickToCrumble, false);
@@ -323,6 +410,7 @@ var clickToCrumble = function(evt) {
             initializeCookie(context);
             logCrumble("<b>You finished that cookie! Time for another.</b>");
         }
+        saveState();
     } else {
         console.log("You need to click on the cookie itself to crumble!");
         return;
