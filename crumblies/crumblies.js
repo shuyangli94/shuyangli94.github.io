@@ -156,9 +156,11 @@ function initialize(context) {
             document.getElementById("log" + i).innerHTML = "";
         }
         canvas.addEventListener('click', clickToCrack, false);
+        canvas.addEventListener('contextmenu', clickToCrumble, false);
     } else {
         loadState();
         canvas.addEventListener('click', clickToCrack, false);
+        canvas.addEventListener('contextmenu', clickToCrumble, false);
     }
 }
 
@@ -308,6 +310,20 @@ function checkChips() {
     return chcount;
 }
 
+function showInstructions() {
+    document.getElementById('infoModal').style.display = "block";
+}
+
+document.getElementsByClassName("close")[0].onclick = function() {
+    document.getElementById('infoModal').style.display = "none";
+}
+
+window.onclick = function(event) {
+    if (event.target == document.getElementById('infoModal')) {
+        document.getElementById('infoModal').style.display = "none";
+    }
+}
+
 var clickToCrack = function(evt) {
     var mousePos = getSquare(canvas, evt);
     console.log("Crack at " + mousePos.x + " " + mousePos.y);
@@ -319,14 +335,15 @@ var clickToCrack = function(evt) {
         var crumbleAgain = crumbleDirections(context, mousePos.x, mousePos.y);
         saveState();
 
-        if (!crumbleAgain) {
-            canvas.addEventListener('click', clickToCrumble, false);
-            canvas.removeEventListener('click', clickToCrack, false);
-        }
+        // if (!crumbleAgain) {
+        //     canvas.addEventListener('click', clickToCrumble, false);
+        //     canvas.removeEventListener('click', clickToCrack, false);
+        // }
     }   
 }
 
 var clickToCrumble = function(evt) {
+    evt.preventDefault();
     var mousePos = getSquare(canvas, evt);
     console.log("Crumble at " + mousePos.x + " " + mousePos.y);
     if (grid[mousePos.x][mousePos.y] == enum_COOKIE) {
@@ -403,7 +420,6 @@ var clickToCrumble = function(evt) {
             logCrumble(">The ants find <b>" + chcount + "</b> chocolate chips!");
         }
 
-
         if (area_left < max_area * 0.05) {
             console.log("New cookie!");
             crumble_count_total += 1;
@@ -416,25 +432,25 @@ var clickToCrumble = function(evt) {
         return;
     }
 
-    canvas.addEventListener('click', clickToCrack, false);
-    canvas.removeEventListener('click', clickToCrumble, false);
+    //canvas.addEventListener('click', clickToCrack, false);
+    //canvas.removeEventListener('click', clickToCrumble, false);
 }
 
 initialize(context);
 
 // DEPRECATED FUNCTIONS
 
-function drawGrid(context) {
-    for (var x = 0.5; x < COOKIE_WIDTH + 1; x += PIXEL_HEIGHT) {
-      context.moveTo(x, 0);
-      context.lineTo(x, COOKIE_WIDTH);
-    }
+// function drawGrid(context) {
+//     for (var x = 0.5; x < COOKIE_WIDTH + 1; x += PIXEL_HEIGHT) {
+//       context.moveTo(x, 0);
+//       context.lineTo(x, COOKIE_WIDTH);
+//     }
     
-    for (var y = 0.5; y < COOKIE_WIDTH + 1; y += PIXEL_HEIGHT) {
-      context.moveTo(0, y);
-      context.lineTo(COOKIE_WIDTH, y);
-    }
+//     for (var y = 0.5; y < COOKIE_WIDTH + 1; y += PIXEL_HEIGHT) {
+//       context.moveTo(0, y);
+//       context.lineTo(COOKIE_WIDTH, y);
+//     }
     
-    context.strokeStyle = "#fff";
-    context.stroke();
-}
+//     context.strokeStyle = "#fff";
+//     context.stroke();
+// }
