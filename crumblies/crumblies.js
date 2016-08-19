@@ -10,6 +10,8 @@ var CRACK_COLOR = "#FFFFFF";
 var enum_COOKIE = 0;
 var enum_CHOC = -1;
 var enum_CRACK = 1;
+var logColors = ["000000","0A0A0A","151515","202020","2B2B2B","363636","414141","4C4C4C","575757","626262","6D6D6D","787878","838383","8E8E8E","999999","A4A4A4","AFAFAF","BABABA"];
+var locust_attack_rate = 20; // average rate of attacks (for exponential distribution)
 
 var grid = [];
 var area_left = COOKIE_WIDTH * COOKIE_WIDTH;
@@ -21,15 +23,16 @@ var avg_crumble = 0;
 var max_crumble = 0;
 var min_crumble = max_area;
 var score = 0;
+var choc_chips_total = 0;
 var score_bonus = 0;
 var chips = [];
 // var crumble_sound = new Audio('crumble_sound.mp3');
 
 function logCrumble(message) {
-    for (var i=5; i>0; i--) {
-        document.getElementById("log" + i).innerHTML = document.getElementById("log"+(i-1)).innerHTML;
+    for (var i=0; i<17; i++) {
+        document.getElementById("log" + i).innerHTML = document.getElementById("log"+(i+1)).innerHTML;
     }
-    document.getElementById("log0").innerHTML = message;
+    document.getElementById("log17").innerHTML = message;
 }
 
 function getSquare(canvas, evt) {
@@ -85,21 +88,23 @@ function loadState() {
     area_left = parseInt(localStorage.getItem('area_left'));
     area_left_p = parseInt(localStorage.getItem('area_left_p'));
     score = parseInt(localStorage.getItem('score'));
-    score_bonus = parseInt(localStorage.getItem('score_bonus'));
     crumble_count = parseInt(localStorage.getItem('crumble_count'));
     crumble_count_total = parseInt(localStorage.getItem('crumble_count_total'));
     avg_crumble = parseInt(localStorage.getItem('avg_crumble'));
     max_crumble = parseInt(localStorage.getItem('max_crumble'));
     min_crumble = parseInt(localStorage.getItem('min_crumble'));
+    choc_chips_total = parseInt(localStorage.getItem('choc_chips_total'));
+    score_bonus = choc_chips_total * 0.25;
     document.getElementById("avg_crumble").innerHTML = avg_crumble;
     document.getElementById("max_crumble").innerHTML = max_crumble;
     document.getElementById("min_crumble").innerHTML = min_crumble;
-    for (var i=9; i>0; i--) {
-        document.getElementById("chip" + i).innerHTML = localStorage.getItem('chip' + i);
+    for (var i=0; i<18; i++) {
+        document.getElementById("log" + i).innerHTML = localStorage.getItem('log' + i);
     }
     document.getElementById("area_left").innerHTML = area_left + " <span style='font-weight:normal;'>(" + (area_left_p).toFixed(2) + "%)</style>";
     document.getElementById("crumbles").innerHTML = crumble_count + " <span style='font-weight:normal;'>(" + crumble_count_total + " Total)</style>";
     document.getElementById("score").innerHTML = "SCORE: " + score;
+    document.getElementById("choc_total").innerHTML = "Chips: " + choc_chips_total + " (+" + (score_bonus*100).toFixed(0) + "% Bonus Score)";
     loadCookie(grid);
 }
 
@@ -109,14 +114,14 @@ function saveState() {
     localStorage.setItem('area_left', area_left);
     localStorage.setItem('area_left_p', area_left_p);
     localStorage.setItem('score', score);
-    localStorage.setItem('score_bonus', score_bonus);
     localStorage.setItem('crumble_count', crumble_count);
     localStorage.setItem('crumble_count_total', crumble_count_total);
     localStorage.setItem('avg_crumble', avg_crumble);
     localStorage.setItem('max_crumble', max_crumble);
     localStorage.setItem('min_crumble', min_crumble);
-    for (var i=9; i>0; i--) {
-        localStorage.setItem('chip' + i, document.getElementById("chip" + i).innerHTML);
+    localStorage.setItem('choc_chips_total', choc_chips_total);
+    for (var i=0; i<18; i++) {
+        localStorage.setItem('log' + i, document.getElementById("log" + i).innerHTML);
     }
 }
 
@@ -128,31 +133,39 @@ function resetState() {
         localStorage.removeItem('area_left');
         localStorage.removeItem('area_left_p');
         localStorage.removeItem('score');
-        localStorage.removeItem('score_bonus');
         localStorage.removeItem('crumble_count');
         localStorage.removeItem('crumble_count_total');
         localStorage.removeItem('avg_crumble');
         localStorage.removeItem('max_crumble');
         localStorage.removeItem('min_crumble');
-        for (var i=9; i>0; i--) {
-            localStorage.removeItem('chip' + i);
+        localStorage.removeItem('choc_chips_total');
+        for (var i=0; i<18; i++) {
+            localStorage.removeItem('log' + i);
         }
         initialize(context);
     }
 }
 
 function initialize(context) {
+    document.getElementById("combatlog").innerHTML = '';
+    for (var i=0; i<18; i++) {
+        document.getElementById("combatlog").innerHTML += ('<label id="log' + i + '" style="font-weight:normal;color:#' + logColors[17-i] + '"></label><br />');
+        // console.log(document.getElementById("combatlog").innerHTML);
+    }
     if (localStorage.getItem('crumbleGrid') === null) {
         crumble_count_total = 0;
         score = 0;
         avg_crumble = 0;
         max_crumble = 0;
         min_crumble = max_area;
+        choc_chips_total = 0;
+        score_bonus = choc_chips_total * 0.25;
+        document.getElementById("choc_total").innerHTML = "Chips: " + choc_chips_total + " (+" + (score_bonus*100).toFixed(0) + "% Bonus Score)";
         document.getElementById("avg_crumble").innerHTML = "<font color='#fff'>0</font>";
         document.getElementById("max_crumble").innerHTML = "<font color='#fff'>0</font>";
         document.getElementById("min_crumble").innerHTML = "<font color='#fff'>0</font>";
         initializeCookie(context);
-        for (var i=5; i>-1; i--) {
+        for (var i=0; i<18; i++) {
             document.getElementById("log" + i).innerHTML = "";
         }
         canvas.addEventListener('click', clickToCrack, false);
@@ -165,9 +178,7 @@ function initialize(context) {
 }
 
 function initializeCookie(context) {
-    score_bonus = 0;
     chips = [];
-    //drawGrid(context);
     grid = createGrid();
     context.fillStyle = COOKIE_COLOR;
     context.fillRect(0,0,COOKIE_WIDTH,COOKIE_WIDTH);
@@ -191,9 +202,9 @@ function initializeCookie(context) {
             chips.push(newchip);
         }
     }
-    for (var i=9; i>0; i--) {
-        document.getElementById("chip" + i).innerHTML = "Chip " + i;
-    }
+    // for (var i=9; i>0; i--) {
+    //     document.getElementById("chip" + i).innerHTML = "Chip " + i;
+    // }
 
     document.getElementById("area_left").innerHTML = area_left + " <span style='font-weight:normal;'>(" + (area_left_p).toFixed(2) + "%)</style>";
     document.getElementById("crumbles").innerHTML = crumble_count + " <span style='font-weight:normal;'>(" + crumble_count_total + " Total)</style>";
@@ -297,13 +308,10 @@ function checkChips() {
             if (grid[chips[i].centerX][chips[i].centerY] == enum_CRACK) {
                 chips[i].crumbled = true;
                 chcount += 1;
-                if (score_bonus > 2.5) {
-                    document.getElementById("chip" + (i+1)).innerHTML = "<s>Chip " + (i+1) + "</s> (Score +100%)";
-                    score_bonus += 1.0;
-                } else {
-                    document.getElementById("chip" + (i+1)).innerHTML = "<s>Chip " + (i+1) + "</s> (Score +50%)";
-                    score_bonus += 0.5;
-                }
+                // document.getElementById("chip" + (i+1)).innerHTML = "<s>Chip " + (i+1) + "</s> (Score +50%)";
+                choc_chips_total += 1;
+                score_bonus = choc_chips_total * 0.25;
+                document.getElementById("choc_total").innerHTML = "Chips: " + choc_chips_total + " (+" + (score_bonus*100).toFixed(0) + "% Bonus Score)";
             }
         }
     }
@@ -436,7 +444,42 @@ var clickToCrumble = function(evt) {
     //canvas.removeEventListener('click', clickToCrumble, false);
 }
 
+function simulateAttack() {
+    var nextAttack = randExp(locust_attack_rate);
+
+    // if (Math.random() * 100 < locust_attack_rate) {
+    var score_change = -1 * Math.abs(Math.floor((Math.random() * 0.5 + 0.1) * score));
+    var color_mod = " (<font color='red'>";
+    score += score_change;
+    document.getElementById("score").innerHTML = "SCORE: " + score + color_mod + score_change + "</font>)";
+    console.log("Under attack!");
+    logCrumble('><i>A locust swarm ravages the cookie stores.</i>');
+    if (choc_chips_total > 0) {
+        if (Math.random() < 0.9) {
+            var chips_stolen = Math.floor((Math.random() * 0.1 + 0.1) * choc_chips_total);
+            choc_chips_total -= chips_stolen;
+            score_bonus = choc_chips_total * 0.25;
+            document.getElementById("choc_total").innerHTML = "Chips: " + choc_chips_total + " (+" + (score_bonus*100).toFixed(0) + "% Bonus Score)";
+            logCrumble('<i>Locusts abscond with </i><b>' + chips_stolen + '</b> <i>chocolate chips!</i>');
+            console.log("stolen chips: " + chips_stolen);
+        }
+    }
+    saveState();
+    console.log("next attack is in " + nextAttack + " seconds");
+    setTimeout(function() {simulateAttack()}, nextAttack * 1000);
+
+    // }
+}
+
+function randExp(rate) {
+    return (Math.floor(-Math.log(Math.random()) * rate) + 3);
+}
+
 initialize(context);
+
+var firstAttack = randExp(locust_attack_rate) * 1000;
+console.log("First attack after " + firstAttack / 1000 + " s");
+var intervalId = setTimeout(function() {simulateAttack()}, firstAttack);
 
 // DEPRECATED FUNCTIONS
 
