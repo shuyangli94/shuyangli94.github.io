@@ -12,7 +12,7 @@ td {
     border: 1px solid;
 }
 body {
-	font-family: "Gill Sans", "Century Gothic", Helvetica, sans-serif;
+	font-family: "Courier New", Monaco, monospace;
 }
 canvas {
     padding-left: 0;
@@ -20,30 +20,19 @@ canvas {
     margin-left: auto;
     margin-right: auto;
     display: block;
-    width: 500px;
-}
-
-.upgradePane {
-	border: solid #4e2e28 4px;
-
-}
-
-.upgradeHeader {
-	border: solid #4e2e28 4px;
-	background: #4e2e28;
-	color: #FFFFFF;
+    width: 640px;
 }
 
 .btn {
   -webkit-border-radius: 0;
   -moz-border-radius: 0;
   border-radius: 0px;
-  font-family: Arial;
+  font-family: "Courier New", Monaco, monospace;
   color: #ffffff;
   font-size: 20px;
   background: #BA8C50;
   padding: 10px 20px 10px 20px;
-  border: solid #4e2e28 4px;
+  border: solid #4e2e28 3px;
   text-decoration: none;
 }
 
