@@ -44,11 +44,23 @@ var TREE_BROWNS = generateGradient("#1F4116","#2C4F27",4);
 var PATH_GRADIENT = generateGradient("#737373","#8F8F8F",4);
 // var PATH_GRADIENT = ["#7D7D7D","868686","#8F8F8F","#989898","#A1A1A1"];
 var FLOOR_GRADIENT = generateGradient("#6C4C41","#715347",6);
+var SNOW_GRADIENT = generateGradient("#ECE2DF","#FFFFFF",6);
 // var FLOOR_GRADIENT = ["#A5A762","#CCCB99","#74664E"];
+var logColors = generateGradient("#A8A8A8","#000000",4);
+var snowMessages = ["The snowflakes seem to avoid the trees. You follow their example.",
+    "<i>In the midst of this snowfall, could the Gatekeeper follow you?</i>",
+    "You clutch close the Colonel's walking stick and soldier onwards.",
+    "<i>You wonder what it would be like to live in a world without sound.</i>"];
+var sunMessages = ["You hear only the creak of your boots as you shuffle down the path.",
+    "<i>The woods-dwellers have no place in town, nor outside of the Wall</i>",
+    "Sometimes the wind abruptly stops mid-gust. You pick up your pace.",
+    "<i>The golden Wall seems to stare at you through the frosty air.</i>"];
 
 var ENUM_TREE = -1;
 var ENUM_PATH = 1;
 var ENUM_PERSON = 111;
+
+var snowcount = 0;
 
 var grid = [];
 var currx = 0;
@@ -62,10 +74,33 @@ function createGrid() {
             arr[i][j] = 0;
         }
     }
+    if (snowcount == -1) {
+        logPane("The sun slips away to its hibernation. The snow falls once again.");
+        snowcount += 6;
+    } else if (snowcount < 0) {
+        logPane(sunMessages[snowcount+5]);
+        snowcount += 1;
+    } else if (snowcount == 1) {
+        logPane("You shake the last of the snow from your coat. The sun has emerged.")
+        snowcount -= 6;
+    } else if (snowcount > 0) {
+        logPane(snowMessages[-snowcount+5]);
+        snowcount -= 1;
+    } else {
+        console.log("START");
+        snowcount -= 5;
+    }
+
     var floor_tile = PIXEL*2;
     for (var i=0; i < SIDE_LENGTH; i+= floor_tile) {
         for (var j=0; j < SIDE_LENGTH; j+= floor_tile) {
-            context.fillStyle = FLOOR_GRADIENT[Math.floor(Math.random() * FLOOR_GRADIENT.length)];
+
+            if (snowcount < 0) {
+                context.fillStyle = FLOOR_GRADIENT[Math.floor(Math.random() * FLOOR_GRADIENT.length)];
+            } else {
+                context.fillStyle = SNOW_GRADIENT[Math.floor(Math.random() * SNOW_GRADIENT.length)];
+            }
+            
             context.fillRect(i,j,floor_tile,floor_tile);
         }
     }
@@ -195,7 +230,7 @@ function drawPath(startx, starty) {
 }
 
 function drawPathTile(x, y) {
-    var p = 5;
+    var p = 6;
     for (var i=-p; i < p+1; i++) {
         for (var j=-p; j < p+1; j++) {
             if (x >= -i && x < grid.length - i && y >= -j && y <= grid.length - j) {
@@ -359,12 +394,25 @@ function checkKey(e) {
 
 function initialize(context, canvas) {
     canvas.addEventListener("keydown", checkKey, false);
+    document.getElementById("log").innerHTML = '';
+    for (var i=0; i<5; i++) {
+        document.getElementById("log").innerHTML += ('<label id="log' + i + '" style="font-weight:normal;color:' + logColors[i] + '"></label><br />');
+    }
     grid = createGrid();
     currx = 1;
     curry = 1;
     drawPath(currx*2, curry*2);
     populateTrees();
     drawPerson(currx,curry);
+    logPane("The Gatekeeper warned you not to wander the woods alone.");
+    logPane("<i>But you never listened to his counsel, did you?</i>");
+}
+
+function logPane(message) {
+    for (var i=0; i<4; i++) {
+        document.getElementById("log" + i).innerHTML = document.getElementById("log"+(i+1)).innerHTML;
+    }
+    document.getElementById("log4").innerHTML = message;
 }
 
 function moveScreen() {
