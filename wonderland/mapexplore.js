@@ -75,13 +75,13 @@ function drawStraightPath(Sx, Sy, Ex, Ey, rad) {
 }
 
 function isWall(map_x, map_y) {
-    if (map_x == 0 && mapy == 0) {
+    if (map_x == 0 && map_y == 0) {
         return "UL";
-    } else if (map_x==0 && mapy==15) {
+    } else if (map_x==0 && map_y==15) {
         return "DL";
-    } else if (map_x==19 && mapy==0) {
+    } else if (map_x==19 && map_y==0) {
         return "UR";
-    } else if (map_x==19 && mapy==15) {
+    } else if (map_x==19 && map_y==15) {
         return "DR";
     } else if (map_x==0) {
         return "L";

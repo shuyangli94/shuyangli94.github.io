@@ -18,10 +18,12 @@ function checkKey(e) {
             return;
             // Exit upwards
         } else {
-            if (grid[currx*2][(curry-1)*2] == ENUM_BLDG || grid[currx*2][(curry-1)*2+1] == ENUM_BLDG || grid[currx*2+1][(curry-1)*2] == ENUM_BLDG || grid[currx*2+1][(curry-1)*2+1] == ENUM_BLDG) {
+            var gridcheck = [grid[currx*2][(curry-1)*2], grid[currx*2][(curry-1)*2+1], grid[currx*2+1][(curry-1)*2], grid[currx*2+1][(curry-1)*2+1]];
+            if (gridcheck.indexOf(ENUM_BLDG) > -1) {
                 logPane("You try the knob, but the door is locked.");
-            } else if (grid[currx*2][(curry-1)*2] != ENUM_PATH || grid[currx*2][(curry-1)*2+1] != ENUM_PATH || grid[currx*2+1][(curry-1)*2] != ENUM_PATH || grid[currx*2+1][(curry-1)*2+1] != ENUM_PATH) { // Wrong
-            } else {
+            } else if (gridcheck.indexOf(ENUM_WALL) > -1) {
+                logPane("<i>Only the birds can pass over this wall.</i>");
+            } else if (gridcheck.every(function(e) {return (e == ENUM_PATH)})) {
                 curry -= 1;
                 drawPerson(currx, curry);
                 for (var i = currx*2; i <= currx*2+1; i++) {
@@ -29,6 +31,8 @@ function checkKey(e) {
                         replacePath(i,j)
                     }
                 }
+            } else {
+                // Impassable
             }
         }
     }
@@ -42,10 +46,12 @@ function checkKey(e) {
             return;
             // Exit upwards
         } else {
-            if (grid[currx*2][(curry+1)*2] == ENUM_BLDG || grid[currx*2][(curry+1)*2+1] == ENUM_BLDG || grid[currx*2+1][(curry+1)*2] == ENUM_BLDG || grid[currx*2+1][(curry+1)*2+1] == ENUM_BLDG) {
+            var gridcheck = [grid[currx*2][(curry+1)*2],grid[currx*2][(curry+1)*2+1],grid[currx*2+1][(curry+1)*2],grid[currx*2+1][(curry+1)*2+1]];
+            if (gridcheck.indexOf(ENUM_BLDG) > -1) {
                 logPane("You try the knob, but the door is locked.");
-            } else if (grid[currx*2][(curry+1)*2] != ENUM_PATH || grid[currx*2][(curry+1)*2+1] != ENUM_PATH || grid[currx*2+1][(curry+1)*2] != ENUM_PATH || grid[currx*2+1][(curry+1)*2+1] != ENUM_PATH) { // Wrong
-            } else {
+            } else if (gridcheck.indexOf(ENUM_WALL) > -1) {
+                logPane("<i>Only the birds can pass over this wall.</i>");
+            } else if (gridcheck.every(function(e) {return (e == ENUM_PATH)})) {
                 curry += 1;
                 drawPerson(currx, curry);
                 for (var i = currx*2; i <= currx*2+1; i++) {
@@ -53,6 +59,8 @@ function checkKey(e) {
                         replacePath(i,j)
                     }
                 }
+            } else {
+                // Impassable
             }
         }
     }
@@ -66,10 +74,12 @@ function checkKey(e) {
             return;
             // Exit upwards
         } else {
-            if (grid[(currx-1)*2][curry*2] == ENUM_BLDG || grid[(currx-1)*2+1][curry*2] == ENUM_BLDG || grid[(currx-1)*2][curry*2+1] == ENUM_BLDG || grid[(currx-1)*2+1][curry*2+1] == ENUM_BLDG) {
+            var gridcheck = [grid[(currx-1)*2][curry*2],grid[(currx-1)*2+1][curry*2],grid[(currx-1)*2][curry*2+1],grid[(currx-1)*2+1][curry*2+1]];
+            if (gridcheck.indexOf(ENUM_BLDG) > -1) {
                 logPane("You try the knob, but the door is locked.");
-            } else if (grid[(currx-1)*2][curry*2] != ENUM_PATH || grid[(currx-1)*2+1][curry*2] != ENUM_PATH || grid[(currx-1)*2][curry*2+1] != ENUM_PATH || grid[(currx-1)*2+1][curry*2+1] != ENUM_PATH) { // Wrong
-            } else {
+            } else if (gridcheck.indexOf(ENUM_WALL) > -1) {
+                logPane("<i>Only the birds can pass over this wall.</i>");
+            } else if (gridcheck.every(function(e) {return (e == ENUM_PATH)})) {
                 currx -= 1;
                 drawPerson(currx, curry);
                 for (var i = currx*2+2; i <= currx*2+3; i++) {
@@ -77,6 +87,8 @@ function checkKey(e) {
                         replacePath(i,j)
                     }
                 }
+            } else {
+                // Impassable
             }
         }
     }
@@ -90,10 +102,12 @@ function checkKey(e) {
             return;
             // Exit upwards
         } else {
-            if (grid[(currx+1)*2][curry*2] == ENUM_BLDG || grid[(currx+1)*2+1][curry*2] == ENUM_BLDG || grid[(currx+1)*2][curry*2+1] == ENUM_BLDG || grid[(currx+1)*2+1][curry*2+1] == ENUM_BLDG) {
+            var gridcheck = [grid[(currx+1)*2][curry*2],grid[(currx+1)*2+1][curry*2],grid[(currx+1)*2][curry*2+1],grid[(currx+1)*2+1][curry*2+1]];
+            if (gridcheck.indexOf(ENUM_BLDG) > -1) {
                 logPane("You try the knob, but the door is locked.");
-            } else if (grid[(currx+1)*2][curry*2] != ENUM_PATH || grid[(currx+1)*2+1][curry*2] != ENUM_PATH || grid[(currx+1)*2][curry*2+1] != ENUM_PATH || grid[(currx+1)*2+1][curry*2+1] != ENUM_PATH) { // Wrong
-            } else {
+            } else if (gridcheck.indexOf(ENUM_WALL) > -1) {
+                logPane("<i>Only the birds can pass over this wall.</i>");
+            } else if (gridcheck.every(function(e) {return (e == ENUM_PATH)})) {
                 currx += 1;
                 drawPerson(currx, curry);
                 for (var i = currx*2-2; i <= currx*2-1; i++) {
@@ -101,6 +115,8 @@ function checkKey(e) {
                         replacePath(i,j)
                     }
                 }
+            } else {
+                // Not a passable square
             }
         }
     }
@@ -109,9 +125,13 @@ function checkKey(e) {
 
 function drawPerson(x,y) {
     context.fillStyle = "#F2722C";
-    context.fillRect(x*PIXEL*2, y*PIXEL*2, PIXEL*2, PIXEL*2);
     context.beginPath();
-    context.arc(x*PIXEL*2+PIXEL, y*PIXEL*2+PIXEL, PIXEL/1.5, 0, 2*Math.PI, false);
+    context.arc(x*PIXEL*2+PIXEL, y*PIXEL*2+PIXEL, PIXEL, 0, 2*Math.PI, false);
+    context.closePath();
+    context.fill();
+    // context.fillRect(x*PIXEL*2, y*PIXEL*2, PIXEL*2, PIXEL*2);
+    context.beginPath();
+    context.arc(x*PIXEL*2+PIXEL, y*PIXEL*2+PIXEL, PIXEL/1.8, 0, 2*Math.PI, false);
     context.fillStyle = "#000000";
     context.fill();
 }
