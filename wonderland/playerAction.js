@@ -1,7 +1,74 @@
 function replacePath(i, j) {
     grid[i][j] = ENUM_PATH;
-    context.fillStyle = snowcount < 0 ? randFromArray(PATH_GRADIENT) : randFromArray(SNOWPATH_GRADIENT);
+    context.fillStyle = wonderland ? (snowcount < 0 ? (localeTag == "L" ? randFromArray(PLAINS_GRADIENT) : randFromArray(PATH_GRADIENT)) : randFromArray(SNOWPATH_GRADIENT)) : (snowcount < 0 ? randFromArray(TOKYOPATH_GRADIENT) : randFromArray(SNOWTOKYOPATH_GRADIENT));
     drawSquare(i, j);
+}
+
+function weatherMachine() {
+    if (snowcount == -1) {
+        wonderland ? logPane("The sun slips away to its hibernation. The snow falls once again.") : logPane("A dirty snow blankets Tokyo.");
+        snowcount += 6;
+    } else if (snowcount < 0) {
+        if (wonderland) {
+            localeTag == "F" ? logPane(sunMessages_forest[snowcount+5]) : (localeTag == "T" ? logPane(sunMessages_town[snowcount+5]) : logPane(sunMessages_plains[snowcount+5]));
+        } else {
+            if (localeTag == "K") {
+                logPane(randFromArray(tokyo_messages));
+            }
+        }
+        snowcount += 1;
+    } else if (snowcount == 1) {
+        wonderland ? logPane("You shake the last of the snow from your coat. The sun has emerged.") : logPane("The snow has stopped. The streets run dark with sooty snowmelt.");
+        snowcount -= 6;
+    } else if (snowcount > 0) {
+        if (wonderland) {
+            localeTag == "F" ? logPane(snowMessages_forest[-snowcount+5]) : (localeTag == "T" ? logPane(snowMessages_town[-snowcount+5]) : logPane(snowMessages_plains[-snowcount+5]));
+        } else {
+            if (localeTag == "K") {
+                logPane(randFromArray(tokyo_messages));
+            }
+        }
+        snowcount -= 1;
+    } else {
+        console.log("START");
+        snowcount -= 5;
+    }
+}
+
+function moveFigure(xdir, ydir) {
+    currx += xdir;
+    curry += ydir;
+    drawPerson(currx, curry);
+    if (ydir == -1) {
+        for (var i = currx*2; i <= currx*2+1; i++) {
+            for (var j=curry*2+2; j <= curry*2+3; j++) {
+                replacePath(i,j)
+            }
+        }
+    } else if (ydir == 1) {
+        for (var i = currx*2; i <= currx*2+1; i++) {
+            for (var j=curry*2-2; j <= curry*2-1; j++) {
+                replacePath(i,j)
+            }
+        }
+    } else if (xdir == -1) {
+        for (var i = currx*2+2; i <= currx*2+3; i++) {
+            for (var j=curry*2; j <= curry*2+1; j++) {
+                replacePath(i,j)
+            }
+        }
+    } else if (xdir == 1) {
+        for (var i = currx*2-2; i <= currx*2-1; i++) {
+            for (var j=curry*2; j <= curry*2+1; j++) {
+                replacePath(i,j)
+            }
+        }
+    }
+
+    if (localeTag == "P") {
+        drawPool();
+    }
+
 }
 
 function checkKey(e) {
@@ -14,6 +81,7 @@ function checkKey(e) {
             console.log("Exit upwards");
             curry = grid.length/2 - 1;
             mapy -= 1;
+            weatherMachine();
             moveScreen();
             return;
             // Exit upwards
@@ -23,14 +91,12 @@ function checkKey(e) {
                 logPane("You try the knob, but the door is locked.");
             } else if (gridcheck.indexOf(ENUM_WALL) > -1) {
                 logPane("<i>Only the birds can pass over this wall.</i>");
+            } else if (gridcheck.indexOf(ENUM_POOL) > -1) {
+                logPane("You close your eyes and fall backwards into the pool.");
+                wonderland = !wonderland;
+                moveScreen();
             } else if (gridcheck.every(function(e) {return (e == ENUM_PATH)})) {
-                curry -= 1;
-                drawPerson(currx, curry);
-                for (var i = currx*2; i <= currx*2+1; i++) {
-                    for (var j=curry*2+2; j <= curry*2+3; j++) {
-                        replacePath(i,j)
-                    }
-                }
+                moveFigure(0,-1);
             } else {
                 // Impassable
             }
@@ -42,6 +108,7 @@ function checkKey(e) {
             console.log("Exit downwards");
             curry = 0;
             mapy += 1;
+            weatherMachine();
             moveScreen();
             return;
             // Exit upwards
@@ -51,14 +118,12 @@ function checkKey(e) {
                 logPane("You try the knob, but the door is locked.");
             } else if (gridcheck.indexOf(ENUM_WALL) > -1) {
                 logPane("<i>Only the birds can pass over this wall.</i>");
+            } else if (gridcheck.indexOf(ENUM_POOL) > -1) {
+                logPane("You close your eyes and fall backwards into the pool.");
+                wonderland = !wonderland;
+                moveScreen();
             } else if (gridcheck.every(function(e) {return (e == ENUM_PATH)})) {
-                curry += 1;
-                drawPerson(currx, curry);
-                for (var i = currx*2; i <= currx*2+1; i++) {
-                    for (var j=curry*2-2; j <= curry*2-1; j++) {
-                        replacePath(i,j)
-                    }
-                }
+                moveFigure(0, 1);
             } else {
                 // Impassable
             }
@@ -70,6 +135,7 @@ function checkKey(e) {
             console.log("Exit leftwards");
             currx = grid.length/2 - 1;
             mapx -= 1;
+            weatherMachine();
             moveScreen();
             return;
             // Exit upwards
@@ -79,14 +145,12 @@ function checkKey(e) {
                 logPane("You try the knob, but the door is locked.");
             } else if (gridcheck.indexOf(ENUM_WALL) > -1) {
                 logPane("<i>Only the birds can pass over this wall.</i>");
+            } else if (gridcheck.indexOf(ENUM_POOL) > -1) {
+                logPane("You close your eyes and fall backwards into the pool.");
+                wonderland = !wonderland;
+                moveScreen();
             } else if (gridcheck.every(function(e) {return (e == ENUM_PATH)})) {
-                currx -= 1;
-                drawPerson(currx, curry);
-                for (var i = currx*2+2; i <= currx*2+3; i++) {
-                    for (var j=curry*2; j <= curry*2+1; j++) {
-                        replacePath(i,j)
-                    }
-                }
+                moveFigure(-1,0);
             } else {
                 // Impassable
             }
@@ -98,6 +162,7 @@ function checkKey(e) {
             console.log("Exit rightwards");
             currx = 0;
             mapx += 1;
+            weatherMachine();
             moveScreen();
             return;
             // Exit upwards
@@ -107,14 +172,12 @@ function checkKey(e) {
                 logPane("You try the knob, but the door is locked.");
             } else if (gridcheck.indexOf(ENUM_WALL) > -1) {
                 logPane("<i>Only the birds can pass over this wall.</i>");
+            } else if (gridcheck.indexOf(ENUM_POOL) > -1) {
+                logPane("You close your eyes and fall backwards into the pool.");
+                wonderland = !wonderland;
+                moveScreen();
             } else if (gridcheck.every(function(e) {return (e == ENUM_PATH)})) {
-                currx += 1;
-                drawPerson(currx, curry);
-                for (var i = currx*2-2; i <= currx*2-1; i++) {
-                    for (var j=curry*2; j <= curry*2+1; j++) {
-                        replacePath(i,j)
-                    }
-                }
+                moveFigure(1,0);
             } else {
                 // Not a passable square
             }

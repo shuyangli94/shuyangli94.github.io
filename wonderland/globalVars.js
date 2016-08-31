@@ -4,26 +4,32 @@ var SIDE_LENGTH = canvas.width;
 var PIXEL = 8;
 var mapx = 0;
 var mapy = 0;
-var map = [["F","F","F","F","F","F","F","F","F","F","F","F","F","F","F","F"],
-        ["F","F","T","T","T","T","T","T","T","T","T","T","T","T","F","F"],
-        ["F","F","T","T","T","T","T","T","T","T","T","T","T","T","F","F"],
-        ["F","F","T","T","T","T","T","T","T","T","T","T","T","T","F","F"],
-        ["F","F","T","T","T","T","T","T","T","T","T","T","T","T","F","F"],
-        ["F","F","T","T","T","T","T","T","T","T","T","T","T","T","F","F"],
-        ["F","F","T","T","T","T","T","T","T","T","T","T","T","T","F","F"],
-        ["F","F","T","T","T","T","T","T","T","T","T","T","T","T","F","F"],
-        ["F","F","T","T","T","T","T","T","T","T","T","T","T","T","F","F"],
-        ["F","F","T","T","T","T","T","T","T","T","T","T","T","T","F","F"],
-        ["F","F","F","F","F","F","F","F","F","F","F","F","F","F","F","F"],
-        ["F","F","F","F","F","F","F","F","F","F","F","F","F","F","F","F"],
-        ["F","F","F","F","F","F","F","F","F","F","F","F","F","F","F","F"],
-        ["F","F","F","F","F","F","F","F","F","F","F","F","F","F","F","F"],
-        ["F","F","F","F","F","F","F","F","F","F","F","F","F","F","F","F"],
-        ["F","F","F","F","F","F","F","F","F","F","F","F","F","F","F","F"],
-        ["F","F","F","F","F","F","F","F","F","F","F","F","F","F","F","F"],
-        ["F","F","F","F","F","F","F","F","F","F","F","F","F","F","F","F"],
-        ["F","F","F","F","F","F","F","F","F","F","F","F","F","F","F","F"],
-        ["F","F","F","F","F","F","F","F","F","F","F","F","F","F","F","F"]];
+// var map = [["F","F","F","F","F","F","F","F","F","F","F","F","F","F","F","F"],
+//         ["F","F","T","T","T","T","T","T","T","T","T","T","T","T","F","F"],
+//         ["F","F","T","T","T","T","T","T","T","T","T","T","T","T","F","F"],
+//         ["F","F","T","T","T","T","T","T","T","T","T","T","T","T","F","F"],
+//         ["F","F","T","T","T","T","T","T","T","T","T","T","T","T","F","F"],
+//         ["F","F","T","T","T","T","T","T","T","T","T","T","T","T","F","F"],
+//         ["F","F","T","T","T","T","T","T","T","T","T","T","T","T","F","F"],
+//         ["F","F","T","T","T","T","T","T","T","T","T","T","T","T","F","F"],
+//         ["F","F","T","T","T","T","T","T","T","T","T","T","T","T","F","F"],
+//         ["F","F","T","T","T","T","T","T","T","T","T","T","T","T","F","F"],
+//         ["F","F","F","F","F","F","F","F","F","F","F","F","F","F","F","F"],
+//         ["F","F","F","F","F","F","F","F","F","F","F","F","F","F","F","F"],
+//         ["F","F","F","F","F","F","F","F","F","F","F","F","F","F","F","F"],
+//         ["F","F","F","F","F","F","F","F","F","F","F","F","F","F","F","F"],
+//         ["F","F","F","F","F","F","F","F","F","F","F","F","F","F","F","F"],
+//         ["F","F","F","F","F","F","F","F","F","F","F","F","F","F","F","F"],
+//         ["F","F","F","F","F","F","F","F","F","F","F","F","F","F","F","F"],
+//         ["F","F","F","F","F","F","F","F","F","F","F","F","F","F","F","F"],
+//         ["F","F","F","F","F","F","F","F","F","F","F","F","F","F","F","F"],
+//         ["F","F","F","F","F","F","F","F","F","F","F","F","F","F","F","F"]];
+// map[poolx][pooly] = "P";
+var map_xbound = 30;
+var map_ybound = 30;
+var localeTag = "P";
+var poolx = Math.floor(map_xbound/2) - 1;
+var pooly = Math.floor(map_ybound/2) - 1;
 
 function randInt(min, max) {
     return (Math.floor(Math.random()*(max-min)) + min);
@@ -88,12 +94,16 @@ function generateGradient(startHex, endHex, steps) {
     return gradarray;
 }
 
-// var GREEN_GRADIENT = ["#1A4721","#285326","#365F2C","#456B32","#537738","#61833E","#708F44","#7E9B4A","#8CA750","#9BB356","#A9BF5C","#B8CB62"];
 var GREEN_GRADIENT = generateGradient("#1A4721","#B8CB62",13);
 var TREE_BROWNS = generateGradient("#1F4116","#2C4F27",4);
-// var TREE_BROWNS = ["#855E4C","#4E3727","#622A17","#421011"];
 var PATH_GRADIENT = generateGradient("#737373","#8F8F8F",4);
-// var PATH_GRADIENT = ["#7D7D7D","868686","#8F8F8F","#989898","#A1A1A1"];
+var SNOWPATH_GRADIENT = generateGradient("9A9A9A", "BCBCBC", 4);
+
+var PLAINS_GRADIENT = generateGradient("#C1CC7B","#9CA540",6);
+
+var TOKYOPATH_GRADIENT = generateGradient("#616161","#7D7D7D",4);
+var SNOWTOKYOPATH_GRADIENT = generateGradient("#8C8C8C","#ADADAD",4);
+
 var FLOOR_GRADIENT = generateGradient("#6C4C41","#715347",6);
 var SNOW_GRADIENT = generateGradient("#ECE2DF","#FFFFFF",8);
 var ROOF_GRADIENT_RED = generateGradient("#C65858","#822626", 22);
@@ -106,28 +116,49 @@ var ROOF_GRADIENT_YELLOW = generateGradient("#C6A558","#826526", 22);
 var SNOWROOF_GRADIENT_YELLOW = generateGradient("#D5C386","#CBA743", 22);
 var GRASS_GRADIENT = generateGradient("#ADD595", "#7AC445", 6);
 
+var FLOWER_CENTER = generateGradient("#FFFA4D", "#FFCE94", 5);
+var FLOWER_PETAL = ["#E486E1","#75359C", "#6881CA", "#FE5299", "#96406C", "#288A35"];
+
+var POOL1_GRADIENT = generateGradient("#193A86","#162F69",10); // Inner pool (deepest)
+var POOL2_GRADIENT = generateGradient("#20469D", "#16367E", 10); // Middle pool
+var POOL3_GRADIENT = generateGradient("#274DA5","#163C92",10); // Outer pool (shallowest)
+
+var ROOF_COLORS = ["#7A8AB8", "#84B88B", "#CE829B", "#CE9882", "#CE82AD", "#CCCCCC"];
+
 var ROOFS = [ROOF_GRADIENT_RED, ROOF_GRADIENT_BLUE, ROOF_GRADIENT_GREEN, ROOF_GRADIENT_YELLOW];
 var SNOWROOFS = [SNOWROOF_GRADIENT_RED, SNOWROOF_GRADIENT_BLUE, SNOWROOF_GRADIENT_GREEN, SNOWROOF_GRADIENT_YELLOW];
-var SNOWPATH_GRADIENT = generateGradient("9A9A9A", "BCBCBC", 4);
+
 var WALL_GRADIENT = generateGradient("#FFD700", "#FFE975",5);
 // var FLOOR_GRADIENT = ["#A5A762","#CCCB99","#74664E"];
 var logColors = generateGradient("#A8A8A8","#000000",4);
 var snowMessages_forest = ["The snowflakes seem to avoid the trees. You follow their example.",
-    "",
+    "<i>You wonder what it would be like to live in a world without sound.</i>",
     "You clutch close the Colonel's walking stick and soldier onwards.",
-    "<i>You wonder what it would be like to live in a world without sound.</i>"];
+    "The forest shifts and rearranges in the midst of snowfall."];
 var sunMessages_forest = ["The Gatekeeper warned you not to wander the woods alone.",
     "<i>The woods-dwellers have no place in town, nor outside of the Wall</i>",
-    "",
+    "The forest shifts and rearranges around you.",
     "<i>The golden Wall seems to stare at you through the frosty air.</i>"];
 var snowMessages_town = ["The snow has fallen too thick for any townspeople to work.",
     "",
-    "Your contemplate ducking inside somebody's home to warm up.",
+    "You contemplate ducking inside somebody's home to warm up.",
     "<i>You wonder what it would be like to live in a world without sound.</i>"];
 var sunMessages_town = ["In the distance, you hear the Gatekeeper's horn.",
     "You stop and stare at the roofs glittering in the sun.",
     "",
     "<i>Sometimes you wonder what would happen if the Wall fell.</i>"];
+var snowMessages_plains = ["The snow falls thick on the plains.",
+    "<i>You wonder what it would be like to live in a world without sound.</i>",
+    "Each step uncovers grey and dying grass.",
+    ""];
+var sunMessages_plains = ["In the distance, you hear the Gatekeeper's horn.",
+    "Flowers like these never bloomed in your hometown.",
+    "",
+    "<i>Didn't these plains once feature grand buildings...?</i>"];
+var tokyo_messages = ["",
+    "",
+    "",
+    ""]
 var WALL_GREY = "#333333";
 
 var ENUM_TREE = -1;
@@ -137,6 +168,7 @@ var ENUM_WALL = -999;
 var ENUM_BLOCKED = -2;
 var PATH_RADIUS = 5;
 var ENUM_BLDG = 11;
+var ENUM_POOL = 9999;
 
 var snowcount = 0;
 
@@ -144,3 +176,4 @@ var grid = [];
 var landPlots = [];
 var currx = 0;
 var curry = 0;
+var wonderland = true;

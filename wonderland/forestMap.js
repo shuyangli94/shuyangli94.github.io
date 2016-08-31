@@ -13,7 +13,7 @@ function createTree(center_x, center_y, radius) {
                     }
                     
                     if (center_x >= -i && center_x < grid.length - i && center_y >= -j && center_y <= grid.length - j) {
-                        createCircle(center_x + i, center_y + j, leafColor, trunkcolor);
+                        createCircle(center_x + i, center_y + j, GREEN_GRADIENT[leafColor], trunkcolor);
                         grid[center_x + i][center_y + j] = ENUM_TREE;
                     }
                 }
@@ -26,7 +26,7 @@ function createTree(center_x, center_y, radius) {
                     }
                     
                     if (center_x >= -i && center_x < grid.length - i && center_y >= -j && center_y <= grid.length - j) {
-                        createCircle(center_x + i, center_y + j, leafColor, trunkcolor);
+                        createCircle(center_x + i, center_y + j, GREEN_GRADIENT[leafColor], trunkcolor);
                         grid[center_x + i][center_y + j] = ENUM_TREE;
                     }
                 }
@@ -57,10 +57,11 @@ function populateTrees() {
 }
 
 function drawForestPath(startx, starty) {
-    for (var numPaths = 0; numPaths < randInt(1,5); numPaths++) {
-        var end = getEnd(startx, starty);
-        var endx = end[0];
-        var endy = end[1];
+    var n = randInt(2,6);
+    var end = getEnd(startx, starty, n);
+    for (var i = 0; i < n; i++) {
+        var endx = end[0][i];
+        var endy = end[1][i];
         var cx = startx;
         var cy = starty;
         console.log("Path from (" + startx + "," + starty + ") to (" + endx + "," + endy + ")");
@@ -100,52 +101,61 @@ function drawForestPath(startx, starty) {
             drawPathTile(cx,cy, PATH_RADIUS);
         }
     }
+
 }
 
-function getEnd(startx, starty) {
-    var endx = 0;
-    var endy = 0;
-    var endregion = Math.floor(Math.random() * 6);
-    if (startx < grid.length / 2) {
-        if (starty < grid.length / 2) { // upper left
-            if (Math.random() < 0.5) {
-                endx = grid.length - 1;
-                endy = Math.floor(Math.random() * (grid.length*3/4)) + Math.floor(grid.length/4);
-            } else {
-                endy = grid.length - 1;
-                endx = Math.floor(Math.random() * (grid.length*3/4)) + Math.floor(grid.length/4);
+function getEnd(startx, starty, n) {
+    var endxs = [];
+    var endys = [];
+    for (var i = 0; i < n; i++) {
+        var endx = 0;
+        var endy = 0;
+        if (startx < grid.length / 2) {
+            if (starty < grid.length / 2) { // upper left
+                if (Math.random() < 0.5) {
+                    endx = grid.length - 1;
+                    endy = Math.floor(Math.random() * (grid.length*7/8)) + Math.floor(grid.length/8);
+                } else {
+                    endy = grid.length - 1;
+                    endx = Math.floor(Math.random() * (grid.length*7/8)) + Math.floor(grid.length/8);
+                }
+            } else { // lower left
+                if (Math.random() < 0.5) {
+                    endx = grid.length - 1;
+                    endy = Math.floor(Math.random() * (grid.length*7/8));
+                } else {
+                    endy = 0;
+                    endx = Math.floor(Math.random() * (grid.length*7/8)) + Math.floor(grid.length/8);
+                }
             }
-        } else { // lower left
-            if (Math.random() < 0.5) {
-                endx = grid.length - 1;
-                endy = Math.floor(Math.random() * (grid.length*3/4));
-            } else {
-                endy = 0;
-                endx = Math.floor(Math.random() * (grid.length*3/4)) + Math.floor(grid.length/4);
+        } else {
+            if (starty < grid.length / 2) { // upper right
+                if (Math.random() < 0.5) {
+                    endx = 0;
+                    endy = Math.floor(Math.random() * (grid.length*7/8)) + Math.floor(grid.length/8);
+                } else {
+                    endy = grid.length - 1;
+                    endx = Math.floor(Math.random() * (grid.length*7/8));
+                }
+            } else { // lower right
+                if (Math.random() < 0.5) {
+                    endx = 0;
+                    endy = Math.floor(Math.random() * (grid.length*7/8));
+                } else {
+                    endy = 0;
+                    endx = Math.floor(Math.random() * (grid.length*7/8));
+                }
             }
         }
-    } else {
-        if (starty < grid.length / 2) { // upper right
-            if (Math.random() < 0.5) {
-                endx = 0;
-                endy = Math.floor(Math.random() * (grid.length*3/4)) + Math.floor(grid.length/4);
-            } else {
-                endy = grid.length - 1;
-                endx = Math.floor(Math.random() * (grid.length*3/4));
-            }
-        } else { // lower right
-            if (Math.random() < 0.5) {
-                endx = 0;
-                endy = Math.floor(Math.random() * (grid.length*3/4));
-            } else {
-                endy = 0;
-                endx = Math.floor(Math.random() * (grid.length*3/4));
-            }
+        if (endxs.indexOf(endx) > -1 && endys.indexOf(endy) > -1) {
+            i--;
+        } else {
+            endxs.push(endx);
+            endys.push(endy);
         }
-
     }
-
-    return [endx, endy];
+    
+    return [endxs, endys];
 }
 
 function initForest() {
