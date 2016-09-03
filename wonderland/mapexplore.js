@@ -181,6 +181,7 @@ function initialize(context, canvas) {
     mapx = poolx;
     mapy = pooly;
     localeTag = "P";
+    beasts = [];
     moveScreen();
 }
 

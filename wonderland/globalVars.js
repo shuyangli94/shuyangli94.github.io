@@ -169,6 +169,7 @@ var ENUM_BLOCKED = -2;
 var PATH_RADIUS = 5;
 var ENUM_BLDG = 11;
 var ENUM_POOL = 9999;
+var ENUM_BEAST = 666;
 
 var snowcount = 0;
 

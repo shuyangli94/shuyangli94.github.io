@@ -69,6 +69,14 @@ function moveFigure(xdir, ydir) {
         drawPool();
     }
 
+    if (localeTag == "L") {
+        for (var i = 0; i < beasts.length; i++) {
+            if (Math.random() < 0.5) {
+                moveBeast(i);
+            }
+        }
+    }
+
 }
 
 function checkKey(e) {
