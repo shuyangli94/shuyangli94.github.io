@@ -4,32 +4,13 @@ var SIDE_LENGTH = canvas.width;
 var PIXEL = 8;
 var mapx = 0;
 var mapy = 0;
-// var map = [["F","F","F","F","F","F","F","F","F","F","F","F","F","F","F","F"],
-//         ["F","F","T","T","T","T","T","T","T","T","T","T","T","T","F","F"],
-//         ["F","F","T","T","T","T","T","T","T","T","T","T","T","T","F","F"],
-//         ["F","F","T","T","T","T","T","T","T","T","T","T","T","T","F","F"],
-//         ["F","F","T","T","T","T","T","T","T","T","T","T","T","T","F","F"],
-//         ["F","F","T","T","T","T","T","T","T","T","T","T","T","T","F","F"],
-//         ["F","F","T","T","T","T","T","T","T","T","T","T","T","T","F","F"],
-//         ["F","F","T","T","T","T","T","T","T","T","T","T","T","T","F","F"],
-//         ["F","F","T","T","T","T","T","T","T","T","T","T","T","T","F","F"],
-//         ["F","F","T","T","T","T","T","T","T","T","T","T","T","T","F","F"],
-//         ["F","F","F","F","F","F","F","F","F","F","F","F","F","F","F","F"],
-//         ["F","F","F","F","F","F","F","F","F","F","F","F","F","F","F","F"],
-//         ["F","F","F","F","F","F","F","F","F","F","F","F","F","F","F","F"],
-//         ["F","F","F","F","F","F","F","F","F","F","F","F","F","F","F","F"],
-//         ["F","F","F","F","F","F","F","F","F","F","F","F","F","F","F","F"],
-//         ["F","F","F","F","F","F","F","F","F","F","F","F","F","F","F","F"],
-//         ["F","F","F","F","F","F","F","F","F","F","F","F","F","F","F","F"],
-//         ["F","F","F","F","F","F","F","F","F","F","F","F","F","F","F","F"],
-//         ["F","F","F","F","F","F","F","F","F","F","F","F","F","F","F","F"],
-//         ["F","F","F","F","F","F","F","F","F","F","F","F","F","F","F","F"]];
-// map[poolx][pooly] = "P";
 var map_xbound = 30;
 var map_ybound = 30;
 var localeTag = "P";
 var poolx = Math.floor(map_xbound/2) - 1;
 var pooly = Math.floor(map_ybound/2) - 1;
+var libraryx = poolx;
+var libraryy = pooly-1;
 
 function randInt(min, max) {
     return (Math.floor(Math.random()*(max-min)) + min);
@@ -94,7 +75,7 @@ function generateGradient(startHex, endHex, steps) {
     return gradarray;
 }
 
-var GREEN_GRADIENT = generateGradient("#1A4721","#B8CB62",13);
+var GREEN_GRADIENT = generateGradient("#1A4721","#B8CB62",7);
 var TREE_BROWNS = generateGradient("#1F4116","#2C4F27",4);
 var PATH_GRADIENT = generateGradient("#737373","#8F8F8F",4);
 var SNOWPATH_GRADIENT = generateGradient("9A9A9A", "BCBCBC", 4);
@@ -122,6 +103,10 @@ var FLOWER_PETAL = ["#E486E1","#75359C", "#6881CA", "#FE5299", "#96406C", "#288A
 var POOL1_GRADIENT = generateGradient("#193A86","#162F69",10); // Inner pool (deepest)
 var POOL2_GRADIENT = generateGradient("#20469D", "#16367E", 10); // Middle pool
 var POOL3_GRADIENT = generateGradient("#274DA5","#163C92",10); // Outer pool (shallowest)
+
+var LIBRARY1 = generateGradient("#E57F57","#F1771E", 10); // Outer library roof
+var LIBRARY2 = generateGradient("#F3D5A0","#F1BD5F", 10); // Middle library roof
+var LIBRARY3 = generateGradient("#F2E278","#F3EFC3", 10); // Inner library roof
 
 var ROOF_COLORS = ["#7A8AB8", "#84B88B", "#CE829B", "#CE9882", "#CE82AD", "#CCCCCC"];
 
@@ -170,6 +155,7 @@ var PATH_RADIUS = 5;
 var ENUM_BLDG = 11;
 var ENUM_POOL = 9999;
 var ENUM_BEAST = 666;
+var ENUM_LIBRARY = 3;
 
 var snowcount = 0;
 

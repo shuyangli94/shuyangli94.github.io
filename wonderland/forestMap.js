@@ -1,38 +1,47 @@
 function createTree(center_x, center_y, radius) {
     var centerbase = GREEN_GRADIENT.length - Math.floor(Math.random() * 5) - 1;
-    var trunkcolor = Math.floor(Math.random() * TREE_BROWNS.length);
-    for (var i=(-1*radius); i < radius+1; i++) {
-        for (var j=(-1*radius); j < radius+1; j++) {
-            // console.log(i + " " + j);
-            if (radius > 2) {
-                if (!(Math.abs(i) == radius && Math.abs(j) == radius) && !(Math.abs(i) == radius && Math.abs(j) == radius-1) && !(Math.abs(i) == radius-1 && Math.abs(j) == radius)) {
-                    if (radius * 2 + centerbase >= GREEN_GRADIENT.length) {
-                        var leafColor = Math.max(Math.abs(i),Math.abs(j))*-2 + centerbase;
-                    } else {
-                        var leafColor = Math.max(Math.abs(i),Math.abs(j))*-3 + centerbase;
-                    }
-                    
-                    if (center_x >= -i && center_x < grid.length - i && center_y >= -j && center_y <= grid.length - j) {
-                        createCircle(center_x + i, center_y + j, GREEN_GRADIENT[leafColor], trunkcolor);
-                        grid[center_x + i][center_y + j] = ENUM_TREE;
-                    }
-                }
-            } else {
-                if (!(Math.abs(i) == radius && Math.abs(j) == radius)) {
-                    if (radius * 2 + centerbase >= GREEN_GRADIENT.length) {
-                        var leafColor = Math.max(Math.abs(i),Math.abs(j))*-2 + centerbase;
-                    } else {
-                        var leafColor = Math.max(Math.abs(i),Math.abs(j))*-3 + centerbase;
-                    }
-                    
-                    if (center_x >= -i && center_x < grid.length - i && center_y >= -j && center_y <= grid.length - j) {
-                        createCircle(center_x + i, center_y + j, GREEN_GRADIENT[leafColor], trunkcolor);
-                        grid[center_x + i][center_y + j] = ENUM_TREE;
-                    }
-                }
+    var trunkcolor = randFromArray(TREE_BROWNS);
+    for (var x=Math.max(0,center_x-radius); x<Math.min(grid.length,center_x+radius+1); x++) {
+        for (var y=Math.max(0,center_y-radius); y<Math.min(grid.length,center_y+radius+1); y++) {
+            var df = distanceFrom(x,y,center_x, center_y);
+            if (df <= radius-0.2) {
+                createCircle(x,y,GREEN_GRADIENT[radius-Math.floor(df)], trunkcolor);
+                grid[x][y] = ENUM_TREE;
             }
         }
     }
+    // for (var i=(-1*radius); i < radius+1; i++) {
+    //     for (var j=(-1*radius); j < radius+1; j++) {
+    //         // console.log(i + " " + j);
+    //         if (radius > 2) {
+    //             if (!(Math.abs(i) == radius && Math.abs(j) == radius) && !(Math.abs(i) == radius && Math.abs(j) == radius-1) && !(Math.abs(i) == radius-1 && Math.abs(j) == radius)) {
+    //                 if (radius * 2 + centerbase >= GREEN_GRADIENT.length) {
+    //                     var leafColor = Math.max(Math.abs(i),Math.abs(j))*-2 + centerbase;
+    //                 } else {
+    //                     var leafColor = Math.max(Math.abs(i),Math.abs(j))*-3 + centerbase;
+    //                 }
+                    
+    //                 if (center_x >= -i && center_x < grid.length - i && center_y >= -j && center_y <= grid.length - j) {
+    //                     createCircle(center_x + i, center_y + j, GREEN_GRADIENT[leafColor], trunkcolor);
+    //                     grid[center_x + i][center_y + j] = ENUM_TREE;
+    //                 }
+    //             }
+    //         } else {
+    //             if (!(Math.abs(i) == radius && Math.abs(j) == radius)) {
+    //                 if (radius * 2 + centerbase >= GREEN_GRADIENT.length) {
+    //                     var leafColor = Math.max(Math.abs(i),Math.abs(j))*-2 + centerbase;
+    //                 } else {
+    //                     var leafColor = Math.max(Math.abs(i),Math.abs(j))*-3 + centerbase;
+    //                 }
+                    
+    //                 if (center_x >= -i && center_x < grid.length - i && center_y >= -j && center_y <= grid.length - j) {
+    //                     createCircle(center_x + i, center_y + j, GREEN_GRADIENT[leafColor], trunkcolor);
+    //                     grid[center_x + i][center_y + j] = ENUM_TREE;
+    //                 }
+    //             }
+    //         }
+    //     }
+    // }
 }
 
 function populateTrees() {
@@ -42,14 +51,8 @@ function populateTrees() {
             var x = Math.floor(Math.random()*g) + i * g;
             var y = Math.floor(Math.random()*g) + j * g;
             if (grid[x][y] != ENUM_PATH) {
-                var rad = Math.floor(Math.random()*3) + 3;
+                var rad = Math.floor(Math.random()*5) + 3;
                 createTree(x,y,rad);
-                if (rad > 3) {
-                    createTree(x,y,rad-2);
-                }
-                if (rad > 2) {
-                    createTree(x,y,rad-1);
-                }
             }
         }
     }
