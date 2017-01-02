@@ -3,7 +3,15 @@ html * {
     font-family: 'Quicksand', 'Roboto', sans-serif;
     font-size: 14px;
 }
-
+a {
+    text-decoration:  none; 
+}
+a:link {
+    color: #E87722;
+}
+a:visited {
+    color: #A7312A;
+}
 p {
     margin-top: 5px;
     margin-bottom: 5px;
