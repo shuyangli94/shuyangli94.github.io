@@ -4,6 +4,7 @@ var context = mazeCanvas.getContext("2d");
 var scaling = 10;
 var minN = 1;
 var maxN = 4;
+var delay;
 var startY;
 var endY;
 var maze;
@@ -104,6 +105,7 @@ function isSolvable(mazeGrid) {
 // INVOKED BY USER
 
 async function createMaze() {
+	delay = document.getElementById("sleepSec").value;
 	dims = validateRC();
 	nCol = dims.cols * 1;
 	nRow = dims.rows * 1;
@@ -114,12 +116,12 @@ async function createMaze() {
 	maze = initCellularAutomaton(maze);
 	for (var i = 0; i < 50; i++) {
 		maze = iterateCellularAutomaton(maze);
-		await sleep(150);
+		await sleep(delay);
 		drawMaze(maze);
 	}
 	while(!isSolvable(maze)) {
 		maze = iterateCellularAutomaton(maze);
-		await sleep(150);
+		await sleep(delay);
 		drawMaze(maze);
 	}
 	drawMaze(maze);
