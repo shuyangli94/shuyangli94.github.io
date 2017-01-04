@@ -18,14 +18,17 @@
 			<tr>
 				<td>Rows</td>
 				<td><input type="number" id="mazeRows"></td>
+				<td><button id="distColor" style="display:block" onclick="colorSolutionGrid();">Show Distance Gradient</button></td>
 			</tr>
 			<tr>
 				<td>Columns</td>
 				<td><input type="number" id="mazeCols"></td>
+				<td><button id="showPath" style="display:block" onclick="drawShortestPath(findShortestPath());">Solve Maze</button></td>
 			</tr>
 			<tr>
 				<td>Visual Delay (ms)</td>
 				<td><input type="number" id="sleepSec" value=150></td>
+				<td><button id="showPath" style="display:block" onclick="drawMaze(maze, true);">Clear Maze</button></td>
 			</tr>
 			<tr>
 				<td />

@@ -11,16 +11,21 @@ var maze;
 
 // HELPER FUNCTIONS
 
-function drawMaze(mazeGrid) {
+function drawMaze(mazeGrid, clear=false) {
 	console.log("Drawing maze");
 	context.clearRect(0, 0, mazeCanvas.width, mazeCanvas.height);
-	var xdim = Object.keys(mazeGrid).length;
+	var xdim = mazeGrid.length;
 	var ydim = mazeGrid[0].length;
 	console.log("Maze of dimensions " + xdim + " x " + ydim);
 	for (var i = 0; i < xdim; i++) {
 		for (var j = 0; j < ydim; j++) {
-			if (mazeGrid[i][j] == 0) {
+			if (clear) {
+				context.fillStyle = mazeGrid[i][j] == 0 ? "#000000" : "#FFFFFF";
 				context.fillRect(i*scaling, j*scaling, scaling, scaling);
+			} else {
+				if (mazeGrid[i][j] == 0) {
+					context.fillRect(i*scaling, j*scaling, scaling, scaling);
+				}
 			}
 		}
 	}
@@ -49,8 +54,8 @@ function genMazeArray(rows, cols) {
 }
 
 function initCellularAutomaton(mazeGrid) {
-	var newGrid = jQuery.extend(true, {}, mazeGrid);
-	var xdim = Object.keys(mazeGrid).length;
+	var newGrid = jQuery.extend(true, [], mazeGrid);
+	var xdim = mazeGrid.length;
 	var ydim = mazeGrid[0].length;
 	for (var i = 1; i < xdim - 1; i+=10) {
 		for (var j = 1; j < ydim - 1; j+=10) {
@@ -62,16 +67,16 @@ function initCellularAutomaton(mazeGrid) {
 }
 
 function iterateCellularAutomaton(mazeGrid) {
-	var newGrid = jQuery.extend(true, {}, mazeGrid);
-	var xdim = Object.keys(mazeGrid).length;
+	var newGrid = jQuery.extend(true, [], mazeGrid);
+	var xdim = mazeGrid.length;
 	var ydim = mazeGrid[0].length;
 	for (var i = 1; i < xdim - 1; i++) {
 		for (var j = 1; j < ydim - 1; j++) {
 			var sum = neighborSum(mazeGrid, i, j);
 			if (sum >= minN && sum <= maxN) {
-				newGrid[i][j] = 1;
+				newGrid[i][j] = 1; // Born / persist space
 			} else {
-				newGrid[i][j] = 0;
+				newGrid[i][j] = 0; // Die / create wall
 			}
 		}
 	}
@@ -80,8 +85,6 @@ function iterateCellularAutomaton(mazeGrid) {
 
 function neighborSum(mazeGrid, x, y) {
 	var sum = 0;
-	var xdim = Object.keys(mazeGrid).length;
-	var ydim = mazeGrid[0].length;
 	for (var i = -1; i <= 1; i++) {
 		for (var j = -1; j <= 1; j++) {
 			sum += mazeGrid[x+i][y+j];
@@ -91,13 +94,23 @@ function neighborSum(mazeGrid, x, y) {
 }
 
 function isSolvable(mazeGrid) {
-	var xdim = Object.keys(mazeGrid).length;
+	var xdim = mazeGrid.length;
 	var ydim = mazeGrid[0].length;
-	grid = jQuery.extend(true, {}, mazeGrid);
-	floodFill(0, startY, enum_FILLED, xdim, ydim);
-	if (grid[xdim - 1][endY] != enum_FILLED) {
+	grid = jQuery.extend(true, [], mazeGrid);
+	for (var i = 0; i < xdim; i++) {
+		for (var j = 0; j < ydim; j++) {
+			if (grid[i][j] == 0) {
+				grid[i][j] = -Infinity; // Wall
+			} else {
+				grid[i][j] = Infinity; // Space
+			}
+		}
+	}
+	floodFill(0, startY, 0, xdim, ydim);
+	if (grid[xdim - 1][endY] == Infinity) {
 		return false;
 	} else {
+		console.log("Solvable in " + grid[xdim - 1][endY] + " moves.")
 		return true;
 	}
 }
