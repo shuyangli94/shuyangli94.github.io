@@ -46,7 +46,6 @@ function findPrior(node) {
 	var x = node[0];
 	var y = node[1];
 	var dist = node[2];
-	console.log(dist);
 	for (var i = -1; i <= 1; i++) {
 		for (var j = -1; j <= 1; j++) {
 			if (grid[x+i][y+j] == (dist - 1)) {
