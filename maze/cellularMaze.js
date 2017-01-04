@@ -110,7 +110,9 @@ function isSolvable(mazeGrid) {
 	if (grid[xdim - 1][endY] == Infinity) {
 		return false;
 	} else {
-		console.log("Solvable in " + grid[xdim - 1][endY] + " moves.")
+		document.getElementById("nSteps").style.display = 'block';
+		document.getElementById("nSteps").innerHTML = "Maze solvable in " + grid[xdim - 1][endY] + " moves.";
+		console.log("Solvable in " + grid[xdim - 1][endY] + " moves.");
 		return true;
 	}
 }
@@ -118,6 +120,7 @@ function isSolvable(mazeGrid) {
 // INVOKED BY USER
 
 async function createMaze() {
+	document.getElementById("nSteps").style.display = 'none';
 	delay = document.getElementById("sleepSec").value;
 	dims = validateRC();
 	nCol = dims.cols * 1;
