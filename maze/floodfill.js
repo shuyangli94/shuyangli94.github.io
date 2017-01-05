@@ -18,6 +18,7 @@ function colorSolutionGrid() {
 			}
 		}
 	}
+	drawPlayer(playerX, playerY);
 }
 
 function drawShortestPath(pathStack) {
@@ -27,6 +28,7 @@ function drawShortestPath(pathStack) {
 			context.fillRect(e[0]*scaling, e[1]*scaling, scaling, scaling);
 		}
 	});
+	drawPlayer(playerX, playerY);
 }
 
 function findShortestPath() {

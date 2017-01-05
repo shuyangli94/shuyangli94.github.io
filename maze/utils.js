@@ -1,5 +1,19 @@
+// GLOBAL VARIABLES
+var startColor = "#00FF00";
+var endColor = "#FF0000";
+var mazeCanvas = document.getElementById("mazeCanvas");
+var context = mazeCanvas.getContext("2d");
+var scaling = 8;
+var delay;
+var startY;
+var endY;
+var maze;
 var minr = 50;
 var maxr = 150;
+var playerX;
+var playerY;
+var stepsTaken;
+var ready = false;
 
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
@@ -17,7 +31,7 @@ function setDimensionConstraints(min_rows = minr, max_rows = maxr) {
 	document.getElementById("dimConstraints").innerHTML = "Generate a maze between " + min_rows + " x " + min_rows + " and " + max_rows + " x " + maxr + " in size!";
 }
 
-setDimensionConstraints(50, 100);
+setDimensionConstraints(80, 150);
 
 function validateRC() {
 	rowSelector = document.getElementById("mazeRows");
@@ -29,5 +43,26 @@ function validateRC() {
 	return {
 		"rows": rowSelector.value,
 		"cols": colSelector.value
+	}
+}
+
+function toggleAdvOptions() {
+	if (document.getElementById("advancedOptions").style.visibility == 'hidden') {
+		document.getElementById("advancedOptions").style.visibility = 'visible';
+		document.getElementById("advToggle").innerHTML = 'Basic Options';
+	} else {
+		document.getElementById("advancedOptions").style.visibility = 'hidden';
+		document.getElementById("advToggle").innerHTML = 'Advanced Options';
+	}
+}
+
+function toggleHint() {
+	if (document.getElementById("hint").style.visibility == 'hidden') {
+		document.getElementById("hint").style.visibility = 'visible';
+		document.getElementById("distLeft").innerHTML = ready ? getDistance(playerX, playerY, grid.length-1, endY) : 0;
+		document.getElementById("hintToggle").innerHTML = 'Hide Hint';
+	} else {
+		document.getElementById("hint").style.visibility = 'hidden';
+		document.getElementById("hintToggle").innerHTML = 'Show Hint';
 	}
 }

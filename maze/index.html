@@ -12,38 +12,72 @@
 </head>
 <body>
 	<br />
-	<div>
-		<h3 id="dimConstraints"></h3>
-		<table cellspacing='10'>
-			<tr>
-				<td>Rows</td>
-				<td><input type="number" id="mazeRows"></td>
-				<td><button id="distColor" style="display:block" onclick="colorSolutionGrid();">Show Distance Gradient</button></td>
-			</tr>
-			<tr>
-				<td>Columns</td>
-				<td><input type="number" id="mazeCols"></td>
-				<td><button id="showPath" style="display:block" onclick="drawShortestPath(findShortestPath());">Solve Maze</button></td>
-			</tr>
-			<tr>
-				<td>Visual Delay (ms)</td>
-				<td><input type="number" id="sleepSec" value=150></td>
-				<td><button id="showPath" style="display:block" onclick="drawMaze(maze, true);">Clear Maze</button></td>
-			</tr>
-			<tr>
-				<td />
-				<td><button onclick="createMaze();">Generate Maze</button></td>
-				<td><h3 id="nSteps"></h3></td>
-			</tr>
-		</table>
-		<br />
-		<canvas id="mazeCanvas" width="0" height = "0" style="border: 0px"></canvas>
+	<div id="parentPane">
+		<div id="optionsPane">
+			<h3 id="dimConstraints"></h3>
+			<table cellspacing='10'>
+				<tr>
+					<td>Rows</td>
+					<td><input type="number" id="mazeRows"></td>
+					<td><button id="distColor" style="display:none" onclick="colorSolutionGrid();">Show Distance Gradient</button></td>
+				</tr>
+				<tr>
+					<td>Columns</td>
+					<td><input type="number" id="mazeCols"></td>
+					<td><button id="showPath" style="display:none" onclick="drawShortestPath(findShortestPath());">Solve Maze</button></td>
+				</tr>
+				<tr>
+					<td width="30%">Visual Delay (ms)</td>
+					<td><input type="number" id="sleepSec" value=150></td>
+					<td><button id="clearMaze" style="display:none" onclick="drawMaze(maze, true);">Clear Maze</button></td>
+				</tr>
+				<tr id="advancedOptions" style="visibility:hidden">
+					<td>Ruleset</td>
+					<td><input type="text" id="ruleset" value="B1234/1234"></td>
+					<td>Rule in the form of <b>B[1-8]*/[1-8]*</b></td>
+				</tr>
+				<tr>
+					<td><button id="advToggle" onclick="toggleAdvOptions();">Advanced Options</button></td>
+					<td><button onclick="createMazeWrapper();">Generate Maze</button></td>
+					<td><button id="hintToggle" onclick="toggleHint();">Show Hint</button></td>
+				</tr>
+			</table>
+		</div>
+		<div id="playerPane">
+			<h2>Player Status</h2>
+			<table width="100%">
+				<tr>
+					<td width="50%"><b>X-Position</b></td>
+					<td id="xPos" width="50%" align="center">0</td>
+				</tr>
+				<tr>
+					<td width="50%"><b>Y-Position</b></td>
+					<td id="yPos" width="50%" align="center">0</td>
+				</tr>
+				<tr id="hint" style="visibility:hidden">
+					<td width="50%"><b style="color:green">Distance to Exit</b></td>
+					<td id="distLeft" width="50%" align="center">0</td>
+				</tr>
+				<tr>
+					<td width="50%"><b style="color:blue">Steps Taken</b></td>
+					<td id="steps" width="50%" align="center">0</td>
+				</tr>
+				<tr>
+					<td width="50%"><b style="color:red">Shortest Solution</b></td>
+					<td id="shortest" width="50%" align="center">0</td>
+				</tr>
+			</table>
+		</div>
 	</div>
+	<br />
+	<br />
+	<canvas id="mazeCanvas" width="0" height = "0" style="display:none;border: 0px" tabindex=1></canvas>
+	<h5 id="copyright"></h5>
 </body>
-<h5 id="copyright"></h5>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script type="text/javascript" src="utils.js"></script>
 <script type="text/javascript" src="floodfill.js"></script>
+<script type="text/javascript" src="player.js"></script>
 <script type="text/javascript" src="cellularMaze.js"></script>
 <script>
 	document.getElementById("copyright").innerHTML = "&copy; <a href='http://shuyangli.me'>Shuyang Li</a> " + (new Date().getFullYear());

@@ -1,22 +1,9 @@
-// GLOBAL VARIABLES
-var mazeCanvas = document.getElementById("mazeCanvas");
-var context = mazeCanvas.getContext("2d");
-var scaling = 10;
-var minN = 1;
-var maxN = 4;
-var delay;
-var startY;
-var endY;
-var maze;
-
 // HELPER FUNCTIONS
-
 function drawMaze(mazeGrid, clear=false) {
-	console.log("Drawing maze");
 	context.clearRect(0, 0, mazeCanvas.width, mazeCanvas.height);
 	var xdim = mazeGrid.length;
 	var ydim = mazeGrid[0].length;
-	console.log("Maze of dimensions " + xdim + " x " + ydim);
+	// console.log("Drawing maze of dimensions " + xdim + " x " + ydim);
 	for (var i = 0; i < xdim; i++) {
 		for (var j = 0; j < ydim; j++) {
 			if (clear) {
@@ -29,11 +16,14 @@ function drawMaze(mazeGrid, clear=false) {
 			}
 		}
 	}
-	context.fillStyle = "#00FF00"; // Greeen: start
+	context.fillStyle = startColor; // Greeen: start
 	context.fillRect(0*scaling, startY*scaling, scaling, scaling);
-	context.fillStyle = "#FF0000"; // Red: end
+	context.fillStyle = endColor; // Red: end
 	context.fillRect((xdim - 1)*scaling, endY*scaling, scaling, scaling);
 	context.fillStyle = "#000000"; // Reset color
+	if (clear) {
+		drawPlayer(playerX, playerY);
+	}
 }
 
 function genMazeArray(rows, cols) {
@@ -57,26 +47,36 @@ function initCellularAutomaton(mazeGrid) {
 	var newGrid = jQuery.extend(true, [], mazeGrid);
 	var xdim = mazeGrid.length;
 	var ydim = mazeGrid[0].length;
-	for (var i = 1; i < xdim - 1; i+=10) {
-		for (var j = 1; j < ydim - 1; j+=10) {
-			newGrid[i][j] = Math.random() < 0.30 ? 0 : 1;
+	for (var i = 10; i < xdim - 10; i+=10) {
+		for (var j = 10; j < ydim - 10; j+=10) {
+			newGrid[i][j] = Math.random() < 0.5 ? 1 : 0;
+			newGrid[i][j+1] = 1;
+			newGrid[i-1][j+1] = 1;
+			newGrid[i+1][j] = Math.random() < 0.5 ? 1 : 0;
+			newGrid[i-1][j] = Math.random() < 0.5 ? 1 : 0;
 		}
 	}
+
 	drawMaze(newGrid);
 	return newGrid;
 }
 
-function iterateCellularAutomaton(mazeGrid) {
+function iterateCellularAutomaton(mazeGrid, birth, survival) {
 	var newGrid = jQuery.extend(true, [], mazeGrid);
 	var xdim = mazeGrid.length;
 	var ydim = mazeGrid[0].length;
 	for (var i = 1; i < xdim - 1; i++) {
 		for (var j = 1; j < ydim - 1; j++) {
 			var sum = neighborSum(mazeGrid, i, j);
-			if (sum >= minN && sum <= maxN) {
-				newGrid[i][j] = 1; // Born / persist space
+			// console.log(sum + " - birth: " + (birth.indexOf(sum) > -1) + " | survival: " + (survival.indexOf(sum) > -1));
+			if (birth.indexOf(sum) > -1 && survival.indexOf(sum) > -1) {
+				newGrid[i][j] = 1; // Alive no matter what
+			} else if (birth.indexOf(sum) > -1) {
+				newGrid[i][j] = mazeGrid[i][j] == 0 ? 1 : 0; // Born
+			} else if (survival.indexOf(sum) > -1) {
+				newGrid[i][j] = mazeGrid[i][j] == 1 ? 1 : 0; // Survive
 			} else {
-				newGrid[i][j] = 0; // Die / create wall
+				newGrid[i][j] = 0; // Die
 			}
 		}
 	}
@@ -110,17 +110,41 @@ function isSolvable(mazeGrid) {
 	if (grid[xdim - 1][endY] == Infinity) {
 		return false;
 	} else {
-		document.getElementById("nSteps").style.display = 'block';
-		document.getElementById("nSteps").innerHTML = "Maze solvable in " + grid[xdim - 1][endY] + " moves.";
 		console.log("Solvable in " + grid[xdim - 1][endY] + " moves.");
 		return true;
 	}
 }
 
 // INVOKED BY USER
+async function createMazeWrapper() {
+	ready = false;
+	var ruleset = document.getElementById("ruleset").value;
 
-async function createMaze() {
-	document.getElementById("nSteps").style.display = 'none';
+	// Validate Ruleset
+	if (ruleset.match() == null) {
+		document.getElementById("ruleset").value = "B3/12345";
+		alert("Invalid ruleset: " + ruleset);
+		return;
+	} else {
+		createMaze(ruleset);
+	}
+}
+
+async function createMaze(ruleset) {
+	// Cleanup
+	document.getElementById("dimConstraints").innerHTML = "Creating maze...";
+	document.getElementById("distColor").style.display = 'none';
+	document.getElementById("showPath").style.display = 'none';
+	document.getElementById("clearMaze").style.display = 'none';
+	clearStats();
+
+	// Parse the ruleset
+	var [birth, survival] = ruleset.split("/");
+	birth = birth.split("B")[1].split("").map(Number);
+	survival = survival.split("").map(Number);
+	console.log(birth);
+	console.log(survival);
+
 	delay = document.getElementById("sleepSec").value;
 	dims = validateRC();
 	nCol = dims.cols * 1;
@@ -128,17 +152,40 @@ async function createMaze() {
 	mazeCanvas.width = nCol * scaling;
 	mazeCanvas.height = nRow * scaling;
 	mazeCanvas.style = null;
-	maze = genMazeArray(nRow, nCol);
-	maze = initCellularAutomaton(maze);
+	var newMaze = genMazeArray(nRow, nCol);
+	newMaze = initCellularAutomaton(newMaze);
+	var iterations = 0;
 	for (var i = 0; i < 50; i++) {
-		maze = iterateCellularAutomaton(maze);
+		newMaze = iterateCellularAutomaton(newMaze, birth, survival);
 		await sleep(delay);
-		drawMaze(maze);
+		drawMaze(newMaze);
+		iterations++;
 	}
-	while(!isSolvable(maze)) {
-		maze = iterateCellularAutomaton(maze);
+	while(true) {
+		newMaze = iterateCellularAutomaton(newMaze, birth, survival);
+		iterations++;
+		if (iterations > 300) {
+			document.getElementById("dimConstraints").innerHTML = "Could not generate valid maze after 300 generations. Please try again.";
+			return;
+		}
 		await sleep(delay);
-		drawMaze(maze);
+		drawMaze(newMaze);
+		if (isSolvable(newMaze)) {
+			break;
+		}
 	}
-	drawMaze(maze);
+
+	maze = newMaze;
+
+	// Populate buttons and dialogues
+	document.getElementById("dimConstraints").innerHTML = "Valid maze created after " + iterations + " generations of cellular automata!<br /><b>Explore</b> it with the L R U D arrow keys!";
+	document.getElementById("distColor").style.display = 'block';
+	document.getElementById("showPath").style.display = 'block';
+	document.getElementById("clearMaze").style.display = 'block';
+
+	drawMaze(maze, clear=true);
+
+	// Initialize game
+	mazeCanvas.addEventListener("keydown", checkKey, true);
+	initializePlayer();
 }
