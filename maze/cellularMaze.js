@@ -133,10 +133,13 @@ async function createMazeWrapper() {
 async function createMaze(ruleset) {
 	// Cleanup
 	document.getElementById("dimConstraints").innerHTML = "Creating maze...";
-	document.getElementById("distColor").style.display = 'none';
-	document.getElementById("showPath").style.display = 'none';
-	document.getElementById("clearMaze").style.display = 'none';
 	clearStats();
+	maze = null;
+	document.getElementById("hint").style.visibility = 'hidden';
+	document.getElementById("hintToggle").innerHTML = 'Show Hints';
+	document.getElementById("distColor").style.visibility = 'hidden';
+	document.getElementById("showPath").style.visibility = 'hidden';
+	document.getElementById("clearMaze").style.visibility = 'hidden';
 
 	// Parse the ruleset
 	var [birth, survival] = ruleset.split("/");
@@ -179,9 +182,6 @@ async function createMaze(ruleset) {
 
 	// Populate buttons and dialogues
 	document.getElementById("dimConstraints").innerHTML = "Valid maze created after " + iterations + " generations of cellular automata!<br /><b>Explore</b> it with the L R U D arrow keys!";
-	document.getElementById("distColor").style.display = 'block';
-	document.getElementById("showPath").style.display = 'block';
-	document.getElementById("clearMaze").style.display = 'block';
 
 	drawMaze(maze, clear=true);
 

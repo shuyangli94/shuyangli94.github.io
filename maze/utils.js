@@ -58,11 +58,22 @@ function toggleAdvOptions() {
 
 function toggleHint() {
 	if (document.getElementById("hint").style.visibility == 'hidden') {
-		document.getElementById("hint").style.visibility = 'visible';
-		document.getElementById("distLeft").innerHTML = ready ? getDistance(playerX, playerY, grid.length-1, endY) : 0;
-		document.getElementById("hintToggle").innerHTML = 'Hide Hint';
+		if (maze != null) {
+			document.getElementById("hint").style.visibility = 'visible';
+			document.getElementById("distLeft").innerHTML = ready ? getDistance(playerX, playerY, grid.length-1, endY) : 0;
+			document.getElementById("hintToggle").innerHTML = 'Hide Hint';
+			document.getElementById("distColor").style.visibility = 'visible';
+			document.getElementById("showPath").style.visibility = 'visible';
+			document.getElementById("clearMaze").style.visibility = 'visible';
+		}
 	} else {
+		if (maze != null) {
+			drawMaze(maze, true);
+		}
 		document.getElementById("hint").style.visibility = 'hidden';
-		document.getElementById("hintToggle").innerHTML = 'Show Hint';
+		document.getElementById("hintToggle").innerHTML = 'Show Hints';
+		document.getElementById("distColor").style.visibility = 'hidden';
+		document.getElementById("showPath").style.visibility = 'hidden';
+		document.getElementById("clearMaze").style.visibility = 'hidden';
 	}
 }

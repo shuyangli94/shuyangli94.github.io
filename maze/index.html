@@ -19,17 +19,17 @@
 				<tr>
 					<td>Rows</td>
 					<td><input type="number" id="mazeRows"></td>
-					<td><button id="distColor" style="display:none" onclick="colorSolutionGrid();">Show Distance Gradient</button></td>
+					<td><button id="distColor" style="visibility:hidden" onclick="colorSolutionGrid();">Show Distance Gradient</button></td>
 				</tr>
 				<tr>
 					<td>Columns</td>
 					<td><input type="number" id="mazeCols"></td>
-					<td><button id="showPath" style="display:none" onclick="drawShortestPath(findShortestPath());">Solve Maze</button></td>
+					<td><button id="showPath" style="visibility:hidden" onclick="drawShortestPath(findShortestPath());">Solve Maze</button></td>
 				</tr>
 				<tr>
 					<td width="30%">Visual Delay (ms)</td>
 					<td><input type="number" id="sleepSec" value=150></td>
-					<td><button id="clearMaze" style="display:none" onclick="drawMaze(maze, true);">Clear Maze</button></td>
+					<td><button id="clearMaze" style="visibility:hidden" onclick="drawMaze(maze, true);">Clear Maze</button></td>
 				</tr>
 				<tr id="advancedOptions" style="visibility:hidden">
 					<td>Ruleset</td>
@@ -39,7 +39,7 @@
 				<tr>
 					<td><button id="advToggle" onclick="toggleAdvOptions();">Advanced Options</button></td>
 					<td><button onclick="createMazeWrapper();">Generate Maze</button></td>
-					<td><button id="hintToggle" onclick="toggleHint();">Show Hint</button></td>
+					<td><button id="hintToggle" onclick="toggleHint();">Show Hints</button></td>
 				</tr>
 			</table>
 		</div>
