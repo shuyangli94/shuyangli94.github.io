@@ -19,25 +19,22 @@
 				<tr>
 					<td>Rows</td>
 					<td><input type="number" id="cellCanvasRows"></td>
-					<td><button onclick="stopCellularAutomaton();">PAUSE</button></td>
+					<td><button onclick="playCellularAutomaton();">Play</button></td>
 				</tr>
 				<tr>
 					<td>Columns</td>
 					<td><input type="number" id="cellCanvasCols"></td>
-					<td><button onclick="playCellularAutomaton();">PLAY</button></td>
+					<td><button onclick="stopCellularAutomaton();">Pause</button></td>
 				</tr>
 				<tr>
 					<td width="30%">Visual Delay (ms)</td>
 					<td><input type="number" id="sleepSec" value=150></td>
+					<td><button onclick="createMaze(0);">Clear Canvas</button></td>
 				</tr>
 				<tr>
 					<td>Ruleset</td>
 					<td><input type="text" id="ruleset" value="B1234/1234"></td>
 					<td>Rule in the form of <b>B[1-8]*/[1-8]*</b></td>
-				</tr>
-				<tr>
-					<td><button onclick="createMaze(0);">Clear Canvas</button></td>
-					<td><button onclick="createMaze(1);">Fill Canvas</button></td>
 				</tr>
 			</table>
 		</div>

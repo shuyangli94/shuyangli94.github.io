@@ -53,7 +53,7 @@ function setDimensionConstraints(min_rows = minr, max_rows = maxr) {
 	maxr = max_rows;
 	document.getElementById("cellCanvasRows").value = min_rows;
 	document.getElementById("cellCanvasCols").value = min_rows;
-	document.getElementById("dimConstraints").innerHTML = "Create a cellular automaton on a canvas between " + min_rows + " x " + min_rows + " and " + max_rows + " x " + maxr + " in size!";
+	document.getElementById("dimConstraints").innerHTML = "Create a cellular automaton on a canvas between " + min_rows + " x " + min_rows + " and " + max_rows + " x " + maxr + " in size.<br />Click on the canvas to construct an initial state, define your ruleset, and press PLAY to start the automaton!";
 }
 
 setDimensionConstraints(80, 150);
