@@ -1,0 +1,166 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans|Quicksand|Roboto');
+html * {
+    font-family: 'Quicksand', 'Roboto', sans-serif;
+    font-size: 14px;
+}
+
+
+/* Style the list */
+ul.tab {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+/* Float the list items side by side */
+ul.tab li {float: left;}
+
+/* Style the links inside the list items */
+ul.tab li a {
+    display: inline-block;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    transition: 0.2s;
+    font-size: 14px;
+}
+
+/* Create an active/current tablink class */
+ul.tab li a:focus, .active {
+    color: #ffffff;
+    font-weight:bold;
+}
+
+.personalProjects-tab { background-color: #AFE4B7;  border-bottom: 1px solid #3BA04A; }
+.personalProjects-atab:hover {background-color: #82CE8D;}
+.personalProjects-atab:focus, .personalProjects-atab.active { background-color: #3BA04A; }
+.personalProjects-a:link {color: #3BA04A;}
+.personalProjects-a:visited {color: #2D7633;}
+
+.gsProjects-tab { background-color: #C7D4E5;  border-bottom: 1px solid #7D9BC1; }
+.gsProjects-atab:hover {background-color: #A3BBDC;}
+.gsProjects-atab:focus, .gsProjects-atab.active { background-color: #7D9BC1; }
+.gsProjects-a:link {color: #7D9BC1;}
+.gsProjects-a:visited {color: #466081;}
+
+.princetonProjects-tab { background-color: #FFD7BA;  border-bottom: 1px solid #e87722; }
+.princetonProjects-atab:hover {background-color: #ffae72;}
+.princetonProjects-atab:focus, .princetonProjects-atab.active { background-color: #e87722; }
+.princetonProjects-a:link {color: #e87722;}
+.princetonProjects-a:visited {color: #AB5412;}
+
+.ptonlink {}
+
+/* Style the tab content */
+.tabcontent {
+    display: none;
+    padding: 6px 6px;
+    border-top: none;
+}
+
+.stdSpacing {
+    padding: 10px 10px;
+}
+
+.personal-project-box {
+    padding: 12px 12px;
+    border: 1px solid #3BA04A;
+    height: 100%;
+}
+.gs-project-box {
+    padding: 12px 12px;
+    border: 1px solid #7D9BC1;
+    height: 100%;
+}
+.princeton-project-box {
+    padding: 12px 12px;
+    border: 1px solid #e87722;
+    height: 100%;
+}
+
+.footer {
+    position:fixed;
+    width:100%;
+    background:#FFF;
+    padding-left: 10px;
+    bottom: 10px;
+}
+
+.footer.princetonProjects-footer { border-top: 1px solid #e87722; }
+.footer.gsProjects-footer { border-top: 1px solid #7D9BC1; }
+.footer.personalProjects-footer { border-top: 1px solid #3BA04A; }
+
+.row {
+    margin: 0px 0px;
+}
+
+@media only screen and (min-width : 768px) {
+    .is-table-row {
+        width: 100%;
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display:         flex;
+    }
+    .is-table-row [class*="col-"] {
+        display: table-cell;
+    }
+}
+
+h2 {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 18px;
+    font-weight: bold;
+}
+a {
+    text-decoration:  none;
+    font-weight: bold; 
+}
+p {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+h3 {
+    margin-top: 0px;
+    margin-bottom: 5px;
+    margin-left: 10px;
+    font-size: 16px;
+}
+#copyright {
+    padding-top: 15px;
+}
+canvas {
+    padding-left: 0;
+    padding-right: 0;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+    display: inline;
+    border: 1px solid #000000;
+}
+
+.btn {
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0px;
+  font-family: 'Quicksand', 'Roboto', monospace;
+  color: #ffffff;
+  font-size: 20px;
+  background: #BA8C50;
+  padding: 10px 20px 10px 20px;
+  border: solid #4e2e28 3px;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background: #CDAD5D;
+  text-decoration: none;
+}

@@ -1,247 +1,116 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <link rel="icon" href="favicons/favicon.ico?v=2" type="image/x-icon" />
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Coding projects, things I like to do in my spare time.">
+        <meta name="author" content="Shuyang Li">
+        <title>Shuyang Li - Projects</title>
 
-<head>
-    <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-66657650-1', 'auto');
-  ga('send', 'pageview');
-
-</script>
-    <link rel="icon" href="favicons/favicon.ico?v=2" type="image/x-icon" />
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Projects, programs, lab work performed since the start of college.">
-    <meta name="author" content="Shuyang Li">
-
-    <title>Shuyang Li - Coding Projects</title>
-
-    <!-- Bootstrap Core CSS -->
-    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
-
-    <!-- Custom Fonts -->
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css" type="text/css">
-
-    <!-- Plugin CSS -->
-    <link rel="stylesheet" href="css/animate.min.css" type="text/css">
-    <link rel="stylesheet" href="css/creative.css" type="text/css">
-
-</head>
-
-<body id="page-top">
-
-    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
-        <div class="container-fluid">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand page-scroll" href="http://shuyangli.me">SHUYANG LI</a>
-            </div>
-
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a class="page-scroll" href="#page-top">Home</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#GS">Goldman Sachs</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#PU16">Princeton</a>
-                    </li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
+        <link rel="stylesheet" href="css/bootstrap.css" type="text/css">
+        <link rel="stylesheet" href="css/syl.css" type="text/css">
+    </head>
+    <body id="page-top">
+        <div>
+            <ul class="tab" id="tabBar">
+                <li><a href="javascript:void(0)" onclick="selectTab(event, 'personalProjects')" class="tablinks" id="personalLink">PERSONAL</a></li>
+                <li><a href="javascript:void(0)" onclick="selectTab(event, 'gsProjects')" class="tablinks" id="gsLink">GOLDMAN</a></li>
+                <li><a href="javascript:void(0)" onclick="selectTab(event, 'princetonProjects')" class="tablinks" id="princetonLink">PRINCETON</a></li>
+                <li style="float:right"><b><a href="http://shuyangli.me" class="tablinks">HOME</a></b></li>
+            </ul>
         </div>
-        <!-- /.container-fluid -->
-    </nav>
-
-    <header>
-        <div class="header-content">
-            <div class="header-content-inner">
-                <a href="http://shuyangli.me"><img src="headerICON.png" height="12%" width="12%"></a>
-                <hr>
-                <h1>Projects</h1>
-                <hr>
-                <p>Some projects I've worked on for work, for class, and for fun</p>
-            </div>
-        </div>
-    </header>
-
-    <section class="bg-gs" id="GS">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 text-center">
-                    <hr class="light">
-                    <h1 class="section-heading">Goldman Sachs</h1>
-                    <h2 ><i>Operations Analytics Strats</i></h2>
-                    <hr class="light">
+        <section id="tabs">
+            <div id='personalProjects' class='.container-fluid tabcontent'>
+                <div class="row is-table-row">
+                    <div class="col-lg-4 stdSpacing">
+                        <div class="personal-project-box text-center">
+                            <h2>Automated Invoice Recognition</h2>
+                            <h3><i>Optical Character Recognition</i></h3>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 stdSpacing">
+                        <div class="personal-project-box text-center">
+                            <h2>Automated Invoice Recognition</h2>
+                            <h3><i>Optical Character Recognition</i></h3>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 stdSpacing">
+                        <div class="personal-project-box text-center">
+                            <h2>Automated Invoice Recognition</h2>
+                            <h3><i>Optical Character Recognition</i></h3>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
-    <section id="OCR">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 text-center">
-                    <br><br>
-                    <img src="projects/ocr/logo.png" height="auto" width="20%">
-                    <br><br>
-                    <hr class="primary">
-                    <h2 class="section-heading">Automated Invoice Recognition</h2>
-                    <h3><i>Optical Character Recognition</i></h3>
-                    <hr class="primary">
-                    <p>This was my main project as a Summer Technology Analyst in the summer of 2015. We worked with Accounting Services to build a tool that could automatically index certain values from images of invoices. They received invoices through email or fax and scanned them into .tiff files. Our algorithm relied on segmentation of individual values to produce structured output and templating to identify likely segment locations. Base optical character recognition (OCR) was performed using Tesseract.
-                        <br><br>
-                        The program was written in <b>Python</b>, using the <a href="http://www.numpy.org/">numpy</a> library for fast array operations and <a href="http://scikit-image.org/">scikit-image</a> library for image processing. We used the <a href="https://github.com/tesseract-ocr/tesseract">Tesseract</a> open-source OCR engine.
-                        <br><br>
-                        <i>Due to information security constraints, relevant documents and data may not be shared outside the firm</i>
-                        </p>
+            <div id='gsProjects' class='tabcontent'>
+                <div class="row is-table-row">
+                    <div class="col-lg-4 stdSpacing">
+                        <div class="gs-project-box text-center">
+                            <h2>Market Data Pipeline (2016)</h2>
+                            <i><h3>FIX Message Parsing</h3></i>
+                            <p align="left"><br>This was the project team I worked on for Grey Wolf on Goldman Sachs Asset Management - Fixed Income (GSAM FI) as a new Technology Analyst in the fall of 2016. Over 6 weeks, our team built a system to consume FIX messages from several marketplaces, parse them into a standardized object, and store the messages in a database. Our application allowed the GSAM FI team to consume a vastly greater quantity of market messages and made it available for further analysis by traders. It is currently a production system.<br><br>The application was written in Java, using the <a href="http://www.quickfixj.org/">QuickFIX/J</a> library for FIX message decoding.
+                            <br><br>
+                            <i>Relevant documents and code restricted to firm.</i>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 stdSpacing">
+                        <div class="gs-project-box text-center">
+                            <h2>Automated Invoice Recognition (2015)</h2>
+                            <i><h3>Optical Character Recognition</h3></i>
+                            <p align="left"><br>This was my main project as a Summer Technology Analyst in Operations Analytics Strats. We worked with Accounting Services to build a tool that could automatically index certain values from images of invoices. They received invoices through email or fax and scanned them into .tiff files. Our algorithm relied on segmentation of individual values to produce structured output and templating to identify likely segment locations.<br><br>The program was written in Python, using the <a href="http://www.numpy.org/">numpy</a> library for fast array operations and <a href="http://scikit-image.org/">scikit-image</a> library for image processing. We used the <a href="https://github.com/tesseract-ocr/tesseract">Tesseract</a> open-source OCR engine.
+                            <br><br>
+                            <i>Relevant documents and code restricted to firm.</i>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 stdSpacing">
+                        <div class="gs-project-box text-center">
+                            <h2>Workflow Assignment (2015)</h2>
+                            <i><h3>Mixed Integer Linear Programming</h3></i>
+                            <p align="left"><br>This was another project that I worked on as a Summer Technology Analyst in Operations Analytics Strats. We worked with several different Operations groups to produce a tool for automatically assigning tasks to available analysts. This took into account available analysts, their expected bandwidth for the remainder of the day, their proficiency with incoming tasks, and implemented a Maker-Checker process. The tool is to be run by managers, and outputs a list of each person's assignments as well as a list of unassigned tasks with reasoning listed.<br><br>The program was written in R, using the <a href="https://cran.r-project.org/web/packages/Rglpk/Rglpk.pdf">Rglpk</a> library for linear programming.
+                            <br><br>
+                            <i>Relevant documents and code restricted to firm.</i>
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
-    <section id="SWF">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 text-center">
-                    <img src="projects/swf/logo.png" height="auto" width="30%">
-                    <br><br>
-                    <hr class="primary">
-                    <h2 class="section-heading">Smart Workflows</h2>
-                    <h3><i>Mixed Integer Linear Programming</i></h3>
-                    <hr class="primary">
-                    <p>This was another project that I worked on as a Summer Technology Analyst in the summer of 2015. We worked with several different Operations groups to produce a tool for automatically assigning tasks to available analysts. This took into account available analysts, their expected bandwidth for the remainder of the day, their proficiency with incoming tasks, and implemented a Maker-Checker process. The tool is to be run by managers, and outputs a list of each person's assignments as well as a list of unassigned tasks with reasoning listed.
-                        <br><br>
-                        The program was written in <b>R</b>, using the <a href="https://cran.r-project.org/web/packages/Rglpk/Rglpk.pdf">Rglpk</a> library for linear programming.
-                        <br><br>
-                        <i>Due to information security constraints, relevant documents and data may not be shared outside the firm</i>
-                        </p>
+            <div id='princetonProjects' class='tabcontent'>
+                <div class="row is-table-row">
+                    <div class="col-lg-4 stdSpacing">
+                        <div class="princeton-project-box text-center">
+                            <h2>Automated Invoice Recognition</h2>
+                            <h3><i>Optical Character Recognition</i></h3>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 stdSpacing">
+                        <div class="princeton-project-box text-center">
+                            <h2>Automated Invoice Recognition</h2>
+                            <h3><i>Optical Character Recognition</i></h3>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 stdSpacing">
+                        <div class="princeton-project-box text-center">
+                            <h2>Automated Invoice Recognition</h2>
+                            <h3><i>Optical Character Recognition</i></h3>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
-    <section class="bg-primary" id="PU16">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 text-center">
-                    <hr class="light">
-                    <h1 class="section-heading">Princeton University</h1>
-                    <h2 ><i>Operations Research and Financial Engineering</i></h2>
-                    <hr class="light">
-                </div>
-            </div>
-        </div>
-    </section>
-    <section id="PARSNIP">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 text-center">
-                    <br><br>
-                    <img src="projects/parsnip/logo.png" height="auto" width="30%">
-                    <br><br>
-                    <hr class="primary">
-                    <h2 class="section-heading"><a href="http://arrestin.wix.com/parsnip">PARSNIP</a>: Lightweight Macro Recording Utility</h2>
-                    <h3><i>Chrome Extension</i></h3>
-                    <hr class="primary">
-                    <p>PARSNIP was a project that I worked on for <a href="https://www.cs.princeton.edu/courses/archive/spring15/cos333/">COS 333: Advanced Programming Techniques</a> in Spring 2015. I worked with David Zhao, Timothy Seah, and Eric Huang. This is a Google Chrome extension that allows for basic macro recording and playback, with the option of scheduled macro playback and macro storage and retrieval.
-                        <br><br>
-                        PARSNIP was written in <b>JavaScript</b> and <b>HTML</b>.
-                        <br><br>
-                        <b>Relevant documents:</b> <a href="projects/parsnip/internals.pdf">Technical Document</a>, <a href="projects/parsnip/report.pdf">Project Report</a>, <a href="projects/parsnip/demo.pdf">Demo Presentation</a>
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section id="CASTLE">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 text-center">
-                    <img src="projects/castle/logo.png" height="auto" width="20%">
-                    <br><br>
-                    <hr class="primary">
-                    <h2 class="section-heading">Learning Rate Analysis</h2>
-                    <h3><i>Reinforcement Learning</i></h3>
-                    <hr class="primary">
-                    <p>This was a project that I worked on as a Summer Research Intern at <a href="http://castlelab.princeton.edu/">CASTLE Labs</a> at Princeton University in the summer of 2014. The objective was to find optimal policies in an energy allocation problem. The model contained a battery, power grid, wind energy, and demand, with the latter three stochastic variables. I investigated the performance of Q-Learning and SARSA given different learning rates.
-                        <br><br>
-                        The simulator was written in <b>Java</b>, building on the <a href="http://burlap.cs.brown.edu/">BURLAP Learning Algorithm Library</a>. Graphics and metrics were produced in <b>Excel</b> and <b>MATLAB</b>.
-                        <br><br>
-                        <b>Relevant documents:</b> <a href="projects/castle/model.pdf">Problem Model</a>, <a href="projects/castle/shuyangli_summerpresentation08082014.pdf">Project Presentation</a>
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section id="418">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 text-center">
-                    <img src="projects/418/logo.png" height="auto" width="30%">
-                    <br><br>
-                    <hr class="primary">
-                    <h2 class="section-heading">Los Angeles Freeway Pricing</h2>
-                    <h3><i>Optimal Learning</i></h3>
-                    <hr class="primary">
-                    <p>This was a project that I worked on for <a href="http://optimallearning.princeton.edu/">ORF 418: Optimal Learning</a> in Spring 2014. I worked with Max Kaplan. We created an algorithm for pricing Express Lanes on the I-110 Freeway using Optimal Learning techniques. Specifically, we tested the Knowledge Gradient, Interval Estimation, Pure Exploitation, and Constrained Exploration algorithms with linear and logistic belief models.
-                        <br><br>
-                        Code and graphics done in <b>MATLAB</b>.
-                        <br><br>
-                        <b>Relevant documents:</b> <a href="projects/418/FinalReport_Shuyang_Li.pdf">Project Report</a>, <a href="projects/418/shuyangli_maxkaplan_demo.pdf">Project Presentation</a>
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section id="Thesis">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 text-center">
-                    <h2 class="section-heading">ORFE Senior Thesis</h2>
-                    <h3><i>Natural Language Processing</i></h3>
-                    <hr class="primary">
-                    <p>I'm currently writing my senior thesis for the <a href="http://orfe.princeton.edu/">Operations Research and Financial Engineering</a> department at Princeton University. I'm being advised by Professor <a href="https://www.cs.princeton.edu/~xiaoyan/">Xiaoyan Li</a> of the Computer Science department.
-                        <br><br>
-                        Currently, I'm thinking of using <b>R</b> and <b>Python</b> for the data analysis.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <br>
-    <br>
-    <h6>© SHUYANG LI 2015</h6>
-
-    <!-- jQuery -->
-    <script src="js/jquery.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
-
-    <!-- Plugin JavaScript -->
-    <script src="js/jquery.easing.min.js"></script>
-    <script src="js/jquery.fittext.js"></script>
-    <script src="js/wow.min.js"></script>
-
-    <!-- Custom Theme JavaScript -->
-    <script src="js/creative.js"></script>
-
-</body>
-
+        </section>
+        <br>
+        <br>
+        <section id="footer">
+            <div id="copyrightFooter" class="footer"><h5 id="copyright"></h5></div>
+        </section>
+        
+        <script>
+            document.getElementById("copyright").innerHTML = "&copy; <a href='http://shuyangli.me'>Shuyang Li</a> " + (new Date().getFullYear());
+        </script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="codingProjectsTabs.js"></script>
+    </body>
 </html>
