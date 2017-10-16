@@ -29,4 +29,4 @@ function selectTab(evt, tabName) {
     evt.currentTarget.className += " active";
 }
 
-document.getElementById("gsLink").click();
+document.getElementById("introLink").click();
