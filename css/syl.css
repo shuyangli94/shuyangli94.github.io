@@ -70,11 +70,17 @@ ul.tab li a:focus, .active {
 .introProjects-a:link {color: #BDBDBD;}
 .introProjects-a:visited {color: #949494;}
 
-.personalProjects-tab { background-color: #FFFFFF;  border-bottom: 1px solid #3BA04A; }
+.personalProjects-tab { background-color: #FFFFFF;  border-bottom: 1px solid #BDBDBD; }
+.personalProjects-atab:hover {background-color: #E0E0E0;}
+.personalProjects-atab:focus, .personalProjects-atab.active { background-color: #BDBDBD; }
+.personalProjects-a:link {color: #BDBDBD;}
+.personalProjects-a:visited {color: #949494;}
+
+/*.personalProjects-tab { background-color: #FFFFFF;  border-bottom: 1px solid #3BA04A; }
 .personalProjects-atab:hover {background-color: #82CE8D;}
 .personalProjects-atab:focus, .personalProjects-atab.active { background-color: #3BA04A; }
 .personalProjects-a:link {color: #3BA04A;}
-.personalProjects-a:visited {color: #2D7633;}
+.personalProjects-a:visited {color: #2D7633;}*/
 
 .gsProjects-tab { background-color: #FFFFFF;  border-bottom: 1px solid #7D9BC1; }
 .gsProjects-atab:hover {background-color: #A3BBDC;}
@@ -109,7 +115,8 @@ ul.tab li a:focus, .active {
 
 .personal-project-box {
     padding: 12px 12px;
-    border: 1px solid #3BA04A;
+    /*border: 1px solid #3BA04A;*/
+    border: 1px solid #FFFFFF;
     height: 100%;
 }
 .bbg-project-box {
@@ -139,7 +146,7 @@ ul.tab li a:focus, .active {
 .footer.princetonProjects-footer { border-top: 1px solid #e87722; }
 .footer.bbgProjects-footer { border-top: 1px solid #9B7DC1; }
 .footer.gsProjects-footer { border-top: 1px solid #7D9BC1; }
-.footer.personalProjects-footer { border-top: 1px solid #3BA04A; }
+.footer.personalProjects-footer { border-top: 1px solid #FFFFFF; }
 
 .row {
     margin: 0px 0px;

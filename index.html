@@ -1,230 +1,264 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <link rel="icon" href="favicons/favicon.ico?v=2" type="image/x-icon" />
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="Coding projects, things I like to do in my spare time.">
-        <meta name="author" content="Shuyang Li">
-        <title>Shuyang Li - Homepage</title>
+<head>
+    <link rel="icon" href="favicons/favicon.ico?v=2" type="image/x-icon" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Coding projects, things I like to do in my spare time.">
+    <meta name="author" content="Shuyang Li">
+    <title>Shuyang Li - Homepage</title>
 
-        <link rel="stylesheet" href="css/bootstrap.css" type="text/css">
-        <link rel="stylesheet" href="css/syl.css" type="text/css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    </head>
-    <body id="page-top">
-        <div>
-            <ul class="tab" id="tabBar">
-                <li><a href="javascript:void(0)" onclick="selectTab(event, 'personalProjects')" class="tablinks" id="personalLink">PERSONAL</a></li>
-                <li><a href="javascript:void(0)" onclick="selectTab(event, 'bbgProjects')" class="tablinks" id="bbgLink">BLOOMBERG</a></li>
-                <li><a href="javascript:void(0)" onclick="selectTab(event, 'gsProjects')" class="tablinks" id="gsLink">GOLDMAN</a></li>
-                <li><a href="javascript:void(0)" onclick="selectTab(event, 'princetonProjects')" class="tablinks" id="princetonLink">PRINCETON</a></li>
-                <li style="float:right"><b><a href="javascript:void(0)" onclick="selectTab(event, 'introProjects')" class="tablinks" id="introLink">HOME</a></b></li>
-            </ul>
+    <link rel="stylesheet" href="css/bootstrap.css" type="text/css">
+    <link rel="stylesheet" href="css/syl.css" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body id="page-top">
+    <div>
+        <ul class="tab" id="tabBar">
+            <li><a href="javascript:void(0)" onclick="selectTab(event, 'personalProjects')" class="tablinks" id="personalLink">PERSONAL</a></li>
+            <li><a href="javascript:void(0)" onclick="selectTab(event, 'bbgProjects')" class="tablinks" id="bbgLink">BLOOMBERG</a></li>
+            <li><a href="javascript:void(0)" onclick="selectTab(event, 'gsProjects')" class="tablinks" id="gsLink">GOLDMAN</a></li>
+            <li><a href="javascript:void(0)" onclick="selectTab(event, 'princetonProjects')" class="tablinks" id="princetonLink">PRINCETON</a></li>
+            <li style="float:right"><b><a href="javascript:void(0)" onclick="selectTab(event, 'introProjects')" class="tablinks" id="introLink">HOME</a></b></li>
+        </ul>
+    </div>
+    <section id="tabs">
+        <div id='introProjects' class='.container-fluid tabcontent'>
+            <div class="row is-table-row">
+                <div class="col-lg-12 col-md-12 col-sm-12 stdSpacing text-center">
+                    <br>
+                    <img src="headshot.png" alt="Resting at Eikan-dō Zenrin-ji, in Kyoto, Japan - June 2016" width="30%" style="min-width: 200px !important; max-width: 400px !important;">
+                    <br><br>
+                    <h1>Shuyang Li</h1>
+                    <h2>Senior Software Engineer at Bloomberg, LP</h2>
+                    <br>
+                    <h3>Princeton University Class of 2016<br>BSE in Operations Research and Financial Engineering</h3>
+                    <br>
+                    <h3>Avid badminton player. Writer. Check out various projects I've worked on via tabs on the upper-left.</h3>
+                </div>
+            </div>
+            <div class="row is-table-row">
+                <div class="col-lg-12 col-md-12 col-sm-12 stdSpacing text-center"">
+                    <a href="https://www.linkedin.com/in/shuyangli94"><i class="fa fa-linkedin fa-2x"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="mailto:shuyangli94@gmail.com"><i class="fa fa-envelope-o fa-2x"></i></a>
+                </div>
+            </div>
         </div>
-        <section id="tabs">
-            <div id='introProjects' class='.container-fluid tabcontent'>
-                <div class="row is-table-row">
-                    <div class="col-lg-12 col-md-12 col-sm-12 stdSpacing text-center">
+        <div id='personalProjects' class='.container-fluid tabcontent'>
+            <div class="row is-table-row">
+                <div class="col-lg-4 col-md-4 col-sm-12 stdSpacing">
+                    <div class="personal-project-box text-center">
                         <br>
-                        <img src="headshot.png" alt="Resting at Eikan-dō Zenrin-ji, in Kyoto, Japan - June 2016" width="30%" style="min-width: 200px !important; max-width: 400px !important;">
-                        <br><br>
-                        <h1>Shuyang Li</h1>
-                        <h2>Senior Software Engineer at Bloomberg, LP</h2>
+                        <a href="cellsandbox/index.html"><h2>The End of the World</h2></a>
+                        <i><h3>Top-Down Exploration Game</h3></i>
+                        <p align="left"><br>A simple game inspired by Haruki Murakami's <i>Hard-Boiled Wonderland and the End of the World</i>. Move around the world with the arrow keys.
+                        </p>
                         <br>
-                        <h3>Princeton University Class of 2016<br>BSE in Operations Research and Financial Engineering</h3>
-                        <br>
-                        <h3>Avid badminton player. Writer. Check out various projects I've worked on via tabs on the upper-left.</h3>
                     </div>
                 </div>
-                <div class="row is-table-row">
-                    <div class="col-lg-12 col-md-12 col-sm-12 stdSpacing text-center"">
-                        <a href="https://www.linkedin.com/in/shuyangli94"><i class="fa fa-linkedin fa-2x"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="mailto:shuyangli94@gmail.com"><i class="fa fa-envelope-o fa-2x"></i></a>
+                <div class="col-lg-4 col-md-4 col-sm-12 stdSpacing">
+                    <div class="personal-project-box text-center">
+                        <br>
+                        <a href="maze/index.html"><h2>Maze Generator and Explorer</h2></a>
+                        <i><h3>Cellular Automaton</h3></i>
+                        <p align="left"><br>Using cellular automata to generate mazes. Allows customization of maze dimensions and visualizations. Solve the maze with arrow keys. Contains an auto-solver feature.
+                        </p>
+                        <br>
                     </div>
                 </div>
-            </div>
-            <div id='personalProjects' class='.container-fluid tabcontent'>
-                <div class="row is-table-row">
-                    <div class="col-lg-4 stdSpacing">
-                        <div class="personal-project-box text-center">
-                            <h2>Automated Invoice Recognition</h2>
-                            <h3><i>Optical Character Recognition</i></h3>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 stdSpacing">
-                        <div class="personal-project-box text-center">
-                            <h2>Automated Invoice Recognition</h2>
-                            <h3><i>Optical Character Recognition</i></h3>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 stdSpacing">
-                        <div class="personal-project-box text-center">
-                            <h2>Automated Invoice Recognition</h2>
-                            <h3><i>Optical Character Recognition</i></h3>
-                        </div>
+                <div class="col-lg-4 col-md-4 col-sm-12 stdSpacing">
+                    <div class="personal-project-box text-center">
+                        <br>
+                        <a href="wonderland/index.html"><h2>Cellular Automaton Sandbox</h2></a>
+                        <i><h3>Cellular Automaton</h3></i>
+                        <p align="left"><br>Set a beginning configuration and a ruleset, and allow a cellular automaton to grow. Allows flipping of grid squares as the automaton is running, as well as customization of run speed and canvas dimensions.
+                        </p>
+                        <br>
                     </div>
                 </div>
             </div>
-            <div id='bbgProjects' class='.container-fluid tabcontent'>
-                <div class="row is-table-row">
-                    <div class="col-lg-6 col-md-6 col-sm-12 stdSpacing">
-                        <div class="gs-project-box text-center">
-                            <br>
-                            <h2>Data Quality Control Platform (2017-)</h2>
-                            <i><h3>Distributed Computing</h3></i>
-                            <p align="left"><br>In my work with the Structured Products team (Mortgage Waterfall Infrastructure), I helped to design and implement a Spark-based infrastructure for high bandwidth data processing jobs. We wrote a series of applications to wrap common data-access, filtering, and testing paradigms, so other members of the Structured Products group could write test logic as a self-contained plugin and farm the job out to our Spark cluster. We achieved a 100x+ speedup for some jobs due to parallelization, and abstracted away Spark application boilerplate.
+            <div class="row is-table-row">
+                <div class="col-lg-4 col-md-4 col-sm-12 stdSpacing">
+                    <div class="personal-project-box text-center">
+                        <br>
+                        <a href="crumblies/index.html"><h2>Cookie Crumbler</h2></a>
+                        <i><h3>Game</h3></i>
+                        <p align="left"><br>Break cookies into different-sized pieces to feed a friendly colony of ants, as they're constantly harrassed by locusts. Experiment with HTML5 canvas.
+                        </p>
+                        <br>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-12 stdSpacing">
+                    <div class="personal-project-box text-center">
+                        <br>
+                        <a href="incremental-adv/game.html"><h2>Incremental Adventure</h2></a>
+                        <i><h3>Incremental Game</h3></i>
+                        <p align="left"><br>Dabbling in development of an incremental RPG. Progress through an infinite dungeon and collect party members and upgrade your gear.
+                        </p>
+                        <br>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id='bbgProjects' class='.container-fluid tabcontent'>
+            <div class="row is-table-row">
+                <div class="col-lg-6 col-md-6 col-sm-12 stdSpacing">
+                    <div class="bbg-project-box text-center">
+                        <br>
+                        <h2>Data Quality Control Platform (2017-)</h2>
+                        <i><h3>Distributed Computing</h3></i>
+                        <p align="left"><br>In my work with the Structured Products team (Mortgage Waterfall Infrastructure), I helped to design and implement a Spark-based infrastructure for high bandwidth data processing jobs. We wrote a series of applications to wrap common data-access, filtering, and testing paradigms, so other members of the Structured Products group could write test logic as a self-contained plugin and farm the job out to our Spark cluster. We achieved a 100x+ speedup for some jobs due to parallelization, and abstracted away Spark application boilerplate.
                             <br><br>
                             The platform infrastructure was written in Python with jobs distributed via <a href="http://spark.apache.org/docs/latest/api/python/index.html">pySpark</a>.
-                            </p>
-                            <br>
-                        </div>
+                        </p>
+                        <br>
                     </div>
-                    <div class="col-lg-6 col-md-6 col-sm-12 stdSpacing">
-                        <div class="gs-project-box text-center">
-                            <br>
-                            <h2>Identifying Similar Securities (2017-)</h2>
-                            <i><h3>Semi-structured Text Clustering</h3></i>
-                            <p align="left"><br>As part of my work with the Quality Control team in Mortgage Waterfall Infrastructure, I am currently investigating how various mortgage-backed securities (pools, generics, CMOs) can be clustered by the shape of the data we regularly receive for each security. This entails identifying data shape features for semi-structured text data received for over 2.5 million securities and clustering on time-series data for each security.
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 stdSpacing">
+                    <div class="bbg-project-box text-center">
+                        <br>
+                        <h2>Identifying Similar Securities (2017-)</h2>
+                        <i><h3>Semi-structured Text Clustering</h3></i>
+                        <p align="left"><br>As part of my work with the Quality Control team in Mortgage Waterfall Infrastructure, I am currently investigating how various mortgage-backed securities (pools, generics, CMOs) can be clustered by the shape of the data we regularly receive for each security. This entails identifying data shape features for semi-structured text data received for over 2.5 million securities and clustering on time-series data for each security.
                             <br><br>
-                            The application was written in Python, using <a href="https://spark.apache.org/mllib/">Spark MLlib</a> library for feature processing and clustering, and <a href="https://www.postgresql.org/">PostgreSQL</a> to store time series data, accessed programmatically via <a href="https://www.sqlalchemy.org/">SQLAlchemy</a>.
-                            </p>
-                            <br>
-                        </div>
+                            The application was written in Python, using <a href="https://spark.apache.org/mllib/">Spark MLlib</a> library for feature processing and clustering, and <a href="https://www.postgresql.org/">PostgreSQL</a> to store time series data, accessed programmatically via <a href="https://www.sqlalchemy.org/">SQLAlchemy</a>. The application utilizes the infrastructure framework developed as part of the Data QC Platform.
+                        </p>
+                        <br>
                     </div>
                 </div>
             </div>
-            <div id='gsProjects' class='tabcontent'>
-                <div class="row is-table-row">
-                    <div class="col-lg-6 col-md-6 col-sm-12 stdSpacing">
-                        <div class="gs-project-box text-center">
-                            <br>
-                            <h2>Machine Learning Platform (2016-2017)</h2>
-                            <i><h3>Distributed ML Platform</h3></i>
-                            <p align="left"><br>This was my primary project in Ops Analytics Strats (OAS), in the Operations Technology group at Goldman Sachs. Over the course of 10 months, we built a platform for data science and machine learning on top of the firm's centralized data store. Our goal was to allow anybody to classify and regress on arbitrary datasets without needing a deep background in programming for machine learning. One client was an internal data platforms team, which used our platform to better predict expected runtimes for their data ingestion workflow.
+        </div>
+        <div id='gsProjects' class='tabcontent'>
+            <div class="row is-table-row">
+                <div class="col-lg-6 col-md-6 col-sm-12 stdSpacing">
+                    <div class="gs-project-box text-center">
+                        <br>
+                        <h2>Machine Learning Platform (2016-2017)</h2>
+                        <i><h3>Distributed ML Platform</h3></i>
+                        <p align="left"><br>This was my primary project in Ops Analytics Strats (OAS), in the Operations Technology group at Goldman Sachs. Over the course of 10 months, we built a platform for data science and machine learning on top of the firm's centralized data store. Our goal was to allow anybody to classify and regress on arbitrary datasets without needing a deep background in programming for machine learning. One client was an internal data platforms team, which used our platform to better predict expected runtimes for their data ingestion workflow.
                             <br><br>
                             The platform infrastructure was written in Java. For machine learning, we used <a href="https://spark.apache.org/mllib/">Spark MLlib</a> and <a href="https://www.r-project.org/">R</a>.
-                            </p>
-                            <br>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6 col-sm-12 stdSpacing">
-                        <div class="gs-project-box text-center">
-                            <br>
-                            <h2>Market Data Pipeline (2016)</h2>
-                            <i><h3>FIX Message Parsing</h3></i>
-                            <p align="left"><br>This was the project team I worked on for Grey Wolf on Goldman Sachs Asset Management - Fixed Income (GSAM FI) as a new Technology Analyst in the fall of 2016. Over 6 weeks, our team built a system to consume FIX messages from several marketplaces, parse them into a standardized object, and store the messages in a database. Our application allowed the GSAM FI team to consume a vastly greater quantity of market messages and made it available for further analysis by traders. It is currently a production system.
-                            <br><br>
-                            The application was written in Java, using the <a href="http://www.quickfixj.org/">QuickFIX/J</a> library for FIX message decoding.
-                            </p>
-                            <br>
-                        </div>
+                        </p>
+                        <br>
                     </div>
                 </div>
-                <div class="row is-table-row">
-                    <div class="col-lg-6 col-md-6 col-sm-12 stdSpacing">
-                        <div class="gs-project-box text-center">
-                            <br>
-                            <h2>Automated Invoice Recognition (2015)</h2>
-                            <i><h3>Optical Character Recognition</h3></i>
-                            <p align="left"><br>This was my main project as a Summer Technology Analyst in Operations Analytics Strats. We worked with Accounting Services to build a tool that could automatically index certain values from images of invoices. They received invoices through email or fax and scanned them into .tiff files. Our algorithm relied on segmentation of individual values to produce structured output and templating to identify likely segment locations.
+                <div class="col-lg-6 col-md-6 col-sm-12 stdSpacing">
+                    <div class="gs-project-box text-center">
+                        <br>
+                        <h2>Market Data Pipeline (2016)</h2>
+                        <i><h3>FIX Message Parsing</h3></i>
+                        <p align="left"><br>This was the project team I worked on for Grey Wolf on Goldman Sachs Asset Management - Fixed Income (GSAM FI) as a new Technology Analyst in the fall of 2016. Over 6 weeks, our team built a system to consume FIX messages from several marketplaces, parse them into a standardized object, and store the messages in a database. Our application allowed the GSAM FI team to consume a vastly greater quantity of market messages and made it available for further analysis by traders. It is currently a production system.
                             <br><br>
-                            The program was written in Python, using the <a href="http://www.numpy.org/">numpy</a> library for fast array operations and <a href="http://scikit-image.org/">scikit-image</a> library for image processing. We used the <a href="https://github.com/tesseract-ocr/tesseract">Tesseract</a> open-source OCR engine.
-                            </p>
-                            <br>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6 col-sm-12 stdSpacing">
-                        <div class="gs-project-box text-center">
-                            <br>
-                            <h2>Workflow Assignment (2015)</h2>
-                            <i><h3>Mixed Integer Linear Programming</h3></i>
-                            <p align="left"><br>This was another project that I worked on as a Summer Technology Analyst in Operations Analytics Strats. We worked with several different Operations groups to produce a tool for automatically assigning tasks to available analysts. This took into account available analysts, their expected bandwidth for the remainder of the day, their proficiency with incoming tasks, and implemented a Maker-Checker process. The tool is to be run by managers, and outputs a list of each person's assignments as well as a list of unassigned tasks with reasoning listed.
-                            <br><br>
-                            The program was written in <a href="https://www.r-project.org/">R</a>, using the <a href="https://cran.r-project.org/web/packages/Rglpk/Rglpk.pdf">Rglpk</a> library for linear programming.
-                            </p>
-                            <br>
-                        </div>
+                            The application was written in Java, using the <a href="http://www.quickfixj.org/">QuickFIX/J</a> library for FIX message decoding.
+                        </p>
+                        <br>
                     </div>
                 </div>
             </div>
-            <div id='princetonProjects' class='tabcontent'>
-                <div class="row is-table-row">
-                    <div class="col-lg-6 col-md-6 col-sm-12 stdSpacing">
-                        <div class="princeton-project-box text-center">
-                            <br>
-                            <h2>Rich Features for Sentiment Analysis (2015-6)</h2>
-                            <i><h3>Natural Language Processing</h3></i>
-                            <p align="left"><br>This was my senior thesis at Princeton University, supervised by Dr. Xiaoyan Li. Here, we investigate the use of rich features to extend the bag-of-words model for sentiment analysis using machine learning in the movie review domain. We focus on subjectivity analysis and sentence position features. In addition, I created a manually labeled set of subjective and summary sentences for 2000 reviews in the Cornell IMDB movie review corpus. The full title of the thesis is <i>Exploring Rich Features for Sentiment Analysis with Various Machine Learning Models</i>.
+            <div class="row is-table-row">
+                <div class="col-lg-6 col-md-6 col-sm-12 stdSpacing">
+                    <div class="gs-project-box text-center">
+                        <br>
+                        <h2>Automated Invoice Recognition (2015)</h2>
+                        <i><h3>Optical Character Recognition</h3></i>
+                        <p align="left"><br>This was my main project as a Summer Technology Analyst in Operations Analytics Strats. We worked with Accounting Services to build a tool that could automatically index certain values from images of invoices. They received invoices through email or fax and scanned them into .tiff files. Our algorithm relied on segmentation of individual values to produce structured output and templating to identify likely segment locations.
+                            <br><br>
+                            The program was written in Python, using the <a href="http://www.numpy.org/">numpy</a> library for fast array operations and <a href="http://scikit-image.org/">scikit-image</a> library for image processing. We used the <a href="https://github.com/tesseract-ocr/tesseract">Tesseract</a> open-source OCR engine.
+                        </p>
+                        <br>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 stdSpacing">
+                    <div class="gs-project-box text-center">
+                        <br>
+                        <h2>Workflow Assignment (2015)</h2>
+                        <i><h3>Mixed Integer Linear Programming</h3></i>
+                        <p align="left"><br>This was another project that I worked on as a Summer Technology Analyst in Operations Analytics Strats. We worked with several different Operations groups to produce a tool for automatically assigning tasks to available analysts. This took into account available analysts, their expected bandwidth for the remainder of the day, their proficiency with incoming tasks, and implemented a Maker-Checker process. The tool is to be run by managers, and outputs a list of each person's assignments as well as a list of unassigned tasks with reasoning listed.
+                            <br><br>
+                            The program was written in <a href="https://www.r-project.org/">R</a>, using the <a href="https://cran.r-project.org/web/packages/Rglpk/Rglpk.pdf">Rglpk</a> library for linear programming.
+                        </p>
+                        <br>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id='princetonProjects' class='tabcontent'>
+            <div class="row is-table-row">
+                <div class="col-lg-6 col-md-6 col-sm-12 stdSpacing">
+                    <div class="princeton-project-box text-center">
+                        <br>
+                        <h2>Rich Features for Sentiment Analysis (2015-6)</h2>
+                        <i><h3>Natural Language Processing</h3></i>
+                        <p align="left"><br>This was my senior thesis at Princeton University, supervised by Dr. Xiaoyan Li. Here, we investigate the use of rich features to extend the bag-of-words model for sentiment analysis using machine learning in the movie review domain. We focus on subjectivity analysis and sentence position features. In addition, I created a manually labeled set of subjective and summary sentences for 2000 reviews in the Cornell IMDB movie review corpus. The full title of the thesis is <i>Exploring Rich Features for Sentiment Analysis with Various Machine Learning Models</i>.
                             <br><br>
                             All model training and execution were performed in Python, using <a href="http://www.nltk.org/">NLTK</a> and <a href="https://textblob.readthedocs.io/en/dev/">TextBlob</a> for document parsing and feature extraction, and <a href="http://scikit-learn.org/stable/">scikit-learn</a> for machine learning algorithms. Data analysis was done in R.
                             <br><br>
                             <b>Documents:</b> <a href="projects/thesis/shuyangl_IEEE_poster_saveas.pdf">Poster</a> presented at the 2016 IEEE MIT Undergraduate Research Technology Conference. A full copy of the thesis may be requested via <a href="http://arks.princeton.edu/ark:/88435/dsp01jq085n41j">Princeton DataSpace</a>.
-                            </p>
-                            <br>
-                        </div>
+                        </p>
+                        <br>
                     </div>
-                    <div class="col-lg-6 col-md-6 col-sm-12 stdSpacing">
-                        <div class="princeton-project-box text-center">
-                            <br>
-                            <h2>Career Imagineers (2015)</h2>
-                            <i><h3>Social Impact</h3></i>
-                            <p align="left"><br>I worked on this semester-long project in Junior year of college for EGR 392 - Creativity, Innovation, and Design. We helped the campus career center provide resources for career exploration and preparation in a way that was better suited for the undergraduate population. We created a regular mentorship program for underclassmen and upperclassmen who had experience with various research and industry roles. We also held a well-attended career exploration workshop on campus.
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 stdSpacing">
+                    <div class="princeton-project-box text-center">
+                        <br>
+                        <h2>Career Imagineers (2015)</h2>
+                        <i><h3>Social Impact</h3></i>
+                        <p align="left"><br>I worked on this semester-long project in Junior year of college for EGR 392 - Creativity, Innovation, and Design. We helped the campus career center provide resources for career exploration and preparation in a way that was better suited for the undergraduate population. We created a regular mentorship program for underclassmen and upperclassmen who had experience with various research and industry roles. We also held a well-attended career exploration workshop on campus.
                             <br><br>
                             The team consisted of Grace Chang '17, Catherine Idylle '16, Jean Choi '15, Maggie Zhang '16, Annie Chen '15, and myself.
                             <br><br>
                             <b>Documents:</b> <a href="projects/imagineers/EGR392_Careers.pdf">Presentation</a> given to the EGR 392 class, as well as administrators of Princeton career services.
-                            </p>
-                            <br>
-                        </div>
+                        </p>
+                        <br>
                     </div>
                 </div>
-                <div class="row is-table-row">
-                    <div class="col-lg-6 col-md-6 col-sm-12 stdSpacing">
-                        <div class="princeton-project-box text-center">
-                            <br>
-                            <h2>Learning Rate Analysis for Temporal-Difference Learning (2014)</h2>
-                            <i><h3>Reinforcement Learning</h3></i>
-                            <p align="left"><br>This was a project that I worked on as a Summer Research Intern at <a href="http://castlelab.princeton.edu/">CASTLE Lab</a> at Princeton University in the summer of 2014. The objective was to find optimal policies in an energy allocation problem. The model contained a battery, power grid, wind energy, and demand, with the latter three stochastic variables. I investigated the performance of Q-Learning and SARSA given different learning rates.
+            </div>
+            <div class="row is-table-row">
+                <div class="col-lg-6 col-md-6 col-sm-12 stdSpacing">
+                    <div class="princeton-project-box text-center">
+                        <br>
+                        <h2>Learning Rate Analysis for Temporal-Difference Learning (2014)</h2>
+                        <i><h3>Reinforcement Learning</h3></i>
+                        <p align="left"><br>This was a project that I worked on as a Summer Research Intern at <a href="http://castlelab.princeton.edu/">CASTLE Lab</a> at Princeton University in the summer of 2014. The objective was to find optimal policies in an energy allocation problem. The model contained a battery, power grid, wind energy, and demand, with the latter three stochastic variables. I investigated the performance of Q-Learning and SARSA given different learning rates.
                             <br><br>
                             The simulator was written in Java, building on the <a href="http://burlap.cs.brown.edu/">BURLAP Learning Algorithm Library</a>. Graphics and metrics were produced in Excel and MATLAB.
                             <br><br>
                             <b>Documents:</b> <a href="projects/castle/model.pdf">Problem Model</a>, <a href="projects/castle/shuyangli_summerpresentation08082014.pdf">Project Presentation</a>
-                            </p>
-                            <br>
-                        </div>
+                        </p>
+                        <br>
                     </div>
-                    <div class="col-lg-6 col-md-6 col-sm-12 stdSpacing">
-                        <div class="princeton-project-box text-center">
-                            <br>
-                            <h2>Los Angeles Freeway Pricing (2014)</h2>
-                            <i><h3>Optimal Learning</h3></i>
-                            <p align="left"><br>This was a project that I worked on for <a href="http://optimallearning.princeton.edu/">ORF 418: Optimal Learning</a> in Spring 2014. I worked with Max Kaplan. We created an algorithm for pricing Express Lanes on the I-110 Freeway using Optimal Learning techniques. Specifically, we tested the Knowledge Gradient, Interval Estimation, Pure Exploitation, and Constrained Exploration algorithms with linear and logistic belief models.
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 stdSpacing">
+                    <div class="princeton-project-box text-center">
+                        <br>
+                        <h2>Los Angeles Freeway Pricing (2014)</h2>
+                        <i><h3>Optimal Learning</h3></i>
+                        <p align="left"><br>This was a project that I worked on for <a href="http://optimallearning.princeton.edu/">ORF 418: Optimal Learning</a> in Spring 2014. I worked with Max Kaplan. We created an algorithm for pricing Express Lanes on the I-110 Freeway using Optimal Learning techniques. Specifically, we tested the Knowledge Gradient, Interval Estimation, Pure Exploitation, and Constrained Exploration algorithms with linear and logistic belief models.
                             <br><br>
                             Code and graphics done in <b>MATLAB</b>.
                             <br><br>
                             <b>Documents:</b> <a href="projects/418/FinalReport_Shuyang_Li.pdf">Project Report</a>, <a href="projects/418/shuyangli_maxkaplan_demo.pdf">Project Presentation</a>
-                            </p>
-                            <br>
-                        </div>
+                        </p>
+                        <br>
                     </div>
                 </div>
             </div>
-        </section>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <section id="footer">
-            <div id="copyrightFooter" class="footer"><h5 id="copyright"></h5></div>
-        </section>
-        
-        <script>
-            document.getElementById("copyright").innerHTML = "&copy; <a href='http://shuyangli.me'>Shuyang Li</a> " + (new Date().getFullYear());
-        </script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-        <script src="codingProjectsTabs.js"></script>
-    </body>
+        </div>
+    </section>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <section id="footer">
+        <div id="copyrightFooter" class="footer"><h5 id="copyright"></h5></div>
+    </section>
+
+    <script>
+        document.getElementById("copyright").innerHTML = "&copy; <a href='http://shuyangli.me'>Shuyang Li</a> " + (new Date().getFullYear());
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="codingProjectsTabs.js"></script>
+</body>
 </html>

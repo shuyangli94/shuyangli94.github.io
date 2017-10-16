@@ -241,7 +241,13 @@
     </section>
     <br>
     <br>
-    <h6>© SHUYANG LI 2015</h6>
+    <section id="footer">
+            <div id="copyrightFooter" class="footer"><h5 id="copyright"></h5></div>
+        </section>
+        
+        <script>
+            document.getElementById("copyright").innerHTML = "&copy; <a href='http://shuyangli.me'>Shuyang Li</a> " + (new Date().getFullYear());
+        </script>
 
 <!-- Custom Game JavaScript -->
 <script src="gameClean.js"></script>

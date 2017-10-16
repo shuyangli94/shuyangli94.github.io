@@ -11,26 +11,6 @@
     <link rel="stylesheet" type="text/css" href="mapexplore.css" media="screen" />
 </head>
 <body>
-<!--     <div id="infoModal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <span class="close">x</span>
-                <h2 align="center">Cookie Crumblies Instructions</h2>
-            </div>
-            <div class="modal-body">
-                <font color="#FFFFFF" size="4">
-                    <br /><p><b>Left click</b><i> on a part of the cookie to send a </i><b>crack</b><i> running along the cookie!</i></p>
-                    <br /><p><b>Right click</b><i> on a part of the cookie to </i><b>crumble</b><i> a section of the cookie away, feeding it to the ants.</i></p>
-                    <br /><p>The ants appreciate bite-sized chunks of cookie, and they won't accept cookie chunks that are too large!</i></p>
-                    <br /><p><i>Crumbling sections with </i><b>chocolate chips</b><i> will grant you a </i><b>score multiplier</b><i> for each chocolate chip.</i></p>
-                    <br /><p><i>When a cookie is completely crumbled, or when less than 5% of the cookie remains, you will be given a </i><b>new cookie</b>.</p>
-                    <br /><p><i>You may also </i><b>reset</b><i> your statistics, crumbles, cookie, and score at any time by clicking the RESET button.</i></p>
-                    <br /><p><b>Have fun!</b></p>
-                </font>
-                <br />
-            </div>
-        </div>
-    </div> -->
     <h1 align="center">The End of the World</h1>
     <table width="100%" align="center">
         <td width="640px" align="center" style="border: 0px">
@@ -45,9 +25,15 @@
                 </p>
             </td>
         </tr>
-    </table>  
+    </table>
 </body>
-<h5>&copy; Shuyang Li 2016</h5>
+<section id="footer">
+    <div id="copyrightFooter" class="footer"><h5 id="copyright"></h5></div>
+</section>
+
+<script>
+    document.getElementById("copyright").innerHTML = "&copy; <a href='http://shuyangli.me'>Shuyang Li</a> " + (new Date().getFullYear());
+</script>
 <script type="text/javascript" src="globalVars.js"></script>
 <script type="text/javascript" src="playerAction.js"></script>
 <script type="text/javascript" src="plains.js"></script>
