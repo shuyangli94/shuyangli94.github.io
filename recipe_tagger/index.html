@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="icon" href="../favicons/favicon.ico?v=2" type="image/x-icon" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Recipe Graph Generator">
+    <meta name="author" content="Shuyang Li">
+    <title>Recipe Directed Graph Generator</title>
+    <link rel="stylesheet" type="text/css" href="recipe_tagger.css" media="screen" />
+</head>
+<body>
+	<br />
+	<br />
+    <center>
+    	<canvas id="dagCanvas" width="1200" height = "500" style="display:border: 2px" tabindex=1></canvas>
+    </center>
+	<h5 id="copyright"></h5>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script type="text/javascript" src="utils.js"></script>
+<script type="text/javascript" src="recipe_tagger.js"></script>
+<script>
+	document.getElementById("copyright").innerHTML = "&copy; <a href='http://shuyangli.me'>Shuyang Li</a> " + (new Date().getFullYear());
+</script>
+</html>
