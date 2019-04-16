@@ -7,15 +7,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Recipe Graph Generator">
     <meta name="author" content="Shuyang Li">
-    <title>Recipe Directed Graph Generator</title>
+    <title>Recipe Graph Generator</title>
+    <link rel="stylesheet" href="../css/bootstrap.css" type="text/css">
     <link rel="stylesheet" type="text/css" href="recipe_tagger.css" media="screen" />
 </head>
 <body>
 	<br />
-	<br />
-    <center>
-    	<canvas id="dagCanvas" width="1200" height = "500" style="display:border: 2px" tabindex=1></canvas>
-    </center>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 text-center">
+                <canvas id="dagCanvas" width="500" height="500" style="display:border: 2px"></canvas>
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                <div class="controls">
+                    <br />
+                    <button class="btn btn-default" onclick="cmdCreateCxn"><b>Create Connection</b></button>
+                    <br /><br />
+                    <button class="btn btn-default" onclick="cmdCreateNode"><b>Create Node</b></button>
+                    <br /><br />
+                    <button class="btn btn-default" onclick="cmdDeleteCxn"><b>Delete Connection</b></button>
+                    <br /><br />
+                    <button class="btn btn-default" onclick="cmdDeleteCxn"><b>Delete Node</b></button>
+                </div>
+            </div>
+        </div>
+    </div>
 	<h5 id="copyright"></h5>
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
