@@ -64,11 +64,13 @@ ul.tab li a:focus, .active {
 .bbgProjects-a:link {color: #AE8BDA;}
 .bbgProjects-a:visited {color: #7B58A7;}*/
 
+/*
 .introProjects-tab { background-color: #FFFFFF;  border-bottom: 1px solid #BDBDBD; }
 .introProjects-atab:hover {background-color: #E0E0E0;}
 .introProjects-atab:focus, .introProjects-atab.active { background-color: #BDBDBD; }
 .introProjects-a:link {color: #e87722;}
 .introProjects-a:visited {color: #AB5412;}
+*/
 
 .personalProjects-tab { background-color: #FFFFFF;  border-bottom: 1px solid #BDBDBD; }
 .personalProjects-atab:hover {background-color: #E0E0E0;}
@@ -99,6 +101,24 @@ ul.tab li a:focus, .active {
 .bbgProjects-atab:focus, .bbgProjects-atab.active { background-color: #AE8BDA; }
 .bbgProjects-a:link {color: #AE8BDA;}
 .bbgProjects-a:visited {color: #7B58A7;}
+
+.introProjects-tab { background-color: #FFFFFF;  border-bottom: 1px solid #e87722; }
+.introProjects-atab:hover {background-color: #ffae72;}
+.introProjects-atab:focus, .introProjects-atab.active { background-color: #e87722; }
+.introProjects-a:link {color: #e87722;}
+.introProjects-a:visited {color: #AB5412;}
+
+.research-tab { background-color: #FFFFFF;  border-bottom: 1px solid #e87722; }
+.research-atab:hover {background-color: #ffae72;}
+.research-atab:focus, .research-atab.active { background-color: #e87722; }
+.research-a:link {color: #e87722;}
+.research-a:visited {color: #AB5412;}
+
+.projects-tab { background-color: #FFFFFF;  border-bottom: 1px solid #e87722; }
+.projects-atab:hover {background-color: #ffae72;}
+.projects-atab:focus, .projects-atab.active { background-color: #e87722; }
+.projects-a:link {color: #e87722;}
+.projects-a:visited {color: #AB5412;}
 
 .ptonlink {}
 

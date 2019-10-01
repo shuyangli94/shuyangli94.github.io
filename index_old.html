@@ -1,296 +1,282 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-66657650-1', 'auto');
-  ga('send', 'pageview');
-
-</script>
     <link rel="icon" href="favicons/favicon.ico?v=2" type="image/x-icon" />
-
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Princeton University Class of 2016 with a B.S.E. in Operations Research and Financial Engineering. Certificates in Computer Science, SML (Statistics and Machine Learning)">
+    <meta name="description" content="Shuyang Li - CSE PhD @ UCSD">
     <meta name="author" content="Shuyang Li">
+    <title>Shuyang Li - UCSD CSE</title>
 
-    <title>Shuyang Li - Princeton 2016</title>
-
-    <!-- Bootstrap Core CSS -->
-    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
-
-    <!-- Custom Fonts -->
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css" type="text/css">
-
-    <!-- Plugin CSS -->
-    <link rel="stylesheet" href="css/animate.min.css" type="text/css">
-
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/creative.css" type="text/css">
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
+    <link rel="stylesheet" href="css/bootstrap.css" type="text/css">
+    <link rel="stylesheet" href="css/syl.css" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
-
 <body id="page-top">
-
-    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
-        <div class="container-fluid">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand page-scroll" href="#page-top">SHUYANG LI</a>
+    <div>
+        <ul class="tab" id="tabBar">
+            <li><a href="javascript:void(0)" onclick="selectTab(event, 'personalProjects')" class="tablinks" id="personalLink">PERSONAL</a></li>
+            <li><a href="javascript:void(0)" onclick="selectTab(event, 'bbgProjects')" class="tablinks" id="bbgLink">BLOOMBERG</a></li>
+            <li><a href="javascript:void(0)" onclick="selectTab(event, 'gsProjects')" class="tablinks" id="gsLink">GOLDMAN</a></li>
+            <li><a href="javascript:void(0)" onclick="selectTab(event, 'princetonProjects')" class="tablinks" id="princetonLink">PRINCETON</a></li>
+            <!-- <li><a href="javascript:void(0)" onclick="selectTab(event, 'ucsdProjects')" class="tablinks" id="ucsdLink">UCSD</a></li> -->
+            <li style="float:right"><b><a href="javascript:void(0)" onclick="selectTab(event, 'introProjects')" class="tablinks" id="introLink">HOME</a></b></li>
+        </ul>
+    </div>
+    <section id="tabs">
+        <div id='introProjects' class='.container-fluid tabcontent' style=>
+            <div class="row is-table-row">
+                <div class="col-lg-12 col-md-12 col-sm-12 stdSpacing text-center">
+                    <br>
+                    <img src="headshot.png" alt="Resting at Eikan-dō Zenrin-ji, in Kyoto, Japan - June 2016" width="30%" style="min-width: 100px !important; max-width: 200px !important;">
+                    <br><br>
+                    <h1>Shuyang Li</h1>
+                    PhD Student at <a href='https://cse.ucsd.edu/'>UC San Diego</a>, advised by <a href='https://cseweb.ucsd.edu/~jmcauley/'>Prof. Julian McAuley</a>
+                    <br>
+                    <b>shuyangli94 [at] GMAIL</b> / <a href="https://www.linkedin.com/in/shuyangli94">LinkedIn</a> / <a href="Li_Shuyang_Resume.pdf">Resume</a> / <a href='https://scholar.google.com/citations?user=mZrs5XMAAAAJ'>Google Scholar</a>
+                    <br><br>
+                    Princeton University Class of 2016<br>BSE in Operations Research and Financial Engineering
+                    <br><br>
+                    Avid badminton player. Writer. Check out various projects I've worked on via tabs on the upper-left.
+                </div>
             </div>
-
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a class="page-scroll" href="#page-top">Home</a>
-                    </li>
-<!--                     <li>
-                        <a class="page-scroll" href="#about">About</a>
-                    </li> -->
-                    <li>
-                        <a class="page-scroll" href="#activities">Activities</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#projects">Projects</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#contact">Contact</a>
-                    </li>
-                </ul>
+            <div class="row is-table-row">
+                <div class="col-lg-12 col-md-12 col-sm-12 stdSpacing text-center">
+                    <h3><B>Recent News</B></h3>
+                </div>
             </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container-fluid -->
-    </nav>
-
-    <header>
-        <div class="header-content">
-            <div class="header-content-inner">
-                <a href="Game/game.html"><img src="headerICON.png" height="12%" width="12%"></a>
-                <hr>
-                <h1>Shuyang Li</h1>
-                <hr>
-                <p>Princeton University Class of 2016 with a B.S.E. in Operations Research and Financial Engineering
-                    <br>Certificates in Computer Science, SML (Statistics and Machine Learning)
-                    <br>Scroll down to learn more about me!
-                    </p>
-                <a href="projects.html" class="btn btn-primary btn-xl page-scroll">Projects</a>
-            </div>
-        </div>
-    </header>
-
-<!--     <section class="bg-primary" id="about">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 text-center">
-                    <h2 class="section-heading">We've got what you need!</h2>
-                    <hr class="light">
-                    <p>Start Bootstrap has everything you need to get your new website up and running in no time! All of the templates and themes on Start Bootstrap are open source, free to download, and easy to use. No strings attached!</p>
-                    <a href="#" class="btn btn-default btn-xl">Get Started!</a>
+            <div class="row is-table-row">
+                <div class='col-lg-4 col-md-3 col-sm-2'></div>
+                <div class='col-lg-4 col-md-6 col-sm-8'>
+                    <ul>
+                        <li><b>[August 2019]</b> Paper <a href='https://arxiv.org/pdf/1909.00105.pdf'>"Generating Personalized Recipes from Historical User Preferences"</a> accepted to <a href='https://www.emnlp-ijcnlp2019.org/program/accepted/'>EMNLP 2019</a>; work w/ Bodhisattwa, Jianmo, and Julian</li>
+                        <li><b>[August 2019]</b> Will present poster <b>"Cooking Common Sense: Personalized Recipe ‘Tweak’ Inference via Common Sense Reasoning"</b> at <a href='https://socalnlp.github.io/symp19/index.html'>SoCal NLP 2019</a>; work w/ Bodhisattwa and Julian</li>
+                        <li><b>[June 2019]</b> Joined <a href='https://www.google.com'>Google</a> as a summer intern with the <a href='https://www.kaggle.com/'>Kaggle</a> Datasets team, working on metadata extraction and data discoverability</li>
+                        <li><b>[June 2019]</b> Our team was selected as one of 10 finalists in the <a href='https://developer.amazon.com/alexaprize'>2019 Alexa Prize</a>. <a href='https://www.cnet.com/news/amazons-voice-assistant-will-get-smarter-these-new-alexa-prize-teams-will-help/'>News</a>.</li>
+                        <li><b>[September 2018]</b> Started my PhD at UCSD, studying applied machine learning, recommender systems and NLP under <a href='https://cseweb.ucsd.edu/~jmcauley/'>Prof. Julian McAuley</a></li>
+                        <li><b>[June 2017]</b> Joined <a href='https://www.bloomberg.com/'>Bloomberg LP</a> as a Senior Software Engineer in the Structured Products Waterfall team</li>
+                        <li><b>[July 2016]</b> Joined <a href='https://www.goldmansachs.com/'>Goldman Sachs</a> as a Technology Analyst in the Operations Automation and Analytics team</li>
+                        <li><b>[June 2016]</b> Graduated from Princeton University with a BSE in Operations Research and Financial Engineering</li>
+                    </ul>
                 </div>
             </div>
         </div>
-    </section> -->
-
-    <section id="activities">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">Activities</h2>
-                    <hr class="primary">
-                </div>
-            </div>
-        </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3 col-md-6 text-center">
-                    <div class="service-box">
-                        <a href="http://birdies.princeton.edu"><img src="img/activities/bmtICO.PNG" height="45%" width="45%"></a>
-                        <h3>Badminton</h3>
-                        <p>Player since 2003, and former captain of the Princeton Badminton Club.</p>
+        <div id='personalProjects' class='.container-fluid tabcontent'>
+            <div class="row is-table-row">
+                <div class="col-lg-4 col-md-4 col-sm-12 stdSpacing">
+                    <div class="personal-project-box text-center">
+                        <br>
+                        <a href="wonderland/index.html"><h2>The End of the World</h2></a>
+                        <i><h3>Top-Down Exploration Game</h3></i>
+                        <p align="left"><br>A simple game inspired by Haruki Murakami's <i>Hard-Boiled Wonderland and the End of the World</i>. Move around the world with the arrow keys.
+                        </p>
+                        <br>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6 text-center">
-                    <div class="service-box">
-                        <a href="http://princetonmocktrial.github.io"><img src="img/activities/mtICO.PNG" height="45%" width="45%"></a>
-                        <h3>Mock Trial</h3>
-                        <p>Witness and attorney since 2008. President of Princeton Mock Trial during the 2013-14 season, and currently coach of Team 936.</p>
+                <div class="col-lg-4 col-md-4 col-sm-12 stdSpacing">
+                    <div class="personal-project-box text-center">
+                        <br>
+                        <a href="maze/index.html"><h2>Maze Generator and Explorer</h2></a>
+                        <i><h3>Cellular Automaton</h3></i>
+                        <p align="left"><br>Using cellular automata to generate mazes. Allows customization of maze dimensions and visualizations. Solve the maze with arrow keys. Contains an auto-solver feature.
+                        </p>
+                        <br>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6 text-center">
-                    <div class="service-box">
-                        <img src="img/activities/poetryICO.PNG" height="45%" width="45%">
-                        <h3>Creative Writing</h3>
-                        <p>Dabbler in poetry and short fiction.</p>
+                <div class="col-lg-4 col-md-4 col-sm-12 stdSpacing">
+                    <div class="personal-project-box text-center">
+                        <br>
+                        <a href="cellsandbox/index.html"><h2>Cellular Automaton Sandbox</h2></a>
+                        <i><h3>Cellular Automaton</h3></i>
+                        <p align="left"><br>Set a beginning configuration and a ruleset, and allow a cellular automaton to grow. Allows flipping of grid squares as the automaton is running, as well as customization of run speed and canvas dimensions.
+                        </p>
+                        <br>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6 text-center">
-                    <div class="service-box">
-                        <a href="https://www.kaggle.com/shuyangli94"><img src="img/activities/kaggleICO.PNG" height="45%" width="45%"></a>
-                        <h3>Kaggle</h3>
-                        <p>Aspiring data scientist and machine learning enthusiast.</p>
+            </div>
+            <div class="row is-table-row">
+                <div class="col-lg-4 col-md-4 col-sm-12 stdSpacing">
+                    <div class="personal-project-box text-center">
+                        <br>
+                        <a href="crumblies/index.html"><h2>Cookie Crumbler</h2></a>
+                        <i><h3>Game</h3></i>
+                        <p align="left"><br>Break cookies into different-sized pieces to feed a friendly colony of ants, as they're constantly harrassed by locusts. Experiment with HTML5 canvas.
+                        </p>
+                        <br>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-12 stdSpacing">
+                    <div class="personal-project-box text-center">
+                        <br>
+                        <a href="incremental-adv/game.html"><h2>Incremental Adventure</h2></a>
+                        <i><h3>Incremental Game</h3></i>
+                        <p align="left"><br>Dabbling in development of an incremental RPG. Progress through an infinite dungeon and collect party members and upgrade your gear.
+                        </p>
+                        <br>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id='bbgProjects' class='.container-fluid tabcontent'>
+            <div class="row is-table-row">
+                <div class="col-lg-6 col-md-6 col-sm-12 stdSpacing">
+                    <div class="bbg-project-box text-center">
+                        <br>
+                        <h2>Data Quality Control Platform (2017-)</h2>
+                        <i><h3>Distributed Computing</h3></i>
+                        <p align="left"><br>In my work with the Structured Products team (Mortgage Waterfall Infrastructure), I helped to design and implement a Spark-based infrastructure for high bandwidth data processing jobs. We wrote a series of applications to wrap common data-access, filtering, and testing paradigms, so other members of the Structured Products group could write test logic as a self-contained plugin and farm the job out to our Spark cluster. We achieved a 100x+ speedup for some jobs due to parallelization, and abstracted away Spark application boilerplate.
+                            <br><br>
+                            The platform infrastructure was written in Python with jobs distributed via <a href="http://spark.apache.org/docs/latest/api/python/index.html">pySpark</a>.
+                        </p>
+                        <br>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 stdSpacing">
+                    <div class="bbg-project-box text-center">
+                        <br>
+                        <h2>Identifying Similar Securities (2017-)</h2>
+                        <i><h3>Semi-structured Text Clustering</h3></i>
+                        <p align="left"><br>As part of my work with the Quality Control team in Mortgage Waterfall Infrastructure, I am currently investigating how various mortgage-backed securities (pools, generics, CMOs) can be clustered by the shape of the data we regularly receive for each security. This entails identifying data shape features for semi-structured text data received for over 2.5 million securities and clustering on time-series data for each security.
+                            <br><br>
+                            The application was written in Python, using <a href="https://spark.apache.org/mllib/">Spark MLlib</a> library for feature processing and clustering, and <a href="https://www.postgresql.org/">PostgreSQL</a> to store time series data, accessed programmatically via <a href="https://www.sqlalchemy.org/">SQLAlchemy</a>. The application utilizes the infrastructure framework developed as part of the Data QC Platform.
+                        </p>
+                        <br>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id='gsProjects' class='tabcontent'>
+            <div class="row is-table-row">
+                <div class="col-lg-6 col-md-6 col-sm-12 stdSpacing">
+                    <div class="gs-project-box text-center">
+                        <br>
+                        <h2>Machine Learning Platform (2016-2017)</h2>
+                        <i><h3>Distributed ML Platform</h3></i>
+                        <p align="left"><br>This was my primary project in Ops Analytics Strats (OAS), in the Operations Technology group at Goldman Sachs. Over the course of 10 months, we built a platform for data science and machine learning on top of the firm's centralized data store. Our goal was to allow anybody to classify and regress on arbitrary datasets without needing a deep background in programming for machine learning. One client was an internal data platforms team, which used our platform to better predict expected runtimes for their data ingestion workflow.
+                            <br><br>
+                            The platform infrastructure was written in Java. For machine learning, we used <a href="https://spark.apache.org/mllib/">Spark MLlib</a> and <a href="https://www.r-project.org/">R</a>.
+                        </p>
+                        <br>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 stdSpacing">
+                    <div class="gs-project-box text-center">
+                        <br>
+                        <h2>Market Data Pipeline (2016)</h2>
+                        <i><h3>FIX Message Parsing</h3></i>
+                        <p align="left"><br>This was the project team I worked on for Grey Wolf on Goldman Sachs Asset Management - Fixed Income (GSAM FI) as a new Technology Analyst in the fall of 2016. Over 6 weeks, our team built a system to consume FIX messages from several marketplaces, parse them into a standardized object, and store the messages in a database. Our application allowed the GSAM FI team to consume a vastly greater quantity of market messages and made it available for further analysis by traders. It is currently a production system.
+                            <br><br>
+                            The application was written in Java, using the <a href="http://www.quickfixj.org/">QuickFIX/J</a> library for FIX message decoding.
+                        </p>
+                        <br>
+                    </div>
+                </div>
+            </div>
+            <div class="row is-table-row">
+                <div class="col-lg-6 col-md-6 col-sm-12 stdSpacing">
+                    <div class="gs-project-box text-center">
+                        <br>
+                        <h2>Automated Invoice Recognition (2015)</h2>
+                        <i><h3>Optical Character Recognition</h3></i>
+                        <p align="left"><br>This was my main project as a Summer Technology Analyst in Operations Analytics Strats. We worked with Accounting Services to build a tool that could automatically index certain values from images of invoices. They received invoices through email or fax and scanned them into .tiff files. Our algorithm relied on segmentation of individual values to produce structured output and templating to identify likely segment locations.
+                            <br><br>
+                            The program was written in Python, using the <a href="http://www.numpy.org/">numpy</a> library for fast array operations and <a href="http://scikit-image.org/">scikit-image</a> library for image processing. We used the <a href="https://github.com/tesseract-ocr/tesseract">Tesseract</a> open-source OCR engine.
+                        </p>
+                        <br>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 stdSpacing">
+                    <div class="gs-project-box text-center">
+                        <br>
+                        <h2>Workflow Assignment (2015)</h2>
+                        <i><h3>Mixed Integer Linear Programming</h3></i>
+                        <p align="left"><br>This was another project that I worked on as a Summer Technology Analyst in Operations Analytics Strats. We worked with several different Operations groups to produce a tool for automatically assigning tasks to available analysts. This took into account available analysts, their expected bandwidth for the remainder of the day, their proficiency with incoming tasks, and implemented a Maker-Checker process. The tool is to be run by managers, and outputs a list of each person's assignments as well as a list of unassigned tasks with reasoning listed.
+                            <br><br>
+                            The program was written in <a href="https://www.r-project.org/">R</a>, using the <a href="https://cran.r-project.org/web/packages/Rglpk/Rglpk.pdf">Rglpk</a> library for linear programming.
+                        </p>
+                        <br>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id='princetonProjects' class='tabcontent'>
+            <div class="row is-table-row">
+                <div class="col-lg-6 col-md-6 col-sm-12 stdSpacing">
+                    <div class="princeton-project-box text-center">
+                        <br>
+                        <h2>Rich Features for Sentiment Analysis (2015-6)</h2>
+                        <i><h3>Natural Language Processing</h3></i>
+                        <p align="left"><br>This was my senior thesis at Princeton University, supervised by Dr. Xiaoyan Li. Here, we investigate the use of rich features to extend the bag-of-words model for sentiment analysis using machine learning in the movie review domain. We focus on subjectivity analysis and sentence position features. In addition, I created a manually labeled set of subjective and summary sentences for 2000 reviews in the Cornell IMDB movie review corpus. The full title of the thesis is <i>Exploring Rich Features for Sentiment Analysis with Various Machine Learning Models</i>.
+                            <br><br>
+                            All model training and execution were performed in Python, using <a href="http://www.nltk.org/">NLTK</a> and <a href="https://textblob.readthedocs.io/en/dev/">TextBlob</a> for document parsing and feature extraction, and <a href="http://scikit-learn.org/stable/">scikit-learn</a> for machine learning algorithms. Data analysis was done in R.
+                            <br><br>
+                            <b>Documents:</b> <a href="projects/thesis/shuyangl_IEEE_poster_saveas.pdf">Poster</a> presented at the 2016 IEEE MIT Undergraduate Research Technology Conference. A full copy of the thesis may be requested via <a href="http://arks.princeton.edu/ark:/88435/dsp01jq085n41j">Princeton DataSpace</a>. You can also download a .7z archive of my <a href="projects/thesis/reviews_manual_shuyangli.7z">manually labeled movie reviews</a>.
+                        </p>
+                        <br>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 stdSpacing">
+                    <div class="princeton-project-box text-center">
+                        <br>
+                        <h2>Career Imagineers (2015)</h2>
+                        <i><h3>Social Impact</h3></i>
+                        <p align="left"><br>I worked on this semester-long project in Junior year of college for EGR 392 - Creativity, Innovation, and Design. We helped the campus career center provide resources for career exploration and preparation in a way that was better suited for the undergraduate population. We created a regular mentorship program for underclassmen and upperclassmen who had experience with various research and industry roles. We also held a well-attended career exploration workshop on campus.
+                            <br><br>
+                            The team consisted of Grace Chang '17, Catherine Idylle '16, Jean Choi '15, Maggie Zhang '16, Annie Chen '15, and myself.
+                            <br><br>
+                            <b>Documents:</b> <a href="projects/imagineers/EGR392_Careers.pdf">Presentation</a> given to the EGR 392 class, as well as administrators of Princeton career services.
+                        </p>
+                        <br>
+                    </div>
+                </div>
+            </div>
+            <div class="row is-table-row">
+                <div class="col-lg-6 col-md-6 col-sm-12 stdSpacing">
+                    <div class="princeton-project-box text-center">
+                        <br>
+                        <h2>Learning Rate Analysis for Temporal-Difference Learning (2014)</h2>
+                        <i><h3>Reinforcement Learning</h3></i>
+                        <p align="left"><br>This was a project that I worked on as a Summer Research Intern at <a href="http://castlelab.princeton.edu/">CASTLE Lab</a> at Princeton University in the summer of 2014. The objective was to find optimal policies in an energy allocation problem. The model contained a battery, power grid, wind energy, and demand, with the latter three stochastic variables. I investigated the performance of Q-Learning and SARSA given different learning rates.
+                            <br><br>
+                            The simulator was written in Java, building on the <a href="http://burlap.cs.brown.edu/">BURLAP Learning Algorithm Library</a>. Graphics and metrics were produced in Excel and MATLAB.
+                            <br><br>
+                            <b>Documents:</b> <a href="projects/castle/model.pdf">Problem Model</a>, <a href="projects/castle/shuyangli_summerpresentation08082014.pdf">Project Presentation</a>
+                        </p>
+                        <br>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 stdSpacing">
+                    <div class="princeton-project-box text-center">
+                        <br>
+                        <h2>Los Angeles Freeway Pricing (2014)</h2>
+                        <i><h3>Optimal Learning</h3></i>
+                        <p align="left"><br>This was a project that I worked on for <a href="http://optimallearning.princeton.edu/">ORF 418: Optimal Learning</a> in Spring 2014. I worked with Max Kaplan. We created an algorithm for pricing Express Lanes on the I-110 Freeway using Optimal Learning techniques. Specifically, we tested the Knowledge Gradient, Interval Estimation, Pure Exploitation, and Constrained Exploration algorithms with linear and logistic belief models.
+                            <br><br>
+                            Code and graphics done in <b>MATLAB</b>.
+                            <br><br>
+                            <b>Documents:</b> <a href="projects/418/FinalReport_Shuyang_Li.pdf">Project Report</a>, <a href="projects/418/shuyangli_maxkaplan_demo.pdf">Project Presentation</a>
+                        </p>
+                        <br>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-
-    <section class="no-padding" id="projects">
-        <div class="container-fluid">
-            <div class="row no-gutter">
-                <div class="col-lg-4 col-sm-6">
-                    <a href="http://shuyangli.me/projects.html#OCR" class="portfolio-box"> <!-- FIXME FIXME -->
-                        <img src="img/portfolio/1.jpg" class="img-responsive" alt="">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    Optical Character Recognition
-                                </div>
-                                <div class="project-name">
-                                    Automated Invoice Recognition
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <a href="http://shuyangli.me/projects.html#CASTLE" class="portfolio-box"> <!-- FIXME FIXME -->
-                        <img src="img/portfolio/2.jpg" class="img-responsive" alt="">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    Machine Learning
-                                </div>
-                                <div class="project-name">
-                                    CASTLE Lab Learning Rate Analysis
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <a href="http://shuyangli.me/projects.html#SWF" class="portfolio-box"> <!-- FIXME FIXME -->
-                        <img src="img/portfolio/3.jpg" class="img-responsive" alt="">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    Linear Programming
-                                </div>
-                                <div class="project-name">
-                                    Smart Workflows
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <a href="http://shuyangli.me/projects.html#418" class="portfolio-box"> <!-- FIXME FIXME -->
-                        <img src="img/portfolio/4.jpg" class="img-responsive" alt="">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    Optimal Learning
-                                </div>
-                                <div class="project-name">
-                                    Los Angeles Freeway Pricing
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <a href="http://shuyangli.me/projects.html#PARSNIP" class="portfolio-box"> <!-- FIXME FIXME -->
-                        <img src="img/portfolio/5.jpg" class="img-responsive" alt="">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    Chrome Extension
-                                </div>
-                                <div class="project-name">
-                                    PARSNIP
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <a href="http://shuyangli.me/projects.html#Thesis" class="portfolio-box"> <!-- FIXME FIXME -->
-                        <img src="img/portfolio/6.jpg" class="img-responsive" alt="">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    Natural Language Processing
-                                </div>
-                                <div class="project-name">
-                                    Senior Thesis
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 text-center">
-                    <h2 class="section-heading">Get In Touch</h2>
-                    <hr class="primary">
-                    <p>For a copy of my resume, send me an email!</p>
-                </div>
-                <br>
-                <div class="col-lg-4 col-lg-offset-2 text-center">
-                    <a href="mailto:shuyangli94@gmail.com"><i class="fa fa-envelope-o fa-3x"></i></a>
-                </div>
-                <div class="col-lg-4 text-center">
-                    <a href="https://www.linkedin.com/in/shuyangli94"><i class="fa fa-linkedin fa-3x"></i></a>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <br>
     <br>
-    <h6>© SHUYANG LI 2015</h6>
+    <br>
+    <br>
+    <br>
+    <br>
+    <section id="footer">
+        <div id="copyrightFooter" class="footer"><h5 id="copyright"></h5></div>
+    </section>
 
-    <!-- jQuery -->
-    <script src="js/jquery.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
-
-    <!-- Plugin JavaScript -->
-    <script src="js/jquery.easing.min.js"></script>
-    <script src="js/jquery.fittext.js"></script>
-    <script src="js/wow.min.js"></script>
-
-    <!-- Custom Theme JavaScript -->
-    <script src="js/creative.js"></script>
-
+    <script>
+        document.getElementById("copyright").innerHTML = "&copy; <a href='http://shuyangli.me'>Shuyang Li</a> " + (new Date().getFullYear());
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="codingProjectsTabs.js"></script>
 </body>
-
 </html>
