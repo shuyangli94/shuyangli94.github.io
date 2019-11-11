@@ -16,9 +16,9 @@
 <body id="page-top">
     <div>
         <ul class="tab" id="tabBar">
+            <li><a href="javascript:void(0)" onclick="selectTab(event, 'introProjects')" class="tablinks" id="introLink">HOME</a></li>
             <li><a href="javascript:void(0)" onclick="selectTab(event, 'research')" class="tablinks" id="researchLink">RESEARCH</a></li>
             <li><a href="javascript:void(0)" onclick="selectTab(event, 'projects')" class="tablinks" id="projectsLink">PROJECTS</a></li>
-            <li style="float:right"><b><a href="javascript:void(0)" onclick="selectTab(event, 'introProjects')" class="tablinks" id="introLink">HOME</a></b></li>
         </ul>
     </div>
     <section id="tabs">
@@ -63,14 +63,14 @@
                 <div class='col-lg-4 col-md-3 col-sm-2'></div>
                 <div class='col-lg-4 col-md-6 col-sm-8'>
                     <ul>
-                        <li><b>[August 2019]</b> Paper <a href='https://arxiv.org/pdf/1909.00105.pdf'>"Generating Personalized Recipes from Historical User Preferences"</a> accepted to <a href='https://www.emnlp-ijcnlp2019.org/program/accepted/'>EMNLP 2019</a>; work w/ Bodhisattwa, Jianmo, and Julian</li>
-                        <li><b>[August 2019]</b> Will present poster <a href='papers/shuyangli_socal_nlp_2019.pdf'>"Cooking Common Sense: Personalized Recipe ‘Tweak’ Inference via Common Sense Reasoning"</a> at <a href='https://socalnlp.github.io/symp19/index.html'>SoCal NLP 2019</a>; work w/ Bodhisattwa and Julian</li>
-                        <li><b>[June 2019]</b> Joined <a href='https://www.google.com'>Google</a> as a summer intern with the <a href='https://www.kaggle.com/'>Kaggle</a> Datasets team, working on metadata extraction and data discoverability</li>
-                        <li><b>[June 2019]</b> Our team was selected as one of 10 finalists in the <a href='https://developer.amazon.com/alexaprize'>2019 Alexa Prize</a>! News <a href='https://www.cnet.com/news/amazons-voice-assistant-will-get-smarter-these-new-alexa-prize-teams-will-help/'>coverage</a>.</li>
-                        <li><b>[September 2018]</b> Started my PhD at UCSD, studying applied machine learning, recommender systems and NLP under <a href='https://cseweb.ucsd.edu/~jmcauley/'>Prof. Julian McAuley</a></li>
-                        <li><b>[June 2017]</b> Joined <a href='https://www.bloomberg.com/'>Bloomberg LP</a> as a Senior Software Engineer in the Structured Products Waterfall team</li>
-                        <li><b>[July 2016]</b> Joined <a href='https://www.goldmansachs.com/'>Goldman Sachs</a> as a Technology Analyst in the Operations Automation and Analytics team</li>
-                        <li><b>[June 2016]</b> Graduated from Princeton University with a BSE in Operations Research and Financial Engineering</li>
+                        <li><b>September 2019</b>: Presented poster <a href='papers/socal_nlp_2019/shuyangli_socal_nlp_2019.pdf'>"Cooking Common Sense: Personalized Recipe ‘Tweak’ Inference via Common Sense Reasoning"</a> at <a href='https://socalnlp.github.io/symp19/index.html'>SoCal NLP 2019</a>; work w/ Bodhisattwa and Julian</li>
+                        <li><b>August 2019</b>: Paper <a href='https://www.aclweb.org/anthology/D19-1613.pdf'>"Generating Personalized Recipes from Historical User Preferences"</a> accepted to <a href='https://www.emnlp-ijcnlp2019.org/program/accepted/'>EMNLP 2019</a>; work w/ Bodhisattwa, Jianmo, and Julian</li>
+                        <li><b>June 2019</b>: Joined <a href='https://www.google.com'>Google</a> as a summer intern with the <a href='https://www.kaggle.com/'>Kaggle</a> Datasets team, working on metadata extraction and data discoverability</li>
+                        <li><b>June 2019</b>: Our team was selected as one of 10 finalists in the <a href='https://developer.amazon.com/alexaprize'>2019 Alexa Prize</a>! News <a href='https://www.cnet.com/news/amazons-voice-assistant-will-get-smarter-these-new-alexa-prize-teams-will-help/'>coverage</a>.</li>
+                        <li><b>September 2018</b>: Started my PhD at UCSD, studying applied machine learning, recommender systems and NLP under <a href='https://cseweb.ucsd.edu/~jmcauley/'>Prof. Julian McAuley</a></li>
+                        <li><b>June 2017</b>: Joined <a href='https://www.bloomberg.com/'>Bloomberg LP</a> as a Senior Software Engineer in the Structured Products Waterfall team</li>
+                        <li><b>July 2016</b>: Joined <a href='https://www.goldmansachs.com/'>Goldman Sachs</a> as a Technology Analyst in the Operations Automation and Analytics team</li>
+                        <li><b>June 2016</b>: Graduated from <a href='https://www.princeton.edu/'>Princeton University</a> with a BSE in <a href='https://orfe.princeton.edu/home'>Operations Research and Financial Engineering</a></li>
                     </ul>
                 </div>
             </div>
@@ -81,7 +81,7 @@
                     <br>
                     <img src="alexabear-headshot.png" alt="Shuyang Li" width="30%" style="min-width: 100px !important; max-width: 200px !important;">
                     <br><br>
-                    <h1>Research</h1>
+                    <h1>Publications</h1>
                 </div>
             </div>
             <div class="row is-table-row">
@@ -100,41 +100,205 @@
                     <table>
                         <tr style="border-bottom: 1px solid rgb(192, 192, 192);"><td></td><td></td></tr>
                         <tr style="border-bottom: 1px solid rgb(192, 192, 192);">
-                            <td width="25%" align="center"><img src="emnlp_recipe-gen.png" alt="EMNLP 2019 Recipe Generation" width="200" style="border-style: none"></td>
-                              <td width="75%" valign="top">
+                            <td width="25%" align="center"><img src="papers/emnlp_2019_recipe/emnlp_recipe-gen.png" alt="Generating Personalized Recipes from Historical User Preferences (EMNLP 2019)" width="200" style="border-style: none"></td>
+                            <td width="75%" valign="top">
+                            <p>
+                                <b>Generating Personalized Recipes from Historical User Preferences</b>
+                                </a>
+                                <br>
+                                <a href='http://www.majumderb.com/'>Bodhisattwa P. Majumder*</a>, <b>Shuyang Li*</b>, <a href="https://nijianmo.github.io/">Jianmo Ni</a>, <a href="https://cseweb.ucsd.edu/~jmcauley/">Julian McAuley</a>
+                                <br>
+                                <i>2019 Conference on Empirical Methods in Natural Language Processing (EMNLP)</i>
+                                <br>
+                                <a href="https://www.aclweb.org/anthology/D19-1613.pdf">pdf</a> | <a href="https://github.com/majumderb/recipe-personalization">code</a> | <a href="https://www.kaggle.com/shuyangli94/food-com-recipes-and-user-interactions">data</a>
+                            </p>
+                            <p>
+                                We propose the task of <i>personalized recipe generation</i>: expanding a name and incomplete ingredient details into a complete natural-text recipe instruction set, aligned with a user's historical preferences; we present a model that attends on user activity traces to solve this task.
+                            </p>
+                            </td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgb(192, 192, 192);">
+                            <td width="25%" align="center"><img src="papers/molecular_pain/molpain-trigeminal.png" alt="Molecular Pain 2012 TRP Channel Clustering" width="200" style="border-style: none"></td>
+                            <td width="75%" valign="top">
+                            <p>
+                                <b>Expression of the transient receptor potential channels TRPV1, TRPA1 and TRPM8 in mouse trigeminal primary afferent neurons innervating the dura</b>
+                                </a>
+                                <br>
+                                Dongyue Huang, <b>Shuyang Li</b>, Ajay Dhaka, Gina M Story, <a href='https://sites.wustl.edu/dbrcaolab/'>Yu-Qing Cao</a>
+                                <br>
+                                <i>Molecular Pain 2012, 8:66</i>
+                                <br>
+                                <a href="papers/molecular_pain/molpain_2012.pdf">pdf</a>
+                            </p>
+                            <p>
+                                We study the size and clustering of TRP-channel expressing neurons in the trigeminal dura. Our results suggest that TRPV1 and TRPA1 but not TRPM8 channels likely contribute to the excitation of dural afferent neurons and the subsequent activation of the headache circuit. These results provide an anatomical basis for understanding further the functional significance of TRP channels in headache pathophysiology.
+                            </p>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="row is-table-row">
+                <div class="col-lg-12 col-md-12 col-sm-12 stdSpacing text-center">
+                    <h1>Work Experience</h1>
+                </div>
+            </div>
+            <div class="row is-table-row">
+                    <div class='col-lg-3 col-md-3 col-sm-2'></div>
+                    <div class='col-lg-6 col-md-6 col-sm-8'>
+                        <table>
+                            <tr style="border-bottom: 1px solid rgb(192, 192, 192);"><td></td><td></td></tr>
+                            <tr style="border-bottom: 1px solid rgb(192, 192, 192);">
+                                <td width="25%" align="center"><img src="work/kaggle.png" alt="Kaggle - Google Cloud  AI (2019 Summer)" width="200" style="border-style: none"></td>
+                                <td width="75%" valign="top">
                                 <p>
-                                    <b>Generating Personalized Recipes from Historical User Preferences</b>
-                                  </a>
-                                  <br>
-                                  <a href='http://www.majumderb.com/'>Bodhisattwa P. Majumder*</a>, <b>Shuyang Li*</b>, <a href="https://nijianmo.github.io/">Jianmo Ni</a>, <a href="https://cseweb.ucsd.edu/~jmcauley/">Julian McAuley</a>
-                                  <br>
-                                  <i>2019 Conference on Empirical Methods in Natural Language Processing (EMNLP)</i>
-                                  <br>
-                                  <a href="https://arxiv.org/pdf/1909.00105.pdf">pdf</a> | <a href="https://github.com/majumderb/recipe-personalization">code</a> | <a href="https://www.kaggle.com/shuyangli94/food-com-recipes-and-user-interactions">data</a>
+                                    <b><a href='https://cloud.google.com/products/ai/'>Google Cloud AI</a>: <a href='https://www.kaggle.com/'>Kaggle</a></b>
+                                    </a>
+                                    <br>
+                                    <b>Software Engineering Intern</b>
+                                    <br>
+                                    <i>June 2019 - September 2019</i>
+                                    <br>
                                 </p>
                                 <p>
-                                    We propose the task of <i>personalized recipe generation</i>: expanding a name and incomplete ingredient details into a complete natural-text recipe instruction set, aligned with a user's historical preferences; we present a model that attends on user activity traces to solve this task.
+                                    <i>Dataset Categorization and Search</i><br />
+                                    At Kaggle, I built a framework for automatically generating semantic tags for datasets based on free-text metadata. I also implemented metrics for dataset discoverability and search success. By the end of the summer, I had more than doubled the size of our tag ontology and tripled tag coverage across all public datasets on Kaggle.
                                 </p>
-                              </td>
-                          </tr>
-                          <tr style="border-bottom: 1px solid rgb(192, 192, 192);">
-                            <td width="25%" align="center"><img src="molpain-trigeminal.png" alt="Molecular Pain 2012 TRP Channel Clustering" width="200" style="border-style: none"></td>
-                              <td width="75%" valign="top">
+                                </td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid rgb(192, 192, 192);">
+                                <td width="25%" align="center"><img src="work/bloomberg.png" alt="Bloomberg, LP (2017-2018)" width="200" style="border-style: none"></td>
+                                <td width="75%" valign="top">
                                 <p>
-                                    <b>Expression of the transient receptor potential channels TRPV1, TRPA1 and TRPM8 in mouse trigeminal primary afferent neurons innervating the dura</b>
-                                  </a>
-                                  <br>
-                                  Dongyue Huang, <b>Shuyang Li</b>, Ajay Dhaka, Gina M Story, <a href='https://sites.wustl.edu/dbrcaolab/'>Yu-Qing Cao</a>
-                                  <br>
-                                  <i>Molecular Pain 2012, 8:66</i>
-                                  <br>
-                                  <a href="https://journals.sagepub.com/doi/pdf/10.1186/1744-8069-8-66">pdf</a>
+                                    <b><a href='https://www.techatbloomberg.com/'>Bloomberg</a>: Structured Products</b>
+                                    </a>
+                                    <br>
+                                    <b>Senior Software Engineer</b>
+                                    <br>
+                                    <i>June 2017 - September 2018</i>
+                                    <br>
                                 </p>
                                 <p>
-                                    We study the size and clustering of TRP-channel expressing neurons in the trigeminal dura. Our results suggest that TRPV1 and TRPA1 but not TRPM8 channels likely contribute to the excitation of dural afferent neurons and the subsequent activation of the headache circuit. These results provide an anatomical basis for understanding further the functional significance of TRP channels in headache pathophysiology.
+                                    <i>Data Quality Control Platform</i><br />
+                                    I helped to design and implement a Spark-based infrastructure for high bandwidth data processing jobs. We wrote a series of applications to wrap common data-access, filtering, and testing paradigms, so other members of the Structured Products group could write test logic as a self-contained plugin and farm the job out to our Spark cluster. We achieved a 100x+ speedup for some jobs due to parallelization, and abstracted away Spark application boilerplate.
                                 </p>
-                              </td>
-                          </tr>
+                                <p>
+                                    <i>Semi-Structured Text Clustering for Securities</i><br />
+                                    I investigated how various mortgage-backed securities (pools, generics, CMOs) could be clustered by the shape of the data we regularly received for each security. This entailed identifying data shape features for semi-structured text data received for over 2.5 million securities and clustering on time-series data for each security.
+                                </p>
+                                </td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid rgb(192, 192, 192);">
+                                <td width="25%" align="center"><img src="work/goldman_sachs.png" alt="Goldman Sachs (2016-2017)" width="200" style="border-style: none"></td>
+                                <td width="75%" valign="top">
+                                <p>
+                                    <b><a href='https://www.goldmansachs.com/careers/divisions/engineering/index.html'>Goldman Sachs</a>: Operations Analytics Strats</b>
+                                    </a>
+                                    <br>
+                                    <b>Technology Analyst</b>
+                                    <br>
+                                    <i>July 2016 - June 2017</i>
+                                    <br>
+                                </p>
+                                <p>
+                                    <i>Machine Learning Platform as a Service</i><br />
+                                    Over the course of 10 months, we built a platform for data science and machine learning on top of the firm's centralized data store. Our goal was to allow anybody to classify and regress on arbitrary datasets without needing a deep background in programming for machine learning. One client was an internal data platforms team, which used our platform to better predict expected runtimes for their data ingestion workflow.
+                                </p>
+                                <p>
+                                    <i>FIX Market Data Pipeline</i><br />
+                                    This was the project team I worked on for Grey Wolf on Goldman Sachs Asset Management - Fixed Income (GSAM FI). Over 6 weeks, our team built a system to consume FIX messages from several marketplaces, parse them into a standardized object, and store the messages in a database. Our application allowed the GSAM FI team to consume a vastly greater quantity of market messages and made it available for further analysis by traders. It is currently a production system.
+                                </p>
+                                </td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid rgb(192, 192, 192);">
+                                <td width="25%" align="center"><img src="work/goldman_sachs.png" alt="Goldman Sachs (2016-2017)" width="200" style="border-style: none"></td>
+                                <td width="75%" valign="top">
+                                <p>
+                                    <b><a href='https://www.goldmansachs.com/careers/divisions/engineering/index.html'>Goldman Sachs</a>: Operations Analytics Strats</b>
+                                    </a>
+                                    <br>
+                                    <b>Summer Analyst</b>
+                                    <br>
+                                    <i>June 2015 - August 2015</i>
+                                    <br>
+                                </p>
+                                <p>
+                                    <i>Automated Invoice Recognition and Extraction</i><br />
+                                    We worked with Accounting Services to build a tool that could automatically index certain values from images of invoices. They received invoices through email or fax and scanned them into .tiff files. Our algorithm relied on segmentation of individual values to produce structured output and templating to identify likely segment locations.
+                                </p>
+                                <p>
+                                    <i>Workflow Assignment through Mixed Integer Linear Programming</i><br />
+                                    We worked with several different Operations groups to produce a tool for automatically assigning tasks to available analysts. This took into account available analysts, their expected bandwidth for the remainder of the day, their proficiency with incoming tasks, and implemented a Maker-Checker process. The tool is to be run by managers, and outputs a list of each person's assignments as well as a list of unassigned tasks with reasoning listed.
+                                </p>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            <div class="row is-table-row">
+                <div class="col-lg-12 col-md-12 col-sm-12 stdSpacing text-center">
+                    <h1>Other Research</h1>
+                </div>
+            </div>
+            <div class="row is-table-row">
+                <div class='col-lg-3 col-md-3 col-sm-2'></div>
+                <div class='col-lg-6 col-md-6 col-sm-8'>
+                    <table>
+                        <tr style="border-bottom: 1px solid rgb(192, 192, 192);"><td></td><td></td></tr>
+                        <tr style="border-bottom: 1px solid rgb(192, 192, 192);">
+                            <td width="25%" align="center"><img src="papers/socal_nlp_2019/socal.png" alt="Cooking Common Sense: Personalized Recipe ‘Tweak’ Inference via Common Sense Reasoning (SoCal NLP 2019)" width="200" style="border-style: none"></td>
+                            <td width="75%" valign="top">
+                            <p>
+                                <b>Cooking Common Sense: Personalized Recipe ‘Tweak’ Inference via Common Sense Reasoning</b>
+                                </a>
+                                <br>
+                                <b>Shuyang Li*</b>, Bodhisattwa P. Majumder*, Julian McAuley
+                                <br>
+                                <i>2019 Southern California Natural Language Processing Symposium (SoCal NLP)</i>
+                                <br>
+                                <a href="papers/socal_nlp_2019/shuyangli_socal_nlp_2019.pdf">poster</a>
+                            </p>
+                            <p>
+                                We propose the task of <i>personalized tweak selection</i> modeled as both entailment of a tweak from a recipe and activity traces, as well as a generative task. We collect a dataset of 72K tweaks linked to the <a href='https://www.kaggle.com/shuyangli94/food-com-recipes-and-user-interactions'>Food.com</a> dataset from our EMNLP 2019 publication on personalized recipe generation. We also propose a framework for collecting such tweaks via crowd-sourcing.
+                            </p>
+                            </td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgb(192, 192, 192);">
+                            <td width="25%" align="center"><img src="projects/thesis/thesis_poster.png" alt="Exploring Rich Features for Sentiment Analysis with Various Machine Learning Models (2015-6)" width="200" style="border-style: none"></td>
+                            <td width="75%" valign="top">
+                            <p>
+                                <b>Exploring Rich Features for Sentiment Analysis with Various Machine Learning Models</b>
+                                </a>
+                                <br>
+                                <b>Shuyang Li</b>, <a href='https://www.cs.princeton.edu/~xiaoyan/'>Xiaoyan Li</a>
+                                <br>
+                                <i>IEEE Undergraduate Research Technology Conference 2016, Princeton Senior Thesis 2016</i>
+                                <br>
+                                <a href="projects/thesis/Li, Shuyang final thesis.pdf">pdf</a> | <a href="projects/thesis/shuyangl_IEEE_poster_saveas.pdf">poster</a> | <a href='projects/thesis/reviews_manual_shuyangli.7z'>data</a>
+                            </p>
+                            <p>
+                                This was my senior thesis at Princeton University, supervised by Dr. Xiaoyan Li. Here, we investigate the use of rich features to extend the bag-of-words model for sentiment analysis using machine learning in the movie review domain. We focus on subjectivity analysis and sentence position features. In addition, I created a manually labeled set of subjective and summary sentences for 2000 reviews in the Cornell IMDB movie review corpus.
+                            </p>
+                            </td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgb(192, 192, 192);">
+                            <td width="25%" align="center"><img src="projects/castle/logo.png" alt="Learning Rate Analysis for Temporal-Difference Learning (2014)" width="200" style="border-style: none"></td>
+                            <td width="75%" valign="top">
+                            <p>
+                                <b>Learning Rate Analysis for Temporal-Difference Learning</b>
+                                </a>
+                                <br>
+                                Work in <a href='https://castlelab.princeton.edu/'>Castle Labs</a>, supervised by <a href='https://castlelab.princeton.edu/biography/'>Warren Powell</a>
+                                <br>
+                                <i>Summer 2014</i>
+                                <br>
+                                <a href="projects/castle/shuyangli_summerpresentation08082014.pdf">pdf</a> | <a href="http://burlap.cs.brown.edu/">framework</a>
+                            </p>
+                            <p>
+                                The objective was to find optimal policies in an energy allocation problem. The model contained a battery, power grid, wind energy, and demand, with the latter three stochastic variables. I investigated the performance of Q-Learning and SARSA given different learning rates.
+                            </p>
+                            </td>
+                        </tr>
                     </table>
                 </div>
             </div>
@@ -317,20 +481,6 @@
                 </div>
             </div>
             <div class="row is-table-row">
-                <div class="col-lg-6 col-md-6 col-sm-12 stdSpacing">
-                    <div class="princeton-project-box text-center">
-                        <br>
-                        <h2>Learning Rate Analysis for Temporal-Difference Learning (2014)</h2>
-                        <i><h3>Reinforcement Learning</h3></i>
-                        <p align="left"><br>This was a project that I worked on as a Summer Research Intern at <a href="http://castlelab.princeton.edu/">CASTLE Lab</a> at Princeton University in the summer of 2014. The objective was to find optimal policies in an energy allocation problem. The model contained a battery, power grid, wind energy, and demand, with the latter three stochastic variables. I investigated the performance of Q-Learning and SARSA given different learning rates.
-                            <br><br>
-                            The simulator was written in Java, building on the <a href="http://burlap.cs.brown.edu/">BURLAP Learning Algorithm Library</a>. Graphics and metrics were produced in Excel and MATLAB.
-                            <br><br>
-                            <b>Documents:</b> <a href="projects/castle/model.pdf">Problem Model</a>, <a href="projects/castle/shuyangli_summerpresentation08082014.pdf">Project Presentation</a>
-                        </p>
-                        <br>
-                    </div>
-                </div>
                 <div class="col-lg-6 col-md-6 col-sm-12 stdSpacing">
                     <div class="princeton-project-box text-center">
                         <br>
