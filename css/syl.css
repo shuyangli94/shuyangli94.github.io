@@ -120,6 +120,12 @@ ul.tab li a:focus, .active {
 .projects-a:link {color: #e87722;}
 .projects-a:visited {color: #AB5412;}
 
+.resume-tab { background-color: #FFFFFF;  border-bottom: 1px solid #e87722; }
+.resume-atab:hover {background-color: #ffae72;}
+.resume-atab:focus, .resume-atab.active { background-color: #e87722; }
+.resume-a:link {color: #e87722;}
+.resume-a:visited {color: #AB5412;}
+
 .ptonlink {}
 
 /* Style the tab content */
